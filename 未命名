@@ -1,0 +1,3 @@
+Conda env list 虚拟环境列表
+source activate 名字 ：激活某哥虚拟环境
+source deactivate ：释放当前虚拟环境
