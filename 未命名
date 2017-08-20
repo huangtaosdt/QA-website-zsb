@@ -3,3 +3,6 @@ source 虚拟环境名字／bin／activate 名字 ：激活某哥虚拟环境
 source deactivate ：释放当前虚拟环境
 
 注意，如果用source activate 名字，有可能调用的是全局的那个重名的虚拟环境
+
+已设置启用虚拟环境的快捷键：runvenv   针对venv虚拟环境
+http://blog.csdn.net/lissdy/article/details/45620085
