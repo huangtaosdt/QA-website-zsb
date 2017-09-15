@@ -2,9 +2,19 @@ from . import db, login_manager
 from flask_login import UserMixin, AnonymousUserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-from flask import current_app, request
+from flask import current_app, request, url_for
 from datetime import datetime
 import hashlib
+from markdown import markdown
+import bleach
+from app.exceptions import ValidationError
+
+
+class Follow(db.Model):
+    __tablename__ = 'follows'
+    follower_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
+    followed_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
 class Role(db.Model):
     __tablename__='roles'
@@ -45,22 +55,29 @@ class User(UserMixin, db.Model):
     username=db.Column(db.String(64),unique=True,index=True)
     password_hash=db.Column(db.String(128))
     email = db.Column(db.String(64), unique=True, index=True)
+    # foreignkey里面要写我们自己定义的那个表明，即__tablename__
     role_id=db.Column(db.Integer,db.ForeignKey('roles.id'))
     posts = db.relationship('Post', backref='author', lazy='dynamic')
-
+    comments = db.relationship('Comment', backref='author', lazy='dynamic')
     # 用户信息字段，用于自我介绍
     name = db.Column(db.String(64))
     location = db.Column(db.String(64))
     about_me = db.Column(db.Text())
     member_since = db.Column(db.DateTime(), default=datetime.utcnow)
     last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
-
     confirmed = db.Column(db.Boolean, default=False)
-
     # 增加头型缓存字段：默认头像
     avatar_hash = db.Column(db.String(32))
     # 用户自定义头像
     avatar = db.Column(db.String(128), default=None)
+    followed = db.relationship('Follow', foreign_keys=[Follow.follower_id],
+                               backref=db.backref('follower', lazy='joined'),
+                               lazy='dynamic',
+                               cascade='all,delete-orphan')
+    followers = db.relationship('Follow', foreign_keys=[Follow.followed_id],
+                                backref=db.backref('followed', lazy='joined'),
+                                lazy='dynamic',
+                                cascade='all,delete-orphan')
 
     def __init__(self, **kwargs):
         super(User, self).__init__(**kwargs)
@@ -71,6 +88,10 @@ class User(UserMixin, db.Model):
                 self.role = Role.query.filter_by(default=True).first()
         if self.email is not None and self.avatar_hash is None:
             self.avatar_hash = hashlib.md5(self.email.encode('utf-8')).hexdigest()
+
+    @property
+    def followed_posts(self):
+        return Post.query.join(Follow, Follow.followed_id == Post.author_id).filter(Follow.follower_id == self.id)
 
     @property
     def password(self):
@@ -100,8 +121,20 @@ class User(UserMixin, db.Model):
         db.session.add(self)
         return True
 
-    # Following:  generate reset-token and reset password
+    def generate_auth_token(self, expiration):
+        s = Serializer(current_app.config['SECRET_KEY'], expires_in=expiration)
+        return s.dumps({'id': self.id}).decode('ascii')
 
+    @staticmethod
+    def verify_auth_token(token):
+        s = Serializer(current_app.config['SECRET_KEY'])
+        try:
+            data = s.loads(token)
+        except:
+            return None
+        return User.query.get(data['id'])
+
+    # Following:  generate reset-token and reset password
     def generate_reset_token(self, expiration=3600):
         s = Serializer(current_app.config['SECRET_KEY'], expiration)
         return s.dumps({'reset': self.id})
@@ -112,16 +145,10 @@ class User(UserMixin, db.Model):
             data = s.loads(token)
         except:
             return False
-        # print(data)
-        # print('next:reset')
         if data.get('reset') != self.id:
-            # print('get reset is :',data.get('reset'))
-            # print('self.id:',self.id)
-            # print('not equal!!!!')
             return False
         self.password = new_password
         db.session.add(self)
-        # print('password has been changed!')
         db.session.commit()
         return True
 
@@ -171,11 +198,63 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
+    @staticmethod
+    def generate_fake(count=100):
+        from  sqlalchemy.exc import IntegrityError
+        from random import seed
+        import forgery_py
+        seed()
+        for i in range(count):
+            u = User(email=forgery_py.internet.email_address(), username=forgery_py.internet.user_name(True),
+                     password=forgery_py.lorem_ipsum.word(), confirmed=True, name=forgery_py.name.full_name(),
+                     location=forgery_py.address.city(), about_me=forgery_py.lorem_ipsum.sentence(),
+                     member_since=forgery_py.date.date(True))
+            db.session.add(u)
+            try:
+                db.session.commit()
+            except IntegrityError:
+                db.session.rollback()
+
+    @staticmethod
+    def add_self_follows():
+        for user in User.query.all():
+            if not user.is_following(user):
+                user.follow(user)
+                db.session.add(user)
+                db.session.commit()
+
+    def follow(self, user):
+        if not self.is_following(user):
+            f = Follow(follower=self, followed=user)
+            db.session.add(f)
+
+    def unfollow(self, user):
+        f = self.followed.filter_by(followed_id=user.id).first()
+        if f:
+            db.session.delete(f)
+
+    def is_following(self, user):
+        return self.followed.filter_by(followed_id=user.id).first() is not None
+
+    def is_followed_by(self, user):
+        return self.followers.filter_by(follower_id=user.id).first() is not None
+
+    def to_json(self):
+        json_user = {
+            'url': url_for('api.get_user', id=self.id, _external=True),
+            'username': self.username,
+            'member_since': self.member_since,
+            'last_seen': self.last_seen,
+            'posts': url_for('api.get_user_posts', id=self.id, _external=True),
+            'followed_posts': url_for('api.get_user_followed_posts',
+                                      id=self.id, _external=True),
+            'post_count': self.posts.count()
+        }
+        return json_user
 
 class AnonymousUser(AnonymousUserMixin):
     def can(self, permission):
         return False
-
     def is_administrator(self):
         return False
 
@@ -193,11 +272,95 @@ class Permission:
 
 # 文章模型
 class Post(db.Model):
-    __tablename__ = 'post'
+    __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    body_html = db.Column(db.Text)
+    comments = db.relationship('Comment', backref='post', lazy='dynamic')
+
+    @staticmethod
+    def on_changed_body(target, value, oldvalue, initiator):
+        allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
+                        'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
+                        'h1', 'h2', 'h3', 'p']
+        target.body_html = bleach.linkify(
+            bleach.clean(markdown(value, output_format='html'), tags=allowed_tags, strip=True))
+
+    @staticmethod
+    def generate_fake(count=100):
+        from random import seed, randint
+        import forgery_py
+
+        seed()
+        user_count = User.query.count()
+        for i in range(count):
+            u = User.query.offset(randint(0, user_count - 1)).first()
+            p = Post(body=forgery_py.lorem_ipsum.sentences(randint(1, 3)),
+                     timestamp=forgery_py.date.date(True),
+                     author=u)
+            db.session.add(p)
+            db.session.commit()
+
+    def to_json(self):
+        json_post = {
+            'url': url_for('api.get_post', id=self.id, _external=True),
+            'body': self.body,
+            'body_html': self.body_html,
+            'timestamp': self.timestamp,
+            'author': url_for('api.get_user', id=self.author_id, _external=True),
+            'comments': url_for('api.get_post_comments', id=self.id, _external=True),
+            'comment_count': self.comments.count()
+        }
+        return json_post
+
+    @staticmethod
+    def from_json(json_post):
+        body = json_post.get('body')
+        if body is None or body == '':
+            raise ValidationError('post does not have a body')
+        return Post(body=body)
+
+
+class Comment(db.Model):
+    __tablename__ = 'comments'
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.Text)
+    body_html = db.Column(db.Text)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    disabled = db.Column(db.Boolean)
+    author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
+
+    @staticmethod
+    def on_changed_body(target, value, oldvalue, initiator):
+        allowed_tags = ['a', 'abbr', 'acronym', 'b', 'code', 'em', 'i', 'strong']
+        target.body_html = bleach.linkify(
+            bleach.clean(markdown(value, output_format='html'), tags=allowed_tags, strip=True))
+
+    def to_json(self):
+        json_comment = {
+            'url': url_for('api.get_comment', id=self.id, _external=True),
+            'post': url_for('api.get_post', id=self.post_id, _external=True),
+            'body': self.body,
+            'body_html': self.body_html,
+            'timestamp': self.timestamp,
+            'author': url_for('api.get_user', id=self.author_id,
+                              _external=True),
+        }
+        return json_comment
+
+    @staticmethod
+    def from_json(json_comment):
+        body = json_comment.get('body')
+        if body is None or body == '':
+            raise ValidationError('comment does not have a body')
+        return Comment(body=body)
+
+
+db.event.listen(Post.body, 'set', Post.on_changed_body)
+db.event.listen(Comment.body, 'set', Comment.on_changed_body)
 
 # 加载用户的回调函数
 @login_manager.user_loader

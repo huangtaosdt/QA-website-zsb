@@ -5,18 +5,19 @@ from flask_mail import Mail
 from flask_moment import Moment
 from config import config
 from flask_login import LoginManager
-
+from flask_pagedown import PageDown
 
 db=SQLAlchemy()
 mail=Mail()
 moment=Moment()
 bootstrap=Bootstrap()
 login_manager = LoginManager()
+pagedown = PageDown()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
 
 
-def creater_app(config_name):
+def create_app(config_name):
     app=Flask(__name__)
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
@@ -26,6 +27,10 @@ def creater_app(config_name):
     mail.init_app(app)
     moment.init_app(app)
     db.init_app(app)
+    pagedown.init_app(app)
+
+    from .api_1_0 import api as api_1_0_blueprint
+    app.register_blueprint(api_1_0_blueprint, url_prefix='/api/v1.0')
 
     #将 main init 中定义定蓝本注册到程序上
     from .main import main as main_blueprint

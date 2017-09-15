@@ -2,6 +2,7 @@ from flask_wtf import Form
 from ..models import Role, User
 from wtforms import StringField, SubmitField, TextAreaField, BooleanField, SelectField, FileField
 from wtforms.validators import DataRequired, Length, Required, Email, ValidationError, Regexp
+from flask_pagedown.fields import PageDownField
 
 class NameForm(Form):
     name=StringField("What is your name?",validators=[DataRequired()])
@@ -46,5 +47,12 @@ class EditProfileAdminForm(Form):
 
 
 class PostForm(Form):
-    body = TextAreaField('Whats on your mind?', validators=[Required()])
+    # body = TextAreaField('Whats on your mind?', validators=[Required()])
+    # 修改为markdown格式的编辑框
+    body = PageDownField("What's on your mind?", validators=[Required()])
+    submit = SubmitField('Submit')
+
+
+class CommentForm(Form):
+    body = StringField('', validators=[Required()])
     submit = SubmitField('Submit')

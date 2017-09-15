@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, request, jsonify
 from . import main
 
 
@@ -8,8 +8,17 @@ def forbidden(e):
 
 @main.app_errorhandler(404)
 def page_not_found(e):
+    if request.accept_mimetypes.accept_json and not request.accept_mimetypes.accept_html:
+        response = jsonify({'error': 'not found'})
+        response.status_code = 404
+        return response
     return render_template('404.html'),404
 
 @main.app_errorhandler(500)
 def internal_server_error(e):
+    # 新增if判断，为实现api，见p158
+    if request.accept_mimetypes.accept_json and not request.accept_mimetypes.accept_html:
+        response = request.jsonify({'error': 'Internal Server Error'})
+        response.status_code = 500
+        return response
     return render_template('500.html'), 500
