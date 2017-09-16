@@ -65,10 +65,10 @@ def deploy():
     from app.models import Role, User
 
     # 迁移数据库
-    # upgrade()
+    upgrade()
 
     # 创建用户角色
-    # Role.insert_roles()
+    Role.insert_roles()
 
     # 让所有用户关注自身
     User.add_self_follows()
