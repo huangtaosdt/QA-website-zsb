@@ -100,6 +100,7 @@ class UnixConfig(ProductionConfig):
         syslog_handler.setLevel(logging.WARNING)
         app.logger.addHandler(syslog_handler)
 
+
 config = {
 'development': DevelopmentConfig,
     'testing': TestingConfig,
