@@ -9,6 +9,14 @@ if os.environ.get('FLASK_COVERAGE'):
     COV = coverage.coverage(branch=True, include='app/*')
     COV.start()
 
+if os.path.exists('.env'):
+    print('Importing environment from .env...')
+    for line in open('.env'):
+        var=line.strip().split('=')
+        if len(var)==2:
+            os.environ[var[0]]=var[1]
+
+
 from app import create_app, db
 from app.models import Role, User, Post
 from flask_script import Manager, Shell
@@ -62,8 +70,10 @@ def profile(length=25, profile_dir=None):
 def deploy():
     """Run deployment tasks."""
     from flask_migrate import upgrade
-    from app.models import Role, User
+    from app.models import Role, User,db
 
+    # db.drop_all()
+    # db.create_all()
     # 迁移数据库
     upgrade()
 

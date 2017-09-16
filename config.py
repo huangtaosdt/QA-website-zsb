@@ -88,9 +88,22 @@ class HerokuConfig(ProductionConfig):
         from werkzeug.contrib.fixers import ProxyFix
         app.wsgi_app = ProxyFix(app.wsgi_app)
 
+class UnixConfig(ProductionConfig):
+    @classmethod
+    def init_app(cls, app):
+        ProductionConfig.init_app(app)
+
+        #写入系统日志
+        import logging
+        from logging.handlers import SysLogHandler
+        syslog_handler=SysLogHandler()
+        syslog_handler.setLevel(logging.WARNING)
+        app.logger.addHandler(syslog_handler)
+
 config = {
 'development': DevelopmentConfig,
     'testing': TestingConfig,
     'production': ProductionConfig,
     'heroku':HerokuConfig,
+    'unix':UnixConfig,
 'default': DevelopmentConfig }
