@@ -2,827 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3cf6d7a-7a4a-4508-bd4a-38e41fb91a86" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/avatar/admin_2017-08-08_2.24.08.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/avatar/h2943_2017-08-03_2.49.09.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/avatar/h2943_2017-08-08_2.24.40.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/avatar/ht_" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/avatar/ht_2017-08-08_2.19.33.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/avatar/ht_2017-08-08_2.24.08.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data-test.sqlite" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/keybd_closed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/keybd_open.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/htmlfiles/keybd_closed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/htmlfiles/keybd_open.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/tracer.cpython-36m-darwin.so" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/firefox/amd64/x_ignore_nofocus.so" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/firefox/webdriver.xpi" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/firefox/x86/x_ignore_nofocus.so" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/selenium/webdriver/firefox/amd64/x_ignore_nofocus.so" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/selenium/webdriver/firefox/x86/x_ignore_nofocus.so" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/api_1_0/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/api_1_0/authentication.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/api_1_0/comments.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/api_1_0/decorators.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/api_1_0/errors.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/api_1_0/posts.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/api_1_0/test_selenium.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/api_1_0/users.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/decorators.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/email.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/exceptions.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/styles.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/403.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/500.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/_comments.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/_macros.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/_posts.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/auth/change_email.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/auth/change_password.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/auth/email/change_email.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/auth/email/change_email.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/auth/email/confirm.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/auth/email/confirm.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/auth/email/reset_password.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/auth/email/reset_password.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/auth/reset_password.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/auth/unconfirmed.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/edit_post.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/edit_profile.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/followers.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/moderate.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/post.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/migrations/README" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/migrations/alembic.ini" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/migrations/env.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/migrations/script.py.mako" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/migrations/versions/1f3a2d12c0ef_add_user_s_profile.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/migrations/versions/212b6aa5ae84_add_avatar_hash.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/migrations/versions/37e3ffff922a_add_comments_table.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/migrations/versions/546eb60f83b9_add_confired_column.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/migrations/versions/5788d1b826ee_add_body_html_field.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/migrations/versions/644096a44ee0_add_post.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/migrations/versions/806845ab74f0_add_custom_avatarh.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/migrations/versions/c01dc7e527a8_repeal.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/migrations/versions/d4733ac08db7_add_followers_table.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/migrations/versions/df41d1a3d7cc_add_role_and_permission.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/requirements/common.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/requirements/dev.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/requirements/prod.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/test_api.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/test_basics.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/test_client.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/test_user_model.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/app___init___py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/app_api_1_0___init___py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/app_api_1_0_authentication_py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/app_api_1_0_comments_py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/app_api_1_0_decorators_py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/app_api_1_0_errors_py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/app_api_1_0_posts_py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/app_api_1_0_users_py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/app_auth___init___py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/app_auth_forms_py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/app_auth_views_py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/app_decorators_py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/app_email_py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/app_exceptions_py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/app_main___init___py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/app_main_errors_py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/app_main_forms_py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/app_main_views_py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/app_models_py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/coverage_html.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/jquery.ba-throttle-debounce.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/jquery.hotkeys.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/jquery.isonscreen.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/jquery.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/jquery.tablesorter.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/status.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tmp/coverage/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/bin/chardetect" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/bin/coverage" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/bin/coverage-3.6" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/bin/coverage3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/bin/http" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/bin/markdown_py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/bin/pygmentize" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Flask_HTTPAuth-3.2.3.dist-info/DESCRIPTION.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Flask_HTTPAuth-3.2.3.dist-info/INSTALLER" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Flask_HTTPAuth-3.2.3.dist-info/METADATA" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Flask_HTTPAuth-3.2.3.dist-info/RECORD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Flask_HTTPAuth-3.2.3.dist-info/WHEEL" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Flask_HTTPAuth-3.2.3.dist-info/metadata.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Flask_HTTPAuth-3.2.3.dist-info/top_level.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Flask_PageDown-0.2.2.dist-info/DESCRIPTION.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Flask_PageDown-0.2.2.dist-info/INSTALLER" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Flask_PageDown-0.2.2.dist-info/METADATA" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Flask_PageDown-0.2.2.dist-info/RECORD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Flask_PageDown-0.2.2.dist-info/WHEEL" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Flask_PageDown-0.2.2.dist-info/metadata.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Flask_PageDown-0.2.2.dist-info/top_level.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/ForgeryPy-0.1.dist-info/DESCRIPTION.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/ForgeryPy-0.1.dist-info/INSTALLER" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/ForgeryPy-0.1.dist-info/METADATA" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/ForgeryPy-0.1.dist-info/RECORD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/ForgeryPy-0.1.dist-info/WHEEL" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/ForgeryPy-0.1.dist-info/metadata.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/ForgeryPy-0.1.dist-info/top_level.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Markdown-2.6.9.dist-info/DESCRIPTION.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Markdown-2.6.9.dist-info/INSTALLER" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Markdown-2.6.9.dist-info/METADATA" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Markdown-2.6.9.dist-info/RECORD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Markdown-2.6.9.dist-info/WHEEL" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Markdown-2.6.9.dist-info/metadata.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Markdown-2.6.9.dist-info/top_level.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Pygments-2.2.0.dist-info/DESCRIPTION.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Pygments-2.2.0.dist-info/INSTALLER" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Pygments-2.2.0.dist-info/METADATA" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Pygments-2.2.0.dist-info/RECORD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Pygments-2.2.0.dist-info/WHEEL" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Pygments-2.2.0.dist-info/entry_points.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Pygments-2.2.0.dist-info/metadata.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/Pygments-2.2.0.dist-info/top_level.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/bleach-2.0.0.dist-info/DESCRIPTION.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/bleach-2.0.0.dist-info/INSTALLER" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/bleach-2.0.0.dist-info/METADATA" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/bleach-2.0.0.dist-info/RECORD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/bleach-2.0.0.dist-info/WHEEL" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/bleach-2.0.0.dist-info/metadata.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/bleach-2.0.0.dist-info/top_level.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/bleach/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/bleach/callbacks.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/bleach/encoding.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/bleach/linkifier.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/bleach/sanitizer.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/bleach/utils.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/bleach/version.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/certifi-2017.7.27.1.dist-info/DESCRIPTION.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/certifi-2017.7.27.1.dist-info/INSTALLER" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/certifi-2017.7.27.1.dist-info/METADATA" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/certifi-2017.7.27.1.dist-info/RECORD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/certifi-2017.7.27.1.dist-info/WHEEL" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/certifi-2017.7.27.1.dist-info/metadata.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/certifi-2017.7.27.1.dist-info/top_level.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/certifi/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/certifi/__main__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/certifi/cacert.pem" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/certifi/core.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/certifi/old_root.pem" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/certifi/weak.pem" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet-3.0.4.dist-info/DESCRIPTION.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet-3.0.4.dist-info/INSTALLER" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet-3.0.4.dist-info/METADATA" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet-3.0.4.dist-info/RECORD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet-3.0.4.dist-info/WHEEL" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet-3.0.4.dist-info/entry_points.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet-3.0.4.dist-info/metadata.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet-3.0.4.dist-info/top_level.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/big5freq.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/big5prober.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/chardistribution.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/charsetgroupprober.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/charsetprober.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/cli/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/cli/chardetect.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/codingstatemachine.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/compat.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/cp949prober.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/enums.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/escprober.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/escsm.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/eucjpprober.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/euckrfreq.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/euckrprober.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/euctwfreq.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/euctwprober.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/gb2312freq.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/gb2312prober.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/hebrewprober.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/jisfreq.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/jpcntx.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/langbulgarianmodel.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/langcyrillicmodel.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/langgreekmodel.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/langhebrewmodel.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/langhungarianmodel.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/langthaimodel.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/langturkishmodel.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/latin1prober.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/mbcharsetprober.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/mbcsgroupprober.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/mbcssm.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/sbcharsetprober.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/sbcsgroupprober.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/sjisprober.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/universaldetector.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/utf8prober.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/chardet/version.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage-4.4.1.dist-info/DESCRIPTION.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage-4.4.1.dist-info/INSTALLER" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage-4.4.1.dist-info/METADATA" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage-4.4.1.dist-info/RECORD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage-4.4.1.dist-info/WHEEL" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage-4.4.1.dist-info/entry_points.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage-4.4.1.dist-info/metadata.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage-4.4.1.dist-info/top_level.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/__main__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/annotate.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/backunittest.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/backward.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/bytecode.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/cmdline.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/collector.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/config.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/control.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/data.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/debug.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/env.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/execfile.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/files.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/fullcoverage/encodings.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/html.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/htmlfiles/coverage_html.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/htmlfiles/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/htmlfiles/jquery.ba-throttle-debounce.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/htmlfiles/jquery.hotkeys.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/htmlfiles/jquery.isonscreen.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/htmlfiles/jquery.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/htmlfiles/jquery.tablesorter.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/htmlfiles/pyfile.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/htmlfiles/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/misc.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/multiproc.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/parser.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/phystokens.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/pickle2json.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/plugin.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/plugin_support.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/python.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/pytracer.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/report.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/results.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/summary.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/templite.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/version.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/coverage/xmlreport.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/flask_httpauth.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/flask_pagedown/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/flask_pagedown/fields.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/flask_pagedown/widgets.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/cities" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/colors" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/company_names" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/continents" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/countries" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/country_code_top_level_domains" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/currency_codes" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/currency_descriptions" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/female_first_names" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/frequencies" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/genders" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/industries" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/job_title_suffixes" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/job_titles" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/languages" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/last_names" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/locations" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/lorem_ipsum" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/male_first_names" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/name_suffixes" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/name_titles" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/province_abbrevs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/provinces" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/races" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/shirt_sizes" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/state_abbrevs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/states" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/street_names" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/street_suffixes" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/top_level_domains" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries/zones" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/dictionaries_loader.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/forgery/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/forgery/address.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/forgery/basic.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/forgery/currency.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/forgery/date.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/forgery/internet.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/forgery/lorem_ipsum.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/forgery/name.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/forgery_py/forgery/personal.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib-0.999999999.dist-info/DESCRIPTION.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib-0.999999999.dist-info/INSTALLER" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib-0.999999999.dist-info/METADATA" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib-0.999999999.dist-info/RECORD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib-0.999999999.dist-info/WHEEL" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib-0.999999999.dist-info/metadata.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib-0.999999999.dist-info/top_level.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/_ihatexml.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/_inputstream.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/_tokenizer.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/_trie/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/_trie/_base.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/_trie/datrie.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/_trie/py.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/_utils.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/constants.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/filters/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/filters/alphabeticalattributes.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/filters/base.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/filters/inject_meta_charset.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/filters/lint.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/filters/optionaltags.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/filters/sanitizer.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/filters/whitespace.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/html5parser.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/serializer.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/treeadapters/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/treeadapters/genshi.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/treeadapters/sax.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/treebuilders/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/treebuilders/base.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/treebuilders/dom.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/treebuilders/etree.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/treebuilders/etree_lxml.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/treewalkers/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/treewalkers/base.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/treewalkers/dom.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/treewalkers/etree.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/treewalkers/etree_lxml.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/html5lib/treewalkers/genshi.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie-0.9.9.dist-info/DESCRIPTION.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie-0.9.9.dist-info/INSTALLER" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie-0.9.9.dist-info/METADATA" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie-0.9.9.dist-info/RECORD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie-0.9.9.dist-info/WHEEL" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie-0.9.9.dist-info/entry_points.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie-0.9.9.dist-info/metadata.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie-0.9.9.dist-info/pbr.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie-0.9.9.dist-info/test.sh" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie-0.9.9.dist-info/top_level.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie/__main__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie/cli.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie/client.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie/compat.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie/config.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie/context.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie/core.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie/downloads.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie/input.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie/output/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie/output/formatters/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie/output/formatters/colors.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie/output/formatters/headers.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie/output/formatters/json.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie/output/processing.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie/output/streams.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie/plugins/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie/plugins/base.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie/plugins/builtin.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie/plugins/manager.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie/sessions.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/httpie/utils.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/idna-2.6.dist-info/DESCRIPTION.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/idna-2.6.dist-info/INSTALLER" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/idna-2.6.dist-info/METADATA" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/idna-2.6.dist-info/RECORD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/idna-2.6.dist-info/WHEEL" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/idna-2.6.dist-info/metadata.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/idna-2.6.dist-info/top_level.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/idna/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/idna/codec.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/idna/compat.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/idna/core.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/idna/idnadata.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/idna/intranges.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/idna/package_data.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/idna/uts46data.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/__main__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/__version__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/blockparser.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/blockprocessors.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/extensions/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/extensions/abbr.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/extensions/admonition.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/extensions/attr_list.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/extensions/codehilite.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/extensions/def_list.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/extensions/extra.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/extensions/fenced_code.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/extensions/footnotes.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/extensions/headerid.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/extensions/meta.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/extensions/nl2br.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/extensions/sane_lists.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/extensions/smart_strong.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/extensions/smarty.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/extensions/tables.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/extensions/toc.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/extensions/wikilinks.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/inlinepatterns.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/odict.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/postprocessors.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/preprocessors.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/serializers.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/treeprocessors.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/markdown/util.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/cmdline.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/console.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/filter.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/filters/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/formatter.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/formatters/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/formatters/_mapping.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/formatters/bbcode.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/formatters/html.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/formatters/img.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/formatters/irc.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/formatters/latex.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/formatters/other.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/formatters/rtf.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/formatters/svg.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/formatters/terminal.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/formatters/terminal256.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexer.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/_asy_builtins.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/_cl_builtins.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/_cocoa_builtins.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/_csound_builtins.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/_lasso_builtins.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/_lua_builtins.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/_mapping.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/_mql_builtins.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/_openedge_builtins.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/_php_builtins.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/_postgres_builtins.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/_scilab_builtins.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/_sourcemod_builtins.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/_stan_builtins.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/_stata_builtins.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/_tsql_builtins.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/_vim_builtins.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/actionscript.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/agile.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/algebra.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/ambient.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/ampl.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/apl.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/archetype.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/asm.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/automation.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/basic.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/bibtex.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/business.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/c_cpp.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/c_like.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/capnproto.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/chapel.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/clean.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/compiled.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/configs.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/console.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/crystal.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/csound.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/css.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/d.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/dalvik.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/data.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/diff.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/dotnet.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/dsls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/dylan.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/ecl.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/eiffel.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/elm.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/erlang.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/esoteric.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/ezhil.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/factor.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/fantom.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/felix.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/forth.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/fortran.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/foxpro.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/functional.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/go.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/grammar_notation.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/graph.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/graphics.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/haskell.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/haxe.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/hdl.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/hexdump.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/html.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/idl.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/igor.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/inferno.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/installers.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/int_fiction.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/iolang.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/j.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/javascript.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/julia.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/jvm.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/lisp.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/make.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/markup.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/math.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/matlab.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/ml.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/modeling.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/modula2.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/monte.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/ncl.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/nimrod.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/nit.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/nix.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/oberon.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/objective.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/ooc.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/other.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/parasail.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/parsers.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/pascal.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/pawn.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/perl.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/php.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/praat.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/prolog.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/python.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/qvt.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/r.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/rdf.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/rebol.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/resource.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/rnc.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/roboconf.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/robotframework.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/ruby.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/rust.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/sas.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/scripting.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/shell.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/smalltalk.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/smv.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/snobol.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/special.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/sql.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/stata.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/supercollider.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/tcl.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/templates.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/testing.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/text.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/textedit.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/textfmts.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/theorem.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/trafficscript.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/typoscript.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/urbi.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/varnish.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/verification.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/web.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/webmisc.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/whiley.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/lexers/x10.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/modeline.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/plugin.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/regexopt.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/scanner.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/sphinxext.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/style.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/abap.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/algol.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/algol_nu.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/arduino.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/autumn.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/borland.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/bw.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/colorful.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/default.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/emacs.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/friendly.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/fruity.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/igor.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/lovelace.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/manni.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/monokai.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/murphy.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/native.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/paraiso_dark.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/paraiso_light.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/pastie.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/perldoc.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/rainbow_dash.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/rrt.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/sas.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/stata.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/tango.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/trac.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/vim.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/vs.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/styles/xcode.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/token.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/unistring.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pygments/util.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests-2.18.4.dist-info/DESCRIPTION.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests-2.18.4.dist-info/INSTALLER" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests-2.18.4.dist-info/METADATA" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests-2.18.4.dist-info/RECORD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests-2.18.4.dist-info/WHEEL" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests-2.18.4.dist-info/metadata.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests-2.18.4.dist-info/top_level.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests/__version__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests/_internal_utils.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests/adapters.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests/api.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests/auth.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests/certs.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests/compat.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests/cookies.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests/exceptions.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests/help.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests/hooks.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests/packages.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests/sessions.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests/status_codes.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests/structures.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/requests/utils.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium-3.5.0.dist-info/DESCRIPTION.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium-3.5.0.dist-info/INSTALLER" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium-3.5.0.dist-info/METADATA" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium-3.5.0.dist-info/RECORD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium-3.5.0.dist-info/WHEEL" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium-3.5.0.dist-info/metadata.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium-3.5.0.dist-info/top_level.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/common/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/common/exceptions.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/android/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/android/webdriver.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/blackberry/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/blackberry/webdriver.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/chrome/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/chrome/options.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/chrome/remote_connection.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/chrome/service.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/chrome/webdriver.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/common/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/common/action_chains.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/common/actions/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/common/actions/action_builder.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/common/actions/input_device.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/common/actions/interaction.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/common/actions/key_actions.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/common/actions/key_input.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/common/actions/mouse_button.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/common/actions/pointer_actions.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/common/actions/pointer_input.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/common/alert.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/common/by.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/common/desired_capabilities.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/common/html5/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/common/html5/application_cache.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/common/keys.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/common/proxy.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/common/service.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/common/touch_actions.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/common/utils.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/edge/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/edge/options.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/edge/service.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/edge/webdriver.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/firefox/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/firefox/extension_connection.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/firefox/firefox_binary.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/firefox/firefox_profile.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/firefox/options.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/firefox/remote_connection.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/firefox/service.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/firefox/webdriver.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/firefox/webdriver_prefs.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/firefox/webelement.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/ie/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/ie/service.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/ie/webdriver.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/opera/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/opera/options.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/opera/webdriver.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/phantomjs/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/phantomjs/service.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/phantomjs/webdriver.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/remote/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/remote/command.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/remote/errorhandler.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/remote/file_detector.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/remote/getAttribute.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/remote/isDisplayed.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/remote/mobile.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/remote/remote_connection.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/remote/switch_to.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/remote/utils.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/remote/webdriver.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/remote/webelement.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/safari/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/safari/service.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/safari/webdriver.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/support/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/support/abstract_event_listener.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/support/color.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/support/event_firing_webdriver.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/support/events.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/support/expected_conditions.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/support/select.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/support/ui.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/selenium/webdriver/support/wait.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3-1.22.dist-info/DESCRIPTION.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3-1.22.dist-info/INSTALLER" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3-1.22.dist-info/METADATA" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3-1.22.dist-info/RECORD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3-1.22.dist-info/WHEEL" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3-1.22.dist-info/metadata.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3-1.22.dist-info/top_level.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/_collections.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/connection.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/connectionpool.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/contrib/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/contrib/_securetransport/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/contrib/_securetransport/bindings.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/contrib/_securetransport/low_level.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/contrib/appengine.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/contrib/ntlmpool.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/contrib/pyopenssl.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/contrib/securetransport.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/contrib/socks.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/exceptions.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/fields.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/filepost.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/packages/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/packages/backports/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/packages/backports/makefile.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/packages/ordered_dict.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/packages/six.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/packages/ssl_match_hostname/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/packages/ssl_match_hostname/_implementation.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/poolmanager.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/request.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/response.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/util/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/util/connection.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/util/request.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/util/response.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/util/retry.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/util/selectors.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/util/ssl_.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/util/timeout.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/util/url.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/urllib3/util/wait.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/webencodings-0.5.1.dist-info/DESCRIPTION.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/webencodings-0.5.1.dist-info/INSTALLER" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/webencodings-0.5.1.dist-info/METADATA" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/webencodings-0.5.1.dist-info/RECORD" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/webencodings-0.5.1.dist-info/WHEEL" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/webencodings-0.5.1.dist-info/metadata.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/webencodings-0.5.1.dist-info/top_level.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/webencodings/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/webencodings/labels.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/webencodings/mklabels.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/webencodings/tests.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/webencodings/x_user_defined.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/selenium/webdriver/remote/getAttribute.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/venv/selenium/webdriver/remote/isDisplayed.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/test_user_model.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-dev.sqlite" afterPath="$PROJECT_DIR$/data-dev.sqlite" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/__init__.py" afterPath="$PROJECT_DIR$/app/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/main/errors.py" afterPath="$PROJECT_DIR$/app/main/errors.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/main/forms.py" afterPath="$PROJECT_DIR$/app/main/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/main/views.py" afterPath="$PROJECT_DIR$/app/main/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models.py" afterPath="$PROJECT_DIR$/app/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/base.html" afterPath="$PROJECT_DIR$/app/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/index.html" afterPath="$PROJECT_DIR$/app/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/user.html" afterPath="$PROJECT_DIR$/app/templates/user.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.py" afterPath="$PROJECT_DIR$/config.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage.py" afterPath="$PROJECT_DIR$/manage.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/pip-selfcheck.json" afterPath="$PROJECT_DIR$/venv/pip-selfcheck.json" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -831,24 +14,84 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DockManager">
+    <window id="3">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="config.py" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/../flasky/config.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="709">
+                    <caret line="53" column="21" lean-forward="true" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="heroku.txt" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/../flasky/requirements/heroku.txt">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="15">
+                    <caret line="1" column="9" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/../flasky/requirements.txt">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="60">
+                    <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/../flasky/app/__init__.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="225">
+                    <caret line="22" column="45" lean-forward="false" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="45" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="manage.py" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/../flasky/manage.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="600">
+                    <caret line="40" column="18" lean-forward="true" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="flask" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="manage.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="manage.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/manage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="56" column="31" lean-forward="false" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
+            <state relative-caret-position="222">
+              <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
               <folding>
                 <element signature="e#85#175#0" expanded="false" />
                 <element signature="e#478#538#0" expanded="false" />
                 <element signature="e#701#1378#0" expanded="false" />
                 <element signature="e#793#909#0" expanded="false" />
                 <element signature="e#1054#1378#0" expanded="false" />
-                <element signature="e#1993#2022#0" expanded="false" />
+                <element signature="e#1997#2026#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -858,59 +101,142 @@
         <entry file="file://$PROJECT_DIR$/app/main/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="346">
-              <caret line="264" column="19" lean-forward="true" selection-start-line="264" selection-start-column="19" selection-end-line="264" selection-end-column="19" />
+              <caret line="276" column="19" lean-forward="false" selection-start-line="276" selection-start-column="19" selection-end-line="276" selection-end-column="19" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
-                <element signature="e#598#1499#0" expanded="false" />
-                <element signature="e#706#853#0" expanded="false" />
-                <element signature="e#1557#1677#0" expanded="false" />
-                <element signature="e#1745#1869#0" expanded="false" />
-                <element signature="e#1927#2213#0" expanded="false" />
-                <element signature="e#1927#1981#0" expanded="false" />
-                <element signature="e#2310#3636#0" expanded="false" />
-                <element signature="e#2377#3444#0" expanded="false" />
-                <element signature="e#2935#3034#0" expanded="false" />
-                <element signature="e#3069#3285#0" expanded="false" />
-                <element signature="e#3766#4640#0" expanded="false" />
-                <element signature="e#3884#4314#0" expanded="false" />
-                <element signature="e#4713#5639#0" expanded="false" />
-                <element signature="e#4809#5039#0" expanded="false" />
-                <element signature="e#5728#6204#0" expanded="false" />
-                <element signature="e#5970#6120#0" expanded="false" />
-                <element signature="e#6322#6758#0" expanded="false" />
-                <element signature="e#6404#6469#0" expanded="false" />
-                <element signature="e#6518#6623#0" expanded="false" />
-                <element signature="e#6878#7325#0" expanded="false" />
-                <element signature="e#6960#7025#0" expanded="false" />
-                <element signature="e#7078#7179#0" expanded="false" />
-                <element signature="e#7393#8045#0" expanded="false" />
-                <element signature="e#7477#7542#0" expanded="false" />
-                <element signature="e#7741#7840#0" expanded="false" />
-                <element signature="e#8117#8769#0" expanded="false" />
-                <element signature="e#8201#8266#0" expanded="false" />
-                <element signature="e#8464#8563#0" expanded="false" />
-                <element signature="e#8883#9208#0" expanded="false" />
-                <element signature="e#9347#9521#0" expanded="false" />
-                <element signature="e#9662#9835#0" expanded="false" />
-                <element signature="e#9889#10081#0" expanded="false" />
+                <element signature="e#603#1514#0" expanded="false" />
+                <element signature="e#711#858#0" expanded="false" />
+                <element signature="e#1573#1702#0" expanded="false" />
+                <element signature="e#1771#1905#0" expanded="false" />
+                <element signature="e#1963#2252#0" expanded="false" />
+                <element signature="e#1963#2017#0" expanded="false" />
+                <element signature="e#2349#3675#0" expanded="false" />
+                <element signature="e#2416#3483#0" expanded="false" />
+                <element signature="e#2974#3073#0" expanded="false" />
+                <element signature="e#3108#3324#0" expanded="false" />
+                <element signature="e#3805#4679#0" expanded="false" />
+                <element signature="e#3923#4353#0" expanded="false" />
+                <element signature="e#4755#5693#0" expanded="false" />
+                <element signature="e#4855#5091#0" expanded="false" />
+                <element signature="e#5785#6274#0" expanded="false" />
+                <element signature="e#6034#6187#0" expanded="false" />
+                <element signature="e#6393#6834#0" expanded="false" />
+                <element signature="e#6477#6542#0" expanded="false" />
+                <element signature="e#6591#6697#0" expanded="false" />
+                <element signature="e#6955#7406#0" expanded="false" />
+                <element signature="e#7039#7104#0" expanded="false" />
+                <element signature="e#7157#7259#0" expanded="false" />
+                <element signature="e#7475#8144#0" expanded="false" />
+                <element signature="e#7559#7624#0" expanded="false" />
+                <element signature="e#7851#7949#0" expanded="false" />
+                <element signature="e#8217#8885#0" expanded="false" />
+                <element signature="e#8301#8366#0" expanded="false" />
+                <element signature="e#8591#8689#0" expanded="false" />
+                <element signature="e#9000#9337#0" expanded="false" />
+                <element signature="e#9477#9658#0" expanded="false" />
+                <element signature="e#9800#9980#0" expanded="false" />
+                <element signature="e#10035#10229#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".env" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.env">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="259" column="0" lean-forward="true" selection-start-line="259" selection-start-column="0" selection-end-line="259" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+                <element signature="e#441#700#0" expanded="false" />
+                <element signature="e#728#1878#0" expanded="false" />
+                <element signature="e#1060#1814#0" expanded="false" />
+                <element signature="e#1068#1411#0" expanded="false" />
+                <element signature="e#1236#1356#0" expanded="false" />
+                <element signature="e#1448#1786#0" expanded="false" />
+                <element signature="e#1848#1878#0" expanded="false" />
+                <element signature="e#1917#9644#0" expanded="false" />
+                <element signature="e#3424#3882#0" expanded="false" />
+                <element signature="e#3503#3735#0" expanded="false" />
+                <element signature="e#3936#4042#0" expanded="false" />
+                <element signature="e#4090#4150#0" expanded="false" />
+                <element signature="e#4214#4265#0" expanded="false" />
+                <element signature="e#4315#4371#0" expanded="false" />
+                <element signature="e#4461#4566#0" expanded="false" />
+                <element signature="e#4606#4889#0" expanded="false" />
+                <element signature="e#5135#5312#0" expanded="false" />
+                <element signature="e#5433#5536#0" expanded="false" />
+                <element signature="e#5597#5913#0" expanded="false" />
+                <element signature="e#5994#6128#0" expanded="false" />
+                <element signature="e#6173#6733#0" expanded="false" />
+                <element signature="e#6788#6873#0" expanded="false" />
+                <element signature="e#6915#6953#0" expanded="false" />
+                <element signature="e#6983#7046#0" expanded="false" />
+                <element signature="e#7149#7523#0" expanded="false" />
+                <element signature="e#7557#7591#0" expanded="false" />
+                <element signature="e#7653#8339#0" expanded="false" />
+                <element signature="e#7812#8339#0" expanded="false" />
+                <element signature="e#8395#8575#0" expanded="false" />
+                <element signature="e#8437#8575#0" expanded="false" />
+                <element signature="e#8485#8575#0" expanded="false" />
+                <element signature="e#8613#8727#0" expanded="false" />
+                <element signature="e#8657#8727#0" expanded="false" />
+                <element signature="e#8767#8870#0" expanded="false" />
+                <element signature="e#8914#8985#0" expanded="false" />
+                <element signature="e#9031#9103#0" expanded="false" />
+                <element signature="e#9136#9644#0" expanded="false" />
+                <element signature="e#9691#9791#0" expanded="false" />
+                <element signature="e#9726#9738#0" expanded="false" />
+                <element signature="e#9779#9791#0" expanded="false" />
+                <element signature="e#9863#9972#0" expanded="false" />
+                <element signature="e#10008#11979#0" expanded="false" />
+                <element signature="e#10464#10632#0" expanded="false" />
+                <element signature="e#10833#11275#0" expanded="false" />
+                <element signature="e#10991#11275#0" expanded="false" />
+                <element signature="e#12481#12693#0" expanded="false" />
+                <element signature="e#12726#13158#0" expanded="false" />
+                <element signature="e#13578#13613#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="47" column="19" lean-forward="false" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
-              <folding>
-                <element signature="e#81#941#0" expanded="false" />
-                <element signature="e#278#297#0" expanded="false" />
-                <element signature="e#937#941#0" expanded="false" />
-                <element signature="e#980#1183#0" expanded="false" />
-                <element signature="e#1218#1401#0" expanded="false" />
-                <element signature="e#2371#2495#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="67">
+              <caret line="17" column="33" lean-forward="false" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="134">
+              <caret line="19" column="10" lean-forward="false" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -933,6 +259,8 @@
       <find>！</find>
       <find>!</find>
       <find>re.</find>
+      <find>database</find>
+      <find>databas</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -956,11 +284,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/hello.py" />
-        <option value="$PROJECT_DIR$/未命名" />
-        <option value="$PROJECT_DIR$/app/auth/__init__.py" />
-        <option value="$PROJECT_DIR$/app/templates/auth.py" />
-        <option value="$PROJECT_DIR$/app/templates/login.html" />
         <option value="$PROJECT_DIR$/../flasky/tests/test_user_model.py" />
         <option value="$PROJECT_DIR$/../flasky/tests/test_basics.py" />
         <option value="$PROJECT_DIR$/app/auth/forms.py" />
@@ -996,7 +319,6 @@
         <option value="$PROJECT_DIR$/app/api_1_0/authentication.py" />
         <option value="$PROJECT_DIR$/../flasky/manage.py" />
         <option value="$PROJECT_DIR$/tests/test_user_model.py" />
-        <option value="$PROJECT_DIR$/app/__init__.py" />
         <option value="$PROJECT_DIR$/tests/test_basics.py" />
         <option value="$PROJECT_DIR$/tests/test_api.py" />
         <option value="$PROJECT_DIR$/app/api_1_0/test_selenium.py" />
@@ -1005,13 +327,19 @@
         <option value="$PROJECT_DIR$/tests/test_client.py" />
         <option value="$PROJECT_DIR$/app/api_1_0/posts.py" />
         <option value="$PROJECT_DIR$/app/main/views.py" />
-        <option value="$PROJECT_DIR$/manage.py" />
+        <option value="$PROJECT_DIR$/requirements/requirements.txt" />
+        <option value="$PROJECT_DIR$/Procfile" />
+        <option value="$PROJECT_DIR$/app/__init__.py" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/requirements/heroku.txt" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/config.py" />
+        <option value="$PROJECT_DIR$/manage.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="558" />
+    <option name="x" value="328" />
     <option name="y" value="23" />
     <option name="width" value="789" />
     <option name="height" value="781" />
@@ -1046,6 +374,38 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PycharmProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PycharmProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flask" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PycharmProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PycharmProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flask" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -1056,6 +416,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SearchEverywhereHistoryKey" value="heroku&#9;null&#9;null" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -1356,7 +717,14 @@
       <option name="project" value="LOCAL" />
       <updated>1504704216381</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/PycharmProject.iml&#10;#&#9;app/__init__.py&#10;#&#9;app/auth/__init__.py&#10;#&#9;app/auth/forms.py&#10;#&#9;app/models.py&#10;#&#9;app/templates/auth/login.html&#10;#&#9;app/templates/base.html&#10;#&#9;app/templates/index.html">
+      <created>1505477564736</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1505477564736</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1374,12 +742,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="558" y="23" width="789" height="781" extended-state="0" />
+    <frame x="328" y="23" width="789" height="781" extended-state="0" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22053231" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22053231" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31320226" sideWeight="0.5097879" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3286517" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3286517" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31320226" sideWeight="0.49021208" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1462,63 +830,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/templates/post.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="8" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="110" lean-forward="false" selection-start-line="7" selection-start-column="109" selection-end-line="7" selection-end-column="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/followers.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="8" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/werkzeug/serving.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="713" column="68" lean-forward="true" selection-start-line="713" selection-start-column="68" selection-end-line="713" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="39" column="31" lean-forward="false" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/moderate.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/_comments.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="23" column="33" lean-forward="true" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/500.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="14" lean-forward="false" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/main/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1623,16 +934,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../flasky/app/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="30" column="26" lean-forward="false" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#23#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../flasky/app/api_1_0/decorators.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1676,7 +977,7 @@
         <state relative-caret-position="350">
           <caret line="41" column="55" lean-forward="false" selection-start-line="41" selection-start-column="55" selection-end-line="41" selection-end-column="55" />
           <folding>
-            <element signature="e#0#42#0" expanded="false" />
+            <element signature="e#0#43#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1747,14 +1048,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/main/errors.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1768,14 +1061,14 @@
         <state relative-caret-position="150">
           <caret line="59" column="54" lean-forward="true" selection-start-line="59" selection-start-column="54" selection-end-line="59" selection-end-column="54" />
           <folding>
-            <element signature="e#243#1305#0" expanded="false" />
-            <element signature="e#286#363#0" expanded="false" />
-            <element signature="e#461#1305#0" expanded="false" />
+            <element signature="e#243#1306#0" expanded="false" />
+            <element signature="e#286#364#0" expanded="false" />
+            <element signature="e#462#1306#0" expanded="false" />
             <element signature="e#1361#1632#0" expanded="false" />
             <element signature="e#1388#1632#0" expanded="false" />
-            <element signature="e#1664#1738#0" expanded="false" />
-            <element signature="e#1773#1777#0" expanded="false" />
-            <marker date="1505460628000" expanded="false" signature="173:1305" ph="..." />
+            <element signature="e#1663#1737#0" expanded="false" />
+            <element signature="e#1771#1775#0" expanded="false" />
+            <marker date="1505477446000" expanded="false" signature="173:1306" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1785,7 +1078,7 @@
         <state relative-caret-position="90">
           <caret line="6" column="48" lean-forward="true" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1811,65 +1104,7 @@
         <state relative-caret-position="54">
           <caret line="46" column="53" lean-forward="false" selection-start-line="46" selection-start-column="53" selection-end-line="46" selection-end-column="53" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="353" column="13" lean-forward="false" selection-start-line="353" selection-start-column="13" selection-end-line="353" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-            <element signature="e#440#686#0" expanded="false" />
-            <element signature="e#714#1864#0" expanded="false" />
-            <element signature="e#1046#1800#0" expanded="false" />
-            <element signature="e#1054#1397#0" expanded="false" />
-            <element signature="e#1222#1342#0" expanded="false" />
-            <element signature="e#1434#1772#0" expanded="false" />
-            <element signature="e#1834#1864#0" expanded="false" />
-            <element signature="e#1903#9579#0" expanded="false" />
-            <element signature="e#3407#3865#0" expanded="false" />
-            <element signature="e#3486#3718#0" expanded="false" />
-            <element signature="e#3919#4020#0" expanded="false" />
-            <element signature="e#4068#4128#0" expanded="false" />
-            <element signature="e#4192#4243#0" expanded="false" />
-            <element signature="e#4293#4349#0" expanded="false" />
-            <element signature="e#4439#4544#0" expanded="false" />
-            <element signature="e#4584#4867#0" expanded="false" />
-            <element signature="e#5108#5281#0" expanded="false" />
-            <element signature="e#5402#5505#0" expanded="false" />
-            <element signature="e#5566#5882#0" expanded="false" />
-            <element signature="e#5963#6097#0" expanded="false" />
-            <element signature="e#6142#6702#0" expanded="false" />
-            <element signature="e#6757#6842#0" expanded="false" />
-            <element signature="e#6884#6922#0" expanded="false" />
-            <element signature="e#6952#7015#0" expanded="false" />
-            <element signature="e#7118#7492#0" expanded="false" />
-            <element signature="e#7526#7560#0" expanded="false" />
-            <element signature="e#7622#8284#0" expanded="false" />
-            <element signature="e#7781#8284#0" expanded="false" />
-            <element signature="e#8340#8520#0" expanded="false" />
-            <element signature="e#8382#8520#0" expanded="false" />
-            <element signature="e#8430#8520#0" expanded="false" />
-            <element signature="e#8557#8668#0" expanded="false" />
-            <element signature="e#8601#8668#0" expanded="false" />
-            <element signature="e#8707#8808#0" expanded="false" />
-            <element signature="e#8851#8922#0" expanded="false" />
-            <element signature="e#8966#9038#0" expanded="false" />
-            <element signature="e#9071#9579#0" expanded="false" />
-            <element signature="e#9626#9726#0" expanded="false" />
-            <element signature="e#9661#9673#0" expanded="false" />
-            <element signature="e#9714#9726#0" expanded="false" />
-            <element signature="e#9798#9907#0" expanded="false" />
-            <element signature="e#9943#11880#0" expanded="false" />
-            <element signature="e#10390#10558#0" expanded="false" />
-            <element signature="e#10745#11187#0" expanded="false" />
-            <element signature="e#10903#11187#0" expanded="false" />
-            <element signature="e#12360#12558#0" expanded="false" />
-            <element signature="e#12591#13023#0" expanded="false" />
-            <element signature="e#13442#13477#0" expanded="false" />
+            <element signature="e#0#15#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1963,14 +1198,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../flasky/manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="40" column="18" lean-forward="true" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../flasky/app/main/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1979,10 +1206,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../flasky/config.py">
+    <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-282">
-          <caret line="20" column="29" lean-forward="false" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="29" />
+        <state relative-caret-position="0">
+          <caret line="0" column="16" lean-forward="false" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../flasky/Procfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements/heroku.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../flasky/requirements/heroku.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="9" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../flasky/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="19" column="10" lean-forward="false" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../flasky/app/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="22" column="45" lean-forward="false" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../flasky/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" column="18" lean-forward="true" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1990,71 +1281,146 @@
     <entry file="file://$PROJECT_DIR$/app/main/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="346">
-          <caret line="264" column="19" lean-forward="true" selection-start-line="264" selection-start-column="19" selection-end-line="264" selection-end-column="19" />
+          <caret line="276" column="19" lean-forward="false" selection-start-line="276" selection-start-column="19" selection-end-line="276" selection-end-column="19" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#598#1499#0" expanded="false" />
-            <element signature="e#706#853#0" expanded="false" />
-            <element signature="e#1557#1677#0" expanded="false" />
-            <element signature="e#1745#1869#0" expanded="false" />
-            <element signature="e#1927#2213#0" expanded="false" />
-            <element signature="e#1927#1981#0" expanded="false" />
-            <element signature="e#2310#3636#0" expanded="false" />
-            <element signature="e#2377#3444#0" expanded="false" />
-            <element signature="e#2935#3034#0" expanded="false" />
-            <element signature="e#3069#3285#0" expanded="false" />
-            <element signature="e#3766#4640#0" expanded="false" />
-            <element signature="e#3884#4314#0" expanded="false" />
-            <element signature="e#4713#5639#0" expanded="false" />
-            <element signature="e#4809#5039#0" expanded="false" />
-            <element signature="e#5728#6204#0" expanded="false" />
-            <element signature="e#5970#6120#0" expanded="false" />
-            <element signature="e#6322#6758#0" expanded="false" />
-            <element signature="e#6404#6469#0" expanded="false" />
-            <element signature="e#6518#6623#0" expanded="false" />
-            <element signature="e#6878#7325#0" expanded="false" />
-            <element signature="e#6960#7025#0" expanded="false" />
-            <element signature="e#7078#7179#0" expanded="false" />
-            <element signature="e#7393#8045#0" expanded="false" />
-            <element signature="e#7477#7542#0" expanded="false" />
-            <element signature="e#7741#7840#0" expanded="false" />
-            <element signature="e#8117#8769#0" expanded="false" />
-            <element signature="e#8201#8266#0" expanded="false" />
-            <element signature="e#8464#8563#0" expanded="false" />
-            <element signature="e#8883#9208#0" expanded="false" />
-            <element signature="e#9347#9521#0" expanded="false" />
-            <element signature="e#9662#9835#0" expanded="false" />
-            <element signature="e#9889#10081#0" expanded="false" />
+            <element signature="e#603#1514#0" expanded="false" />
+            <element signature="e#711#858#0" expanded="false" />
+            <element signature="e#1573#1702#0" expanded="false" />
+            <element signature="e#1771#1905#0" expanded="false" />
+            <element signature="e#1963#2252#0" expanded="false" />
+            <element signature="e#1963#2017#0" expanded="false" />
+            <element signature="e#2349#3675#0" expanded="false" />
+            <element signature="e#2416#3483#0" expanded="false" />
+            <element signature="e#2974#3073#0" expanded="false" />
+            <element signature="e#3108#3324#0" expanded="false" />
+            <element signature="e#3805#4679#0" expanded="false" />
+            <element signature="e#3923#4353#0" expanded="false" />
+            <element signature="e#4755#5693#0" expanded="false" />
+            <element signature="e#4855#5091#0" expanded="false" />
+            <element signature="e#5785#6274#0" expanded="false" />
+            <element signature="e#6034#6187#0" expanded="false" />
+            <element signature="e#6393#6834#0" expanded="false" />
+            <element signature="e#6477#6542#0" expanded="false" />
+            <element signature="e#6591#6697#0" expanded="false" />
+            <element signature="e#6955#7406#0" expanded="false" />
+            <element signature="e#7039#7104#0" expanded="false" />
+            <element signature="e#7157#7259#0" expanded="false" />
+            <element signature="e#7475#8144#0" expanded="false" />
+            <element signature="e#7559#7624#0" expanded="false" />
+            <element signature="e#7851#7949#0" expanded="false" />
+            <element signature="e#8217#8885#0" expanded="false" />
+            <element signature="e#8301#8366#0" expanded="false" />
+            <element signature="e#8591#8689#0" expanded="false" />
+            <element signature="e#9000#9337#0" expanded="false" />
+            <element signature="e#9477#9658#0" expanded="false" />
+            <element signature="e#9800#9980#0" expanded="false" />
+            <element signature="e#10035#10229#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../flasky/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="709">
+          <caret line="53" column="21" lean-forward="true" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="17" column="33" lean-forward="false" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/flask_migrate/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="254" column="4" lean-forward="false" selection-start-line="254" selection-start-column="4" selection-end-line="254" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="259" column="0" lean-forward="true" selection-start-line="259" selection-start-column="0" selection-end-line="259" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#441#700#0" expanded="false" />
+            <element signature="e#728#1878#0" expanded="false" />
+            <element signature="e#1060#1814#0" expanded="false" />
+            <element signature="e#1068#1411#0" expanded="false" />
+            <element signature="e#1236#1356#0" expanded="false" />
+            <element signature="e#1448#1786#0" expanded="false" />
+            <element signature="e#1848#1878#0" expanded="false" />
+            <element signature="e#1917#9644#0" expanded="false" />
+            <element signature="e#3424#3882#0" expanded="false" />
+            <element signature="e#3503#3735#0" expanded="false" />
+            <element signature="e#3936#4042#0" expanded="false" />
+            <element signature="e#4090#4150#0" expanded="false" />
+            <element signature="e#4214#4265#0" expanded="false" />
+            <element signature="e#4315#4371#0" expanded="false" />
+            <element signature="e#4461#4566#0" expanded="false" />
+            <element signature="e#4606#4889#0" expanded="false" />
+            <element signature="e#5135#5312#0" expanded="false" />
+            <element signature="e#5433#5536#0" expanded="false" />
+            <element signature="e#5597#5913#0" expanded="false" />
+            <element signature="e#5994#6128#0" expanded="false" />
+            <element signature="e#6173#6733#0" expanded="false" />
+            <element signature="e#6788#6873#0" expanded="false" />
+            <element signature="e#6915#6953#0" expanded="false" />
+            <element signature="e#6983#7046#0" expanded="false" />
+            <element signature="e#7149#7523#0" expanded="false" />
+            <element signature="e#7557#7591#0" expanded="false" />
+            <element signature="e#7653#8339#0" expanded="false" />
+            <element signature="e#7812#8339#0" expanded="false" />
+            <element signature="e#8395#8575#0" expanded="false" />
+            <element signature="e#8437#8575#0" expanded="false" />
+            <element signature="e#8485#8575#0" expanded="false" />
+            <element signature="e#8613#8727#0" expanded="false" />
+            <element signature="e#8657#8727#0" expanded="false" />
+            <element signature="e#8767#8870#0" expanded="false" />
+            <element signature="e#8914#8985#0" expanded="false" />
+            <element signature="e#9031#9103#0" expanded="false" />
+            <element signature="e#9136#9644#0" expanded="false" />
+            <element signature="e#9691#9791#0" expanded="false" />
+            <element signature="e#9726#9738#0" expanded="false" />
+            <element signature="e#9779#9791#0" expanded="false" />
+            <element signature="e#9863#9972#0" expanded="false" />
+            <element signature="e#10008#11979#0" expanded="false" />
+            <element signature="e#10464#10632#0" expanded="false" />
+            <element signature="e#10833#11275#0" expanded="false" />
+            <element signature="e#10991#11275#0" expanded="false" />
+            <element signature="e#12481#12693#0" expanded="false" />
+            <element signature="e#12726#13158#0" expanded="false" />
+            <element signature="e#13578#13613#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="56" column="31" lean-forward="false" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
+        <state relative-caret-position="222">
+          <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
           <folding>
             <element signature="e#85#175#0" expanded="false" />
             <element signature="e#478#538#0" expanded="false" />
             <element signature="e#701#1378#0" expanded="false" />
             <element signature="e#793#909#0" expanded="false" />
             <element signature="e#1054#1378#0" expanded="false" />
-            <element signature="e#1993#2022#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="47" column="19" lean-forward="false" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
-          <folding>
-            <element signature="e#81#941#0" expanded="false" />
-            <element signature="e#278#297#0" expanded="false" />
-            <element signature="e#937#941#0" expanded="false" />
-            <element signature="e#980#1183#0" expanded="false" />
-            <element signature="e#1218#1401#0" expanded="false" />
-            <element signature="e#2371#2495#0" expanded="false" />
+            <element signature="e#1997#2026#0" expanded="false" />
           </folding>
         </state>
       </provider>
