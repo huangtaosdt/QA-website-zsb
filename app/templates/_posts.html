@@ -1,6 +1,6 @@
 <ul class="posts">
     {% for post in posts %}
-
+    <div class="post-row">
     <!--添加if-->
     <li class="post">
         <div class="post-thumbnail">
@@ -10,8 +10,16 @@
         </div>
         <div class="post-content">
             <div class="post-date">{{ moment(post.timestamp).fromNow() }}</div>
-            <div class="post-author"><a href="{{ url_for('.user', username=post.author.username) }}">{{
-                post.author.username }}</a></div>
+            <div class="post-author">
+                <a class="author-name" href="{{ url_for('.user', username=post.author.username) }}">{{
+                post.author.username }}</a>
+                <span class="create-time">08.31 15:31</span>
+            </div>
+            <div class="post-title">
+            <a  target="_blank" href="{{ url_for('.post', id=post.id) }}">
+                Here is title
+            </a>
+                </div>
             <div class="post-body">
                 {% if post.body_html %}
                 {{ post.body_html | safe }}
@@ -20,6 +28,21 @@
                 {% endif %}
             </div>
             <div class="post-footer">
+                <a href="{{ url_for('.post', id=post.id) }}" class="icon_lists">
+                    <i class="iconfont">
+                        &#xe6ab;
+                    </i>17
+                </a>
+                <a  target="_blank comment" href="{{ url_for('.post',id=post.id)}}#comments" class="icon_lists">
+                <i class="iconfont">
+                    &#xe6a5;
+                </i>{{ post.comments.count() }}
+                    </a>
+                <a href="#" class="icon_lists">
+                <i class="iconfont">
+                    &#xe633;
+                </i>104
+                    </a>
                 {% if current_user == post.author %}
                 <a href="{{ url_for('.edit', id=post.id) }}">
                     <span class="label label-primary">Edit</span>
@@ -32,13 +55,15 @@
                 <a href="{{ url_for('.post', id=post.id) }}">
                     <span class="label label-default">view</span>
                 </a>
-                <a href="{{ url_for('.post',id=post.id)}}#comments">
+                <a href="{{ url_for('.post',id=post.id)}}#comments" >
                         <span class="label label-primary">
                             {{ post.comments.count() }} Comments
                         </span>
                 </a>
+
             </div>
         </div>
     </li>
+        </div>
     {% endfor %}
 </ul>

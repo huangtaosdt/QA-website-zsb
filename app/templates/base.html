@@ -8,61 +8,92 @@
 <link rel="icon" href="{{ url_for('static', filename = 'favicon.ico') }}"
       type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mystyle.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='iconfont.css') }}">
+
 {% endblock %}
 
-{% block navbar %}
-<div class="navbar navbar-inverse" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle"
-                    data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{{url_for('main.index') }}">Flasky</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href={{url_for('main.index')}}>Home</a></li>
-                {% if current_user.is_authenticated %}
-                <li>
-                    <a href="{{ url_for('main.user', username=current_user.username) }}"> Profile</a>
-                </li>
-                {% endif %}
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
 
-                {% if current_user.is_authenticated %}
-                {% if current_user.can(Permission.MODERATE_COMMENTS) %}
-                <li><a href="{{ url_for('main.moderate') }}">Moderate Comments</a></li>
-                {% endif %}
-                <li class="dropdown">
-                    <a href="#" class='dropdown-toggle' data-toggle="dropdown">
-                        <!--<img src="{{ current_user.gravatar(size=18) }}">-->
-                        {% if current_user.avatar %}
-                        <img class="img-rounded profile-thumbnail-header"
-                             width='18' height='18' src="{{ current_user.avatar }}">
-                        {% else %}
-                        <img class="img-rounded profile-thumbnail-header" src="{{ current_user.gravatar(size=18) }}">
+{% block navbar %}
+<header>
+
+    <div class='logo'>
+        <!-- logo -->
+        <a href="#">Huang Tao's Blog</a>
+    </div>
+    <div class="my-nav">
+        <div class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle"
+                            data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{url_for('main.index') }}">主页</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li><a href={{url_for('main.index')}}>生活笔记</a></li>
+                        <li>
+                            <a href="{{ url_for('main.user', username=current_user.username) }}"> 技术杂谈</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('main.user', username=current_user.username) }}"> 读书笔记</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('main.user', username=current_user.username) }}"> 个人项目</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('main.user', username=current_user.username) }}"> Contact</a>
+                        </li>
+                        {% if current_user.is_authenticated %}
+                        <li>
+                            <a href="{{ url_for('main.user', username=current_user.username) }}"> Profile</a>
+                        </li>
                         {% endif %}
-                        Account<b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{url_for('auth.change_password') }}">Change Password</a></li>
-                        <li><a href="{{ url_for('auth.change_email_request') }}">Change Email</a></li>
-                        <li><a href="{{ url_for('auth.password_reset_request') }}">Reset Password</a></li>
-                        <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
                     </ul>
-                </li>
-                {% else %}
-                <li><a href="{{ url_for('auth.login')  }}">Login In</a></li>
-                {% endif %}
-            </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <form class="search" action="#" method="post">
+                                <label for="user_name">search</label>
+                                <input type="text" id="user_name" name="user_name" placeholder="search"/>
+                            </form>
+                        </li>
+                        {% if current_user.is_authenticated %}
+                        {% if current_user.can(Permission.MODERATE_COMMENTS) %}
+                        <li><a href="{{ url_for('main.moderate') }}">Moderate Comments</a></li>
+                        {% endif %}
+                        <li class="dropdown">
+                            <a href="#" class='dropdown-toggle' data-toggle="dropdown">
+                                <!--<img src="{{ current_user.gravatar(size=18) }}">-->
+                                {% if current_user.avatar %}
+                                <img class="img-rounded profile-thumbnail-header"
+                                     width='18' height='18' src="{{ current_user.avatar }}">
+                                {% else %}
+                                <img class="img-rounded profile-thumbnail-header"
+                                     src="{{ current_user.gravatar(size=18) }}">
+                                {% endif %}
+                                Account<b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{url_for('auth.change_password') }}">Change Password</a></li>
+                                <li><a href="{{ url_for('auth.change_email_request') }}">Change Email</a></li>
+                                <li><a href="{{ url_for('auth.password_reset_request') }}">Reset Password</a></li>
+                                <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                            </ul>
+                        </li>
+                        {% else %}
+                        <li><a href="{{ url_for('auth.login')  }}">Login In</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</header>
 {% endblock %}
 
 
@@ -74,7 +105,40 @@
         {{ message }}
     </div>
     {% endfor %}
-    {% block page_content %}{% endblock %}
+
+    <section id="main_area">
+        <!-- first level -->
+        <article id="second_col">
+            <div class="inner">
+                <!--<div class="tab">-->
+                    <!--&lt;!&ndash; third level &ndash;&gt;-->
+                    <!--&lt;!&ndash; tab content &ndash;&gt;-->
+                <!--</div>-->
+                <!--<div class="posts">-->
+                    <!--&lt;!&ndash; posts content &ndash;&gt;-->
+                    <!--<p>啊搞定了感觉啊栏冠军</p>-->
+                <!--</div>-->
+                {% block page_content %}
+                    {% endblock %}
+            </div>
+        </article>
+        <aside id="first_col">
+            <!-- second level -->
+            <div class="inner">
+                <div class="topic">
+                    <!-- top article-->
+                    <div class="title"><p>热门文章</p></div>
+                    <p>Here is top-hot article!</p>
+                </div>
+                <div class="topic">
+                    <div class="title"><p>文章分类</p></div>
+                    <!-- exam time. -->
+                    <p>Here is exam-time.</p>
+                </div>
+            </div>
+        </aside>
+    </section>
+
 </div>
 {% endblock %}
 

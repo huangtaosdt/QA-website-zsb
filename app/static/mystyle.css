@@ -1,0 +1,150 @@
+body{
+    background:#EAEAEA !important;
+}
+
+header {
+    position: relative;
+    height: 160px;
+}
+
+header .logo {
+    height: 100px;
+    width: 100%;
+    background: rgba(213, 100, 100, 1);
+    text-align: center;
+    line-height: 100px;
+}
+header .logo a{
+    font-size:2em;
+    font-family:Georgia;
+    text-decoration:none;
+    color:black;
+    transition: 1s all;
+}
+header .logo a:hover{
+    font-size:2.5em;
+    color:#fff;
+}
+
+header .my-nav {
+    position: relative;
+    background: #4a4a4a;
+    height: 55px;
+    text-align: center;
+    margin: 0;
+}
+
+header .navbar {
+    display: inline-block;
+    background: #4a4a4a;
+    border: None;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+header .navbar .container a {
+    height: 55px;
+    color: #eee;
+}
+
+ul.navbar-left li :hover {
+    background: rgba(213, 100, 100, 1) !important;
+    color: white !important;
+}
+
+header .navbar-brand:hover {
+    background: rgba(213, 100, 100, 1) !important;
+    color: white !important;
+}
+
+
+/*search*/
+
+header form.search {
+    height: 55px;
+}
+
+.search label {
+    display: none;
+}
+
+.search input {
+    margin: 12px;
+    border-radius: 10px 10px;
+    width: 7em;
+    opacity: .1;
+    transition: 1s all;
+}
+
+.search input:focus {
+    width: 10em;
+    opacity: 1;
+}
+
+
+/*main_area区域*/
+
+section#main_area {
+    width:100%;
+    margin: 0 3px;
+}
+
+section#main_area div.inner {
+    margin: 0px 10px;
+    /*border: 3px solid red;*/
+}
+
+section#main_area #first_col div.inner {
+    margin:16px 0 0;
+    /*border: 3px solid red;*/
+}
+
+section#main_area article {
+    float: left;
+    width: 70%;
+    /*    border: 2px solid black;*/
+}
+
+section#main_area aside {
+    float: right;
+    width: 30%;
+}
+
+
+
+
+article#second_col a.icon_lists{
+    float:left;
+    color:#B5B5B5;
+    transition:.2s all;
+    text-decoration:none;
+    margin:0 10px 0 0;
+}
+article#second_col a.icon_lists:hover{
+    color:#828282;
+}
+
+
+/*侧边栏*/
+aside#first_col .title p{
+    font-size:1.3em;
+    font-weight:500;
+    color:gray;
+    margin:0 10px;
+    padding:10px 0;
+    border-bottom:1px solid #7AC5CD;
+}
+aside#first_col .inner .topic{
+    background:#fff;
+    height:300px;
+    margin:0 0 5px;
+}
+
+
+/*最新文章！*/
+article#second_col .nav-tabs div{
+    margin:0;
+    padding:0 0 5px;
+    color:gray;
+    font-size:1.3em;
+}
