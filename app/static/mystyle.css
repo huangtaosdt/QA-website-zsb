@@ -1,5 +1,5 @@
 body{
-    background:#EAEAEA !important;
+    background:#fff !important;
 }
 
 header {
@@ -40,21 +40,34 @@ header .navbar {
     border: None;
     margin: 0;
     font-size: 1.2em;
+    z-index:1;
+
 }
 
 header .navbar .container a {
     height: 55px;
     color: #eee;
 }
-
+ul.navbar-left li :focus,
 ul.navbar-left li :hover {
     background: rgba(213, 100, 100, 1) !important;
-    color: white !important;
+    color: #262626;
+}
+ul.navbar-left li>a :active {
+    background: rgba(213, 100, 100, 1) !important;
+    color: #262626;
 }
 
+
+
+@media screen and (max-width:1200px){
+    ul.navbar-right{
+        display:none !important;
+    }
+}
 header .navbar-brand:hover {
     background: rgba(213, 100, 100, 1) !important;
-    color: white !important;
+    color: #262626 !important;
 }
 
 
@@ -69,16 +82,17 @@ header form.search {
 }
 
 .search input {
-    margin: 12px;
-    border-radius: 10px 10px;
     width: 7em;
-    opacity: .1;
-    transition: 1s all;
+    height:30px;
+    margin: 12px;
+    border:none;
+    border-radius: 3px;
+    background:#fff;
+    transition: .5s all;
 }
 
 .search input:focus {
     width: 10em;
-    opacity: 1;
 }
 
 
@@ -123,6 +137,9 @@ article#second_col a.icon_lists{
 article#second_col a.icon_lists:hover{
     color:#828282;
 }
+article#second_col a.post-edit{
+    text-decoration:none !important;
+}
 
 
 /*侧边栏*/
@@ -147,4 +164,135 @@ article#second_col .nav-tabs div{
     padding:0 0 5px;
     color:gray;
     font-size:1.3em;
+}
+
+/* 响应式布局*/
+
+/* 屏宽小于768，隐藏侧边栏：top栏 */
+@media screen and (max-width: 768px){
+    section#main_area aside{
+        display:none;
+    }
+}
+@media screen and (max-width: 768px){
+    section#main_area article{
+        width:100%;
+    }
+}
+
+/* 源文件中是min-width：992px，但还有min-width：1200等，所以不用指定max-width*/
+@media screen and (min-width: 992px) and (max-width:1200px){
+    .container {
+        width: 1100px;
+    }
+}
+
+
+/* account 样式 */
+
+.dropdown-menu > li > a{
+    line-height:50px;
+}
+
+
+/*只有点击accout后，才会出现open这个class*/
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover {
+    color: #262626;
+    background-color: rgba(213, 100, 100, 1);
+}
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > li > a:hover {
+    color: #262626;
+    background-color: rgba(213, 100, 100, 1);
+}
+
+.dropdown-menu {
+    background-color:#4a4a4a;
+    padding:0;
+}
+.dropdown-menu > li > a:focus,
+.dropdown-menu > li > a:hover {
+    color: #262626; /*建议每个导航hover时字体颜色都为这个。*/
+    text-decoration: none;
+    background-color: rgba(213, 100, 100, 1);
+}
+
+
+
+/*left nav*/
+ul.navbar-left .dropdown-menu:hover {
+    color: #262626;
+    background-color:#4a4a4a !important;
+}
+
+.navbar-left .actived{
+    background:rgba(213, 100, 100, 1);
+}
+
+
+/*markdown支持图片*/
+/* 调整图片大小 */
+.flask-pagedown-preview img{
+    width:100%;
+}
+
+/* 文章摘要列表，添加显示图片*/
+img.wrap-img{
+    position:absolute;
+    top:7%;
+    right:0%;
+    width:150px;
+    height:120px;
+    border-radius:4px;
+    border:1px solid #f0f0f0;
+}
+
+
+
+
+
+div.go-top {
+
+    opacity: 0.6;
+    z-index: 999999;
+    position: fixed;
+    bottom: 113px;
+    left: 90%;
+    margin-left: 40px;
+    border: 1px solid #0482ba;
+    width: 38px;
+    height: 38px;
+    background-color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+div.go-top:hover {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+div.go-top div.arrow {
+    position: absolute;
+    left: 10px;
+    top: -1px;
+    width: 0;
+    height: 0;
+    border: 9px solid transparent;
+    border-bottom-color: #0482ba;
+}
+
+div.go-top div.stick {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    width: 8px;
+    height: 14px;
+    display: block;
+    background-color: #0482ba;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
 }

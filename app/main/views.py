@@ -1,55 +1,69 @@
 import os
 from  datetime import datetime
-from flask import render_template, session, redirect, url_for, abort, flash, request, current_app, make_response
+from flask import jsonify, render_template, session, redirect, url_for, abort, flash, request, current_app, \
+    make_response
 from . import main
 from .forms import NameForm, EditProfileForm, EditProfileAdminForm, PostForm, CommentForm
 from .. import db
-from ..models import User, Role, Post, Permission, Comment
+from ..models import User, Role, Post, Permission, Comment, Group, AnonymousUser
 from flask_login import login_required, current_user
 from ..decorators import admin_required, permission_required
 from werkzeug.utils import secure_filename
 from flask_sqlalchemy import get_debug_queries
 
 
-@main.route('/',methods=['GET','POST'])
+@main.route('/', methods=['GET', 'POST'])
 def index():
     form = PostForm()
     if current_user.can(Permission.WRITE_ARTICLES) and form.validate_on_submit():
-        post = Post(body=form.body.data, author=current_user._get_current_object())
+        post = Post(group_id=form.category.id,
+                    title=form.title.data,
+                    body=form.body.data,
+                    author=current_user._get_current_object())
         db.session.add(post)
         return redirect(url_for('.index'))
 
     page = request.args.get('page', 1, type=int)
 
-    show_followed = False
-    if current_user.is_authenticated:
-        show_followed = bool(request.cookies.get('show_followed', ''))
-    if show_followed:
-        query = current_user.followed_posts
+    # show_group = 'all'
+    show_group = request.cookies.get('show_group')
+    if show_group and show_group != 'all':  # 如果cookie中存在类别，即用户选了哪类文章，则进行进一步判断并返回该类文章。
+        print('show_second:', show_group)
+        query = Post.query.join(Group, Group.id == Post.group_id).filter(Group.post_type == show_group)
     else:
+        print('all or none')
         query = Post.query
     pagination = query.order_by(Post.timestamp.desc()).paginate(
         page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'],
         error_out=False)
     posts = pagination.items
-    # posts = Post.query.order_by(Post.timestamp.desc()).all()
-    return render_template('index.html', form=form, posts=posts, show_followed=show_followed, pagination=pagination)
+    return render_template('index.html', form=form, posts=posts, show_followed=False, pagination=pagination)
 
 
-@main.route('/all')
-@login_required
-def show_all():
+# 新增选择文章类别路由
+@main.route('/group/<group>')
+def show_group(group):
     resp = make_response(redirect(url_for('.index')))
-    resp.set_cookie('show_followed', max_age=30 * 24 * 60 * 60)
+    resp.set_cookie('show_group', group, max_age=30 * 24 * 60 * 60)
     return resp
 
 
-@main.route('/followed')
-@login_required
-def show_followed():
-    resp = make_response(redirect(url_for('.index')))
-    resp.set_cookie('show_followed', '1', max_age=30 * 24 * 60 * 60)
-    return resp
+# 主页仅显示自己的文章，暂时去掉show_followed、all判断
+
+# @main.route('/all')
+# @login_required
+# def show_all():
+#     resp = make_response(redirect(url_for('.index')))
+#     resp.set_cookie('show_followed', max_age=30 * 24 * 60 * 60)
+#     return resp
+
+
+# @main.route('/followed')
+# @login_required
+# def show_followed():
+#     resp = make_response(redirect(url_for('.index')))
+#     resp.set_cookie('show_followed', '1', max_age=30 * 24 * 60 * 60)
+#     return resp
 
 @main.route('/user/<username>')
 def user(username):
@@ -126,6 +140,13 @@ def edit_profile_admin(id):
 def post(id):
     post = Post.query.get_or_404(id)
     form = CommentForm()
+
+    # 增加访问次数
+    # is_authenticated 是否认证，即是否已登陆
+    if current_user.is_authenticated == False or current_user.id != post.author_id:
+        post.read_times = post.read_times + 1
+        db.session.add(post)
+        db.session.commit()
     if form.validate_on_submit():
         comment = Comment(body=form.body.data, post=post, author=current_user._get_current_object())
         db.session.add(comment)
@@ -138,9 +159,7 @@ def post(id):
         'FLASKY_COMMENTS_PER_PAGE'], error_out=False)
     comments = pagination.items
     return render_template('post.html', posts=[post], form=form, comments=comments, pagination=pagination)
-
     # 参数之所以传列表：[post]  是因为我们在_posts.html中使用的是列表，我们想重用_posts.html中对渲染，以实现对文章页面对渲染
-    return render_template('post.html', posts=[post])
 
 
 @main.route('/edit/<int:id>', methods=['GET', 'POST'])
@@ -152,12 +171,46 @@ def edit(id):
         abort(403)
     form = PostForm()
     if form.validate_on_submit():
+        post.group_id = form.category.data
+        print(post.group_id)
+        post.title = form.title.data
         post.body = form.body.data
         db.session.add(post)
         flash('The post has benn updated.')
         return redirect(url_for('.post', id=post.id))
+    form.title.data = post.title
     form.body.data = post.body
     return render_template('edit_post.html', form=form)
+
+
+# 新增写作功能--- 单独页面
+@main.route('/write', methods=['GET', 'POST'])
+@login_required
+@permission_required(Permission.WRITE_ARTICLES)
+def write():
+    form = PostForm()
+    if current_user.can(Permission.WRITE_ARTICLES) and form.validate_on_submit():
+        post = Post(group_id=form.category.data,
+                    title=form.title.data,
+                    body=form.body.data,
+                    author=current_user._get_current_object())
+        db.session.add(post)
+        db.session.commit()
+        print('group_id in write:', post.group_id)
+        flash('Article has benn published.')
+        return redirect(url_for('.post', id=post.id))
+    return render_template('create_post.html', form=form)
+
+
+@main.route('/add_like/<int:id>')
+def add_like(id):
+    print('here add like .')
+    post = Post.query.get_or_404(id)
+    post.like_times = post.like_times + 1
+    db.session.add(post)
+    db.session.commit()
+    json_data = {'like_times': post.like_times}
+    return jsonify(json_data)
 
 
 @main.route('/follow/<username>')

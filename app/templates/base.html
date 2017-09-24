@@ -3,6 +3,10 @@
 
 {% block head %}
 {{ super() }}
+<script type="text/javascript" src="/static/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/static/js/marked.js"></script>
+<script type="text/javascript" src="/static/js/ace/ace.js"></script>
+<link rel="stylesheet" href=" {{ url_for('static', filename='github-markdown.css') }}"/>
 <link rel="shortcut icon" href="{{ url_for('static', filename = 'favicon.ico') }}"
       type="image/x-icon">
 <link rel="icon" href="{{ url_for('static', filename = 'favicon.ico') }}"
@@ -10,7 +14,6 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mystyle.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='iconfont.css') }}">
-
 {% endblock %}
 
 
@@ -24,7 +27,7 @@
     <div class="my-nav">
         <div class="navbar navbar-default" role="navigation">
             <div class="container">
-                <div class="navbar-header">
+                <div class="navbar-header" id="navbar-header-id">
                     <button type="button" class="navbar-toggle"
                             data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
@@ -32,24 +35,30 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{url_for('main.index') }}">主页</a>
+                    <a class="navbar-brand" href="{{ url_for('main.show_group',group='all') }}">主页</a>
+                    <!--<a class="navbar-brand" href="{{url_for('main.index') }}">主页</a>-->
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li><a href={{url_for('main.index')}}>生活笔记</a></li>
+                        <li><a href="{{ url_for('main.show_group',group='diary') }}">生活笔记</a></li>
+                        <!--<li><a href="{{ url_for('main.show_group',group='diary  ') }}">技术杂谈</a></li>-->
                         <li>
-                            <a href="{{ url_for('main.user', username=current_user.username) }}"> 技术杂谈</a>
+                            <a href="#" class='dropdown-toggle' data-toggle="dropdown">
+                                技术杂谈<b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url_for('main.show_group',group='python') }}">Python</a></li>
+                                <li><a href="{{ url_for('main.show_group',group='java') }}">Java</a></li>
+                                <li><a href="{{ url_for('main.show_group',group='machine-learning') }}">Machine Learning </a></li>
+                                <li><a href="{{ url_for('main.show_group',group='linux') }}">Algorithm</a></li>
+                                <li><a href="{{ url_for('main.show_group',group='linux') }}">Linux</a></li>
+                                <li><a href="{{ url_for('main.show_group',group='front-end') }}">Web</a></li>
+                                <li><a href="{{ url_for('main.show_group',group='other') }}">Other</a></li>
+                            </ul>
                         </li>
-                        <li>
-                            <a href="{{ url_for('main.user', username=current_user.username) }}"> 读书笔记</a>
-                        </li>
-                        <li>
-                            <a href="{{ url_for('main.user', username=current_user.username) }}"> 个人项目</a>
-                        </li>
-                        <li>
-                            <a href="{{ url_for('main.user', username=current_user.username) }}"> Contact</a>
-                        </li>
-                        {% if current_user.is_authenticated %}
+                        <li><a href="{{ url_for('main.show_group',group='reading-notes') }}"> 读书笔记</a></li>
+                        <li><a href="#"> 个人项目</a></li>
+                        {% if current_user.can(Permission.WRITE_ARTICLES) %}
                         <li>
                             <a href="{{ url_for('main.user', username=current_user.username) }}"> Profile</a>
                         </li>
@@ -62,10 +71,13 @@
                                 <input type="text" id="user_name" name="user_name" placeholder="search"/>
                             </form>
                         </li>
-                        {% if current_user.is_authenticated %}
-                        {% if current_user.can(Permission.MODERATE_COMMENTS) %}
-                        <li><a href="{{ url_for('main.moderate') }}">Moderate Comments</a></li>
+
+                        <!--新增创建文章li-->
+                        {% if current_user.can(Permission.WRITE_ARTICLES) %}
+                        <li><a href="{{ url_for('main.write') }}">写文章</a></li>
                         {% endif %}
+
+                        {% if current_user.is_authenticated %}
                         <li class="dropdown">
                             <a href="#" class='dropdown-toggle' data-toggle="dropdown">
                                 <!--<img src="{{ current_user.gravatar(size=18) }}">-->
@@ -79,6 +91,9 @@
                                 Account<b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
+                                {% if current_user.can(Permission.MODERATE_COMMENTS) %}
+                                <li><a href="{{ url_for('main.moderate') }}">Moderate Comments</a></li>
+                                {% endif %}
                                 <li><a href="{{url_for('auth.change_password') }}">Change Password</a></li>
                                 <li><a href="{{ url_for('auth.change_email_request') }}">Change Email</a></li>
                                 <li><a href="{{ url_for('auth.password_reset_request') }}">Reset Password</a></li>
@@ -86,7 +101,7 @@
                             </ul>
                         </li>
                         {% else %}
-                        <li><a href="{{ url_for('auth.login')  }}">Login In</a></li>
+                        <li><a href="{{ url_for('auth.login')  }}">Log In</a></li>
                         {% endif %}
                     </ul>
                 </div>
@@ -99,44 +114,41 @@
 
 {% block content %}
 <div class="container">
+    <div class="go-top">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+    </div>
     {% for message in get_flashed_messages() %}
     <div class="alert alert-warning">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         {{ message }}
     </div>
     {% endfor %}
-
     <section id="main_area">
         <!-- first level -->
+        {% block page_content_for_write %}
         <article id="second_col">
             <div class="inner">
-                <!--<div class="tab">-->
-                    <!--&lt;!&ndash; third level &ndash;&gt;-->
-                    <!--&lt;!&ndash; tab content &ndash;&gt;-->
-                <!--</div>-->
-                <!--<div class="posts">-->
-                    <!--&lt;!&ndash; posts content &ndash;&gt;-->
-                    <!--<p>啊搞定了感觉啊栏冠军</p>-->
-                <!--</div>-->
                 {% block page_content %}
-                    {% endblock %}
+                {% endblock %}
             </div>
         </article>
         <aside id="first_col">
             <!-- second level -->
             <div class="inner">
-                <div class="topic">
+                <div class="topic panel panel-default">
                     <!-- top article-->
                     <div class="title"><p>热门文章</p></div>
                     <p>Here is top-hot article!</p>
                 </div>
-                <div class="topic">
+                <div class="topic panel panel-default">
                     <div class="title"><p>文章分类</p></div>
                     <!-- exam time. -->
                     <p>Here is exam-time.</p>
                 </div>
             </div>
         </aside>
+        {% endblock %}
     </section>
 
 </div>
@@ -144,4 +156,75 @@
 
 {% block scripts %}
 {{ super() }}
-{{ moment.include_moment() }} {% endblock %}
+{{ moment.include_moment() }}
+{{ moment.lang("zh-CN") }}
+<script>
+function wordlimit(){
+    var cname=document.getElementsByClassName("post-abstract");
+    for(var i=0;i<cname.length;i++){
+        var patt=new RegExp(/.*!\[\]\(http.+\).*/)
+        if(patt.test(cname[i].innerHTML)){
+            var parent=cname[i].closest('.post-content');
+            $(parent).addClass('have-img')
+            var img="<a href='" +
+                         $(parent).find(".read")[0]+ "' >" +
+                         "<img src='"+cname[i].innerHTML.match(/(\()(http.+)(\))/)[2]+
+                         "' class='wrap-img'></a>"
+            $(parent).after(img);
+            cname[i].innerHTML=cname[i].innerHTML.replace(/!\[\]\(http.+\)/," ")
+        }
+　　　　var nowLength=cname[i].innerHTML.length;
+　　　　if(nowLength>130){
+          var abstract=cname[i].innerHTML;
+　　　　　　cname[i].innerHTML= abstract.slice(0,130)+'...';
+　　　　}
+　　}　
+}
+
+</script>
+<script>
+$(document).ready(function(){
+    $(".add_like").click(function(e){
+            var ele=$(this)
+            $.ajax({type:"GET",url:$(this).attr("name"),dataType:'json',
+                success:function(data){
+                    ele.html("<i class='iconfont'>&#xe633;</i>"+data.like_times)
+            }});
+    });
+});
+</script>
+<script>
+    $(function() {
+    $(window).scroll(function() {
+        if ($(window).scrollTop() > 1000)
+            $('div.go-top').show();
+        else
+            $('div.go-top').hide();
+    });
+    $('div.go-top').click(function() {
+        $('html, body').animate({scrollTop: 0}, 1000);
+    });
+});
+</script>
+<!--<script>-->
+<!--$(document).ready(function(){-->
+    <!--$(.post-row .li )-->
+<!--});-->
+<!--</script>-->
+<!--<script>-->
+<!--$('.navbar-nav.navbar-left > li >a').click(function () {-->
+    <!--$(this).addClass("actived").siblings().remove("actived");-->
+    <!--});-->
+<!--</script>-->
+<!--<script>-->
+    <!--$(document).ready(function(){-->
+        <!--$(".navbar-left > li >a").each(function(){-->
+            <!--var this = $(this);-->
+            <!--if(var[0].href==String(window.location)){-->
+               <!--var.addClass("actived");-->
+            <!--}-->
+        <!--});-->
+    <!--});-->
+<!--</script>-->
+
+{% endblock %}

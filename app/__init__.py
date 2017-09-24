@@ -32,7 +32,7 @@ def create_app(config_name):
     from .api_1_0 import api as api_1_0_blueprint
     app.register_blueprint(api_1_0_blueprint, url_prefix='/api/v1.0')
 
-    #将 main init 中定义定蓝本注册到程序上
+    # 将 main init 中定义的蓝本注册到程序上
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 

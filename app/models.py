@@ -16,19 +16,22 @@ class Follow(db.Model):
     followed_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
+
 class Role(db.Model):
-    __tablename__='roles'
-    id=db.Column(db.Integer,primary_key=True)
-    name=db.Column(db.String(64),unique=True)
+    __tablename__ = 'roles'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True)
     default = db.Column(db.Boolean, default=False, index=True)
     permissions = db.Column(db.Integer)
-    users=db.relationship('User',backref='role',lazy='dynamic')
+    users = db.relationship('User', backref='role', lazy='dynamic')
 
     @staticmethod
     def insert_roles():
         roles = {
             # 利用各权限对并集表示角色
-            'User': (Permission.FOLLOW | Permission.COMMENT | Permission.WRITE_ARTICLES, True),
+            # --------------alter: 去掉普通用户User的写作功能。
+            # 'User': (Permission.FOLLOW | Permission.COMMENT | Permission.WRITE_ARTICLES, True),
+            'User': (Permission.FOLLOW | Permission.COMMENT, True),
             'Moderator': (
                 Permission.FOLLOW | Permission.COMMENT | Permission.WRITE_ARTICLES | Permission.MODERATE_COMMENTS,
                 False),
@@ -49,14 +52,35 @@ class Role(db.Model):
     def __repr__(self):
         return '<Role %r>' % self.name
 
+
+class Group(db.Model):
+    __tablename__ = 'groups'
+    id = db.Column(db.Integer, primary_key=True)
+    post_type = db.Column(db.String(64), unique=True)
+    posts = db.relationship('Post', backref='group', lazy='dynamic')
+
+    # default=db.Column(db.Boolean,default=False,index=True)
+
+    @staticmethod
+    def insert_groups():
+        groups = ['diary', 'reading-notes', 'python', 'java', 'linux', 'machine-learning', 'front-end', 'other']
+        for g in groups:
+            group = Group.query.filter_by(post_type=g).first()
+            if group is None:
+                group = Group(post_type=g)
+            print('Groups.post_type:', group.post_type)
+            db.session.add(group)
+        db.session.commit()
+
+
 class User(UserMixin, db.Model):
-    __tablename__='users'
-    id=db.Column(db.Integer,primary_key=True)
-    username=db.Column(db.String(64),unique=True,index=True)
-    password_hash=db.Column(db.String(128))
+    __tablename__ = 'users'
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(64), unique=True, index=True)
+    password_hash = db.Column(db.String(128))
     email = db.Column(db.String(64), unique=True, index=True)
     # foreignkey里面要写我们自己定义的那个表明，即__tablename__
-    role_id=db.Column(db.Integer,db.ForeignKey('roles.id'))
+    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     posts = db.relationship('Post', backref='author', lazy='dynamic')
     comments = db.relationship('Comment', backref='author', lazy='dynamic')
     # 用户信息字段，用于自我介绍
@@ -98,10 +122,10 @@ class User(UserMixin, db.Model):
         raise AttributeError('password is not a readable attribute')
 
     @password.setter
-    def password(self,password):
-        self.password_hash=generate_password_hash(password)
+    def password(self, password):
+        self.password_hash = generate_password_hash(password)
 
-    def verify_password(self,password):
+    def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 
     # 生成安全令牌+确认用户账户
@@ -252,9 +276,11 @@ class User(UserMixin, db.Model):
         }
         return json_user
 
+
 class AnonymousUser(AnonymousUserMixin):
     def can(self, permission):
         return False
+
     def is_administrator(self):
         return False
 
@@ -274,9 +300,13 @@ class Permission:
 class Post(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.Text)
     body = db.Column(db.Text)
+    read_times = db.Column(db.Integer,default=0)
+    like_times = db.Column(db.Integer,default=0)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    group_id = db.Column(db.Integer, db.ForeignKey('groups.id'))
     body_html = db.Column(db.Text)
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
 
@@ -284,9 +314,18 @@ class Post(db.Model):
     def on_changed_body(target, value, oldvalue, initiator):
         allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
                         'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
-                        'h1', 'h2', 'h3', 'p']
-        target.body_html = bleach.linkify(
-            bleach.clean(markdown(value, output_format='html'), tags=allowed_tags, strip=True))
+                        'h1', 'h2', 'h3', 'p','[',']','[]','![]','!','![](',')']
+        # target.body_html = bleach.linkify(
+        #     bleach.clean(markdown(value, output_format='html'), tags=allowed_tags, strip=True))
+        # 由于markdown生成但图片但html会被clean清除某个标签，会导致失效，所以采取直接不 clean但方式，
+        # 但此方式存在跨站脚本隐患，建议升级修复！！
+        target.body_html = bleach.linkify(markdown(value, output_format='html'))
+        print("value is :", value)
+        print("markdown:",markdown(value, output_format='html'))
+        print('clean:',bleach.clean(markdown(value, output_format='html'), tags=allowed_tags, strip=True))
+        print('body_html:',target.body_html)
+        print('test:',bleach.clean("<b><i>an example</i></b>",tags=['b']))
+
 
     @staticmethod
     def generate_fake(count=100):
@@ -297,11 +336,21 @@ class Post(db.Model):
         user_count = User.query.count()
         for i in range(count):
             u = User.query.offset(randint(0, user_count - 1)).first()
-            p = Post(body=forgery_py.lorem_ipsum.sentences(randint(1, 3)),
+            p = Post(title=forgery_py.lorem_ipsum.title(),
+                     body=forgery_py.lorem_ipsum.sentences(randint(1, 3)),
                      timestamp=forgery_py.date.date(True),
                      author=u)
             db.session.add(p)
             db.session.commit()
+
+    @staticmethod
+    def temp_insert_times():
+        posts=Post.query.all()
+        for post in posts:
+            post.read_times=0
+            post.like_times=0
+            db.session.add(post)
+        db.session.commit()
 
     def to_json(self):
         json_post = {
@@ -361,6 +410,7 @@ class Comment(db.Model):
 
 db.event.listen(Post.body, 'set', Post.on_changed_body)
 db.event.listen(Comment.body, 'set', Comment.on_changed_body)
+
 
 # 加载用户的回调函数
 @login_manager.user_loader
