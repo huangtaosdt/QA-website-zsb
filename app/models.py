@@ -308,6 +308,7 @@ class Post(db.Model):
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     group_id = db.Column(db.Integer, db.ForeignKey('groups.id'))
     body_html = db.Column(db.Text)
+    # disabled=db.Column(db.Boolean)
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
 
     @staticmethod
