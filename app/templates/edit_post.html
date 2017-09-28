@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
-{% block title %}Flasky - Edit Post{% endblock %}
+{% block title %}升本圈儿_升本人的精神家园! - 发表文章{% endblock %}
 
 {% block page_content_for_write %}
 <div class="page-header">
-    <h1>Edit Post</h1>
+    <h1>编辑文章</h1>
 </div>
 <div>
-    {% include '_markdown_for_edit_or_write.html' %}
+    {% include "_ckeditor_edit.html"%}
 </div>
 {% endblock %}
 {% block scripts %}

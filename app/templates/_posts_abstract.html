@@ -15,13 +15,13 @@
                 post.author.username }}</a>
                 <span class="create-time">{{ moment(post.timestamp).format('YYYY/MM/DD hh:mm ') }}</span>
             </div>
-            <div class="post-title">
-            <a  target="_blank" href="{{ url_for('.post', id=post.id) }}">
-                {{ post.title }}
-            </a>
-            </div>
+            <!--<div class="post-title">-->
+            <!--<a  target="_blank" href="{{ url_for('.post', id=post.id) }}">-->
+                <!--{{ post.title }}-->
+            <!--</a>-->
+            <!--</div>-->
             <div class="post-body post-abstract">
-                {{ post.body }}
+                {{ post.body |safe}}
             </div>
             <div class="post-footer">
                 <a href="{{ url_for('.post', id=post.id) }}" class="icon_lists read">
@@ -29,7 +29,7 @@
                         &#xe6ab;
                     </i>{{post.read_times}}
                 </a>
-                <a target="_blank comment" href="{{ url_for('.post',id=post.id)}}#comments" class="icon_lists">
+                <a target="_blank" href="{{ url_for('.post',id=post.id)}}" class="icon_lists">
                 <i class="iconfont">
                     &#xe6a5;
                 </i>{{ post.comments.count() }}

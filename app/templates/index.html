@@ -1,26 +1,48 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 {% import "_macros.html" as macros %}
-{% block title %} Flasky  {% endblock%}
+{% block title %} 升本圈儿_升本人的精神家园! 找学长，找校友，就来升本圈儿！  {% endblock%}
 
 {% block page_content %}
 <div class="page-header">
     <h1>Hello, {% if current_user.is_authenticated %}{{ current_user.username }}{% else %}Stranger{% endif %}!</h1>
 
 </div>
+<div>
+    {% if current_user.can(Permission.WRITE_ARTICLES) %}
+    {{ wtf.quick_form(form) }}
+    {% endif %}
+</div>
 <div class="post-tabs">
+    <!--<ul class="nav nav-tabs">-->
+        <!--<div><p>最新文章</p></div>-->
+    <!--</ul>-->
     <ul class="nav nav-tabs">
-        <div><p>最新文章</p></div>
-
+        <li {% if not show_followed %} class="active"{% endif %}><a href="{{ url_for('.show_all') }}">最新动态</a></li>
+        {% if current_user.is_authenticated %}
+        <li {% if show_followed %} class="active"{% endif %}><a href="{{ url_for('.show_followed') }}">我的关注</a></li>
+        {% endif %}
     </ul>
     {% include '_posts_abstract.html' %}
 </div>
-
 {% if pagination %}
 <div class="pagination">
     {{ macros.pagination_widget(pagination, '.index') }}
 </div>
 {% endif %}
+{% endblock %} <!-- page_contend end -->
+
+
+{% block aside_page %}
+<div class="topic panel panel-default">
+    <!-- top article-->
+    <div class="title"><p>热门文章</p></div>
+     {% include '_hot_posts.html' %}
+</div>
+<div class="topic panel panel-default">
+    <div class="title"><p>招生政策</p></div>
+    {% include '_hot_posts.html' %}
+</div>
 {% endblock %}
 
 

@@ -1,10 +1,9 @@
-<p>Dear {{ user.username }},</p>
-<p>To confirm your new email address <a href="{{ url_for('auth.change_email', token=token, _external=True) }}">click
-    here</a>.</p>
-<p>Alternatively, you can paste the following link in your browser's address bar:</p>
-<p>{{ url_for('auth.change_email', token=token, _external=True) }}</p>
-<p>Sincerely,</p>
-<p>The Flasky Team</p>
-<p>
-    <small>Note: replies to this email address are not monitored.</small>
-</p>
+<h2>亲爱的 {{ user.username }},</h2>
+<h3>感谢您加入升本圈儿，请点击以下链接完成邮件更改验证，结识更多升本校友！</h3>
+<p><a href="{{ url_for('auth.change_email', token=token, _external=True) }}">验证链接</a></p>
+<p><strong>您也可以复制以下链接至浏览器完成验证:</strong><small>{{ url_for('auth.change_email', token=token, _external=True) }}</small></p>
+<p> <strong>您的Email将会作为账户名来登录升本圈儿。</strong></p>
+<p>本邮件为系统自动发送，请勿回复。</p>
+<hr>
+<p><strong>升本圈儿,敬上</strong></p>
+<p>域名~~~~~~</p>

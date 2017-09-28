@@ -15,15 +15,15 @@
                 <span class="create-time">{{ moment(post.timestamp).format('YYYY/MM/DD hh:mm ') }}</span>
             </div>
             <div class="post-title">
-            <a  target="_blank" href="{{ url_for('.post', id=post.id) }}">
-                {{post.title }}
-            </a>
+            <!--<a  target="_blank" href="{{ url_for('.post', id=post.id) }}">-->
+                <!--{{post.title }}-->
+            <!--</a>-->
                 </div>
             <div class="post-body" >
                 {% if post.body_html %}
                 {{ post.body_html | safe }}
                 {% else %}
-                {{ post.body }}
+                {{ post.body |safe}}
                 {% endif %}
             </div>
             <div class="post-footer">

@@ -16,7 +16,6 @@ if os.path.exists('.env'):
         if len(var)==2:
             os.environ[var[0]]=var[1]
 
-from aaaaaa import sssss
 from app import create_app, db
 from app.models import Role, User, Post,Group
 from flask_script import Manager, Shell

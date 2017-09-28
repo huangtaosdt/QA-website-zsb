@@ -1,14 +1,18 @@
 {% extends "bootstrap/base.html" %}
-{% block title %}Flasky{% endblock %}
+{% block title %}升本圈儿_升本人的精神家园!{% endblock %}
 
 {% block head %}
 {{ super() }}
 <script type="text/javascript" src="/static/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/static/ckeditor/ckeditor.js"></script>
+
+<!--<script src="{{ url_for('static', filename='js/ckeditor.js') }}"></script>-->
 <script type="text/javascript" src="/static/js/marked.js"></script>
 <script type="text/javascript" src="/static/js/ace/ace.js"></script>
 <link rel="stylesheet" href=" {{ url_for('static', filename='github-markdown.css') }}"/>
 <link rel="shortcut icon" href="{{ url_for('static', filename = 'favicon.ico') }}"
       type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='timer.css') }}">
 <link rel="icon" href="{{ url_for('static', filename = 'favicon.ico') }}"
       type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
@@ -19,10 +23,13 @@
 
 {% block navbar %}
 <header>
-
     <div class='logo'>
-        <!-- logo -->
-        <a href="#">Huang Tao's Blog</a>
+        <a href="###" class="time-item">考试倒计时
+            <strong id="day_show">0天</strong>
+            <strong id="hour_show">0时</strong>
+            <strong id="minute_show">0分</strong>
+            <strong id="second_show">0秒</strong>
+        </a>
     </div>
     <div class="my-nav">
         <div class="navbar navbar-default" role="navigation">
@@ -35,46 +42,40 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ url_for('main.show_group',group='all') }}">主页</a>
+                    <a class="navbar-brand" href="{{ url_for('main.index') }}">主页</a>
                     <!--<a class="navbar-brand" href="{{url_for('main.index') }}">主页</a>-->
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li><a href="{{ url_for('main.show_group',group='diary') }}">生活笔记</a></li>
-                        <!--<li><a href="{{ url_for('main.show_group',group='diary  ') }}">技术杂谈</a></li>-->
-                        <li>
-                            <a href="#" class='dropdown-toggle' data-toggle="dropdown">
-                                技术杂谈<b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{{ url_for('main.show_group',group='python') }}">Python</a></li>
-                                <li><a href="{{ url_for('main.show_group',group='java') }}">Java</a></li>
-                                <li><a href="{{ url_for('main.show_group',group='machine-learning') }}">Machine Learning </a></li>
-                                <li><a href="{{ url_for('main.show_group',group='linux') }}">Algorithm</a></li>
-                                <li><a href="{{ url_for('main.show_group',group='linux') }}">Linux</a></li>
-                                <li><a href="{{ url_for('main.show_group',group='front-end') }}">Web</a></li>
-                                <li><a href="{{ url_for('main.show_group',group='other') }}">Other</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="{{ url_for('main.show_group',group='reading-notes') }}"> 读书笔记</a></li>
-                        <li><a href="#"> 个人项目</a></li>
-                        {% if current_user.can(Permission.WRITE_ARTICLES) %}
-                        <li>
-                            <a href="{{ url_for('main.user', username=current_user.username) }}"> Profile</a>
-                        </li>
-                        {% endif %}
+                        <!--<li>-->
+                            <!--<a href="#" class='dropdown-toggle' data-toggle="dropdown">-->
+                                <!--技术杂谈<b class="caret"></b>-->
+                            <!--</a>-->
+                            <!--<ul class="dropdown-menu">-->
+                                <!--<li><a href="#">Python</a></li>-->
+                                <!--<li><a href="#">Java</a></li>-->
+                                <!--<li><a href="#">Machine Learning </a></li>-->
+                                <!--<li><a href="#">Algorithm</a></li>-->
+                                <!--<li><a href="#">Linux</a></li>-->
+                                <!--<li><a href="#">Web</a></li>-->
+                                <!--<li><a href="#">Other</a></li>-->
+                            <!--</ul>-->
+                        <!--</li>-->
+                        <li><a href="#">复习经验</a></li>
+                        <li><a href="#">资料下载</a></li>
+                        <li><a href="#">考试大纲</a></li>
+
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <form class="search" action="#" method="post">
                                 <label for="user_name">search</label>
-                                <input type="text" id="user_name" name="user_name" placeholder="search"/>
+                                <input type="text" id="user_name" name="user_name" placeholder="搜一搜"/>
                             </form>
                         </li>
 
-                        <!--新增创建文章li-->
-                        {% if current_user.can(Permission.WRITE_ARTICLES) %}
-                        <li><a href="{{ url_for('main.write') }}">写文章</a></li>
+                        {% if current_user.is_authenticated %}
+                        <li><a href="{{ url_for('main.user', username=current_user.username) }}">个人资料</a></li>
                         {% endif %}
 
                         {% if current_user.is_authenticated %}
@@ -88,20 +89,20 @@
                                 <img class="img-rounded profile-thumbnail-header"
                                      src="{{ current_user.gravatar(size=18) }}">
                                 {% endif %}
-                                Account<b class="caret"></b>
+                                设置<b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
                                 {% if current_user.can(Permission.MODERATE_COMMENTS) %}
                                 <li><a href="{{ url_for('main.moderate') }}">Moderate Comments</a></li>
                                 {% endif %}
-                                <li><a href="{{url_for('auth.change_password') }}">Change Password</a></li>
-                                <li><a href="{{ url_for('auth.change_email_request') }}">Change Email</a></li>
-                                <li><a href="{{ url_for('auth.password_reset_request') }}">Reset Password</a></li>
-                                <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                                <li><a href="{{url_for('auth.change_password') }}">更改密码</a></li>
+                                <li><a href="{{ url_for('auth.password_reset_request') }}">忘记密码</a></li>
+                                <li><a href="{{ url_for('auth.change_email_request') }}">注册邮箱更改</a></li>
+                                <li><a href="{{ url_for('auth.logout') }}">退出</a></li>
                             </ul>
                         </li>
                         {% else %}
-                        <li><a href="{{ url_for('auth.login')  }}">Log In</a></li>
+                        <li><a href="{{ url_for('auth.login')  }}">登录/注册</a></li>
                         {% endif %}
                     </ul>
                 </div>
@@ -124,34 +125,30 @@
         {{ message }}
     </div>
     {% endfor %}
+
     <section id="main_area">
         <!-- first level -->
         {% block page_content_for_write %}
+        <aside id="first_col">
+            <div class="inner">
+                {% block aside_page %}
+                {% endblock%}
+            </div>
+        </aside>
         <article id="second_col">
             <div class="inner">
                 {% block page_content %}
                 {% endblock %}
             </div>
         </article>
-        <aside id="first_col">
-            <!-- second level -->
-            <div class="inner">
-                <div class="topic panel panel-default">
-                    <!-- top article-->
-                    <div class="title"><p>热门文章</p></div>
-                    <p>Here is top-hot article!</p>
-                </div>
-                <div class="topic panel panel-default">
-                    <div class="title"><p>文章分类</p></div>
-                    <!-- exam time. -->
-                    <p>Here is exam-time.</p>
-                </div>
-            </div>
-        </aside>
+
         {% endblock %}
     </section>
-
 </div>
+{% endblock %}
+
+{% block footer %}
+{% include "_footer.html"%}
 {% endblock %}
 
 {% block scripts %}
@@ -180,7 +177,12 @@ function wordlimit(){
 　　　　}
 　　}　
 }
-
+</script>
+<script>
+    var cname=document.getElementsByClassName("hot-post-body");
+    for(var i=0;i<cname.length;i++){
+        cname[i].innerHTML=cname[i].innerHTML.replace(/!\[\]\(http.+\)/," ")
+    }
 </script>
 <script>
 $(document).ready(function(){
@@ -192,6 +194,7 @@ $(document).ready(function(){
             }});
     });
 });
+
 </script>
 <script>
     $(function() {
@@ -205,26 +208,59 @@ $(document).ready(function(){
         $('html, body').animate({scrollTop: 0}, 1000);
     });
 });
+
+</script>
+<script type="text/javascript">
+var current_time=new Date();
+var end_time='2018/03/25 00:00:00'
+var uSecondDiff = new Date(end_time).getTime()-current_time;   //时间差的毫秒数
+
+var intDiff = parseInt(uSecondDiff/1000);//倒计时总秒数量
+function timer(intDiff){
+    window.setInterval(function(){
+    var day=0,
+        hour=0,
+        minute=0,
+        second=0;//时间默认值
+    if(intDiff > 0){
+        day = Math.floor(intDiff / (60 * 60 * 24));
+        hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+        minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+        second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+    }
+    if (minute <= 9) minute = '0' + minute;
+    if (second <= 9) second = '0' + second;
+    $('#day_show').html(day+"天");
+    $('#hour_show').html('<s id="h"></s>'+hour+'时');
+    $('#minute_show').html('<s></s>'+minute+'分');
+    $('#second_show').html('<s></s>'+second+'秒');
+    intDiff--;
+    }, 1000);
+}
+$(function(){
+    timer(intDiff);
+});
+
 </script>
 <!--<script>-->
 <!--$(document).ready(function(){-->
-    <!--$(.post-row .li )-->
+<!--$(.post-row .li )-->
 <!--});-->
 <!--</script>-->
 <!--<script>-->
 <!--$('.navbar-nav.navbar-left > li >a').click(function () {-->
-    <!--$(this).addClass("actived").siblings().remove("actived");-->
-    <!--});-->
+<!--$(this).addClass("actived").siblings().remove("actived");-->
+<!--});-->
 <!--</script>-->
 <!--<script>-->
-    <!--$(document).ready(function(){-->
-        <!--$(".navbar-left > li >a").each(function(){-->
-            <!--var this = $(this);-->
-            <!--if(var[0].href==String(window.location)){-->
-               <!--var.addClass("actived");-->
-            <!--}-->
-        <!--});-->
-    <!--});-->
+<!--$(document).ready(function(){-->
+<!--$(".navbar-left > li >a").each(function(){-->
+<!--var this = $(this);-->
+<!--if(var[0].href==String(window.location)){-->
+<!--var.addClass("actived");-->
+<!--}-->
+<!--});-->
+<!--});-->
 <!--</script>-->
 
 {% endblock %}

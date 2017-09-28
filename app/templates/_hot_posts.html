@@ -1,0 +1,11 @@
+<ul class="posts">
+    {% for post in hot_posts %}
+    <div class="hot-posts">
+        <li>
+            <p class="post-content hot-post-body">
+                    {{ post.body }}
+            </p>
+        </li>
+    </div>
+    {% endfor %}
+</ul>

@@ -31,7 +31,7 @@ class Role(db.Model):
             # 利用各权限对并集表示角色
             # --------------alter: 去掉普通用户User的写作功能。
             # 'User': (Permission.FOLLOW | Permission.COMMENT | Permission.WRITE_ARTICLES, True),
-            'User': (Permission.FOLLOW | Permission.COMMENT, True),
+            'User': (Permission.FOLLOW | Permission.COMMENT, Permission.WRITE_ARTICLES, True),
             'Moderator': (
                 Permission.FOLLOW | Permission.COMMENT | Permission.WRITE_ARTICLES | Permission.MODERATE_COMMENTS,
                 False),
@@ -83,13 +83,16 @@ class User(UserMixin, db.Model):
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     posts = db.relationship('Post', backref='author', lazy='dynamic')
     comments = db.relationship('Comment', backref='author', lazy='dynamic')
+
     # 用户信息字段，用于自我介绍
     name = db.Column(db.String(64))
-    location = db.Column(db.String(64))
+    school = db.Column(db.String(64))
+    major=db.Column(db.String(64))
     about_me = db.Column(db.Text())
     member_since = db.Column(db.DateTime(), default=datetime.utcnow)
     last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
     confirmed = db.Column(db.Boolean, default=False)
+
     # 增加头型缓存字段：默认头像
     avatar_hash = db.Column(db.String(32))
     # 用户自定义头像
@@ -231,7 +234,7 @@ class User(UserMixin, db.Model):
         for i in range(count):
             u = User(email=forgery_py.internet.email_address(), username=forgery_py.internet.user_name(True),
                      password=forgery_py.lorem_ipsum.word(), confirmed=True, name=forgery_py.name.full_name(),
-                     location=forgery_py.address.city(), about_me=forgery_py.lorem_ipsum.sentence(),
+                     school=forgery_py.address.city(), about_me=forgery_py.lorem_ipsum.sentence(),
                      member_since=forgery_py.date.date(True))
             db.session.add(u)
             try:
@@ -307,25 +310,25 @@ class Post(db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     group_id = db.Column(db.Integer, db.ForeignKey('groups.id'))
-    body_html = db.Column(db.Text)
+    # body_html = db.Column(db.Text)
     # disabled=db.Column(db.Boolean)
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
 
-    @staticmethod
-    def on_changed_body(target, value, oldvalue, initiator):
-        allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
-                        'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
-                        'h1', 'h2', 'h3', 'p','[',']','[]','![]','!','![](',')']
-        # target.body_html = bleach.linkify(
-        #     bleach.clean(markdown(value, output_format='html'), tags=allowed_tags, strip=True))
-        # 由于markdown生成但图片但html会被clean清除某个标签，会导致失效，所以采取直接不 clean但方式，
-        # 但此方式存在跨站脚本隐患，建议升级修复！！
-        target.body_html = bleach.linkify(markdown(value, output_format='html'))
-        print("value is :", value)
-        print("markdown:",markdown(value, output_format='html'))
-        print('clean:',bleach.clean(markdown(value, output_format='html'), tags=allowed_tags, strip=True))
-        print('body_html:',target.body_html)
-        print('test:',bleach.clean("<b><i>an example</i></b>",tags=['b']))
+    # @staticmethod
+    # def on_changed_body(target, value, oldvalue, initiator):
+    #     allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
+    #                     'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
+    #                     'h1', 'h2', 'h3', 'p','[',']','[]','![]','!','![](',')']
+    #     # target.body_html = bleach.linkify(
+    #     #     bleach.clean(markdown(value, output_format='html'), tags=allowed_tags, strip=True))
+    #     # 由于markdown生成但图片但html会被clean清除某个标签，会导致失效，所以采取直接不 clean但方式，
+    #     # 但此方式存在跨站脚本隐患，建议升级修复！！
+    #     target.body_html = bleach.linkify(markdown(value, output_format='html'))
+    #     print("value is :", value)
+    #     print("markdown:",markdown(value, output_format='html'))
+    #     print('clean:',bleach.clean(markdown(value, output_format='html'), tags=allowed_tags, strip=True))
+    #     print('body_html:',target.body_html)
+    #     print('test:',bleach.clean("<b><i>an example</i></b>",tags=['b']))
 
 
     @staticmethod
@@ -409,7 +412,7 @@ class Comment(db.Model):
         return Comment(body=body)
 
 
-db.event.listen(Post.body, 'set', Post.on_changed_body)
+# db.event.listen(Post.body, 'set', Post.on_changed_body)
 db.event.listen(Comment.body, 'set', Comment.on_changed_body)
 
 

@@ -13,11 +13,12 @@ class NameForm(Form):
 
 
 class EditProfileForm(Form):
-    name = StringField('Real name', validators=[Length(0, 64)])
-    avatar = FileField('user icon')
-    location = StringField('Location', validators=[Length(0, 64)])
-    about_me = TextAreaField('About me')
-    submit = SubmitField('Submit')
+    avatar = FileField('上传头像')
+    name = StringField('用户名', validators=[Length(0, 64)])
+    school = StringField('学校', validators=[Length(0, 64)])
+    major = StringField('专业',validators=[Length(0,64)])
+    about_me = TextAreaField('个人简介')
+    submit = SubmitField('确定')
 
 
 class EditProfileAdminForm(Form):
@@ -28,10 +29,11 @@ class EditProfileAdminForm(Form):
                                           'numbers, dots or underscores')])
     confirmed = BooleanField('Confirmed')
     role = SelectField('Role', coerce=int)
-    name = StringField('Real name', validators=[Length(0, 64)])
-    location = StringField('Location', validators=[Length(0, 64)])
-    about_me = TextAreaField('About me')
-    submit = SubmitField('Submit')
+    name = StringField('姓名', validators=[Length(0, 64)])
+    school = StringField('学校', validators=[Length(0, 64)])
+    major = StringField('专业', validators=[Length(0, 64)])
+    about_me = TextAreaField('个人简介')
+    submit = SubmitField('确认')
 
     def __init__(self, user, *args, **kwargs):
         super(EditProfileAdminForm, self).__init__(*args, **kwargs)
@@ -61,17 +63,19 @@ class PostForm(Form):
     #                                  ('machine-learing','机器学习'),
     #                                  ('front-end','Web 前端'),
     #                                  ('other','其他')])
-    category = SelectField(u'Category', coerce=int,choices=[(1, '生活笔记'),
-                                                 (2, '阅读笔记'),
-                                                 (3, 'Python'),
-                                                 (4, 'Java'),
-                                                 (5, 'Linux'),
-                                                 (6, '机器学习'),
-                                                 (7, 'Web 前端'),
-                                                 (8, '其他')])
-    title=StringField('Title',validators=[Required()])
-    body = PageDownField("What's on your mind?", validators=[Required()])
-    submit = SubmitField('发布文章')
+    # category = SelectField(u'Category', coerce=int,choices=[(1, '生活笔记'),
+    #                                              (2, '阅读笔记'),
+    #                                              (3, 'Python'),
+    #                                              (4, 'Java'),
+    #                                              (5, 'Linux'),
+    #                                              (6, '机器学习'),
+    #                                              (7, 'Web 前端'),
+    #                                              (8, '其他')])
+    # title=StringField('Title',validators=[Required()])
+
+    # body = PageDownField("有什么新鲜事想告诉大家?", validators=[Required()])
+    body = TextAreaField(u'有什么新鲜事想告诉大家?', validators=[DataRequired(u'内容不能为空！')])
+    submit = SubmitField('发布')
 
 
 class CommentForm(Form):

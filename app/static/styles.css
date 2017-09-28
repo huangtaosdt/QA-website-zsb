@@ -5,9 +5,50 @@
 .profile-thumbnail {
     position: absolute;
 }*/
+
+/* 更改个人资料页面*/
+
+#about_me{
+    resize:none;
+    width:90%;
+    height:100px;
+}
+#school,#major,#name{
+    width:30%;
+    min-width:190px;
+}
+
+/* 发布文章按钮*/
+form input#submit{
+    border:1px solid #f77c3d;
+}
+
+
+.img-rounded.profile-thumbnail{
+    position:absolute;
+}
+.img-rounded{
+    border-radius:50%;
+}
 .profile-header {
     min-height: 260px;
     margin-left: 280px;
+    padding-left:20px;
+}
+.profile-header > h1 {
+    margin-bottom:30px;
+}
+
+.profile-header a.btn-default.edit-profile{
+    margin-right: 10%;
+    float: right;
+}
+
+.page-header{
+    margin-bottom:40px;
+}
+.profile-header > h3 {
+    margin-bottom:40px;
 }
 div.post-tabs {
     margin-top: 16px;
@@ -93,11 +134,12 @@ div.pagination {
 
 textarea#flask-pagedown-body,div.flask-pagedown-preview{
     width:100%; /* 使文本输入框与其父元素（col-md-6）宽度一致 */
-    min-height:600px;
+    min-height:100px;
     margin: 10px 0px 10px 0px;
     padding: 4px;
     border: 1px solid #e0e0e0;
 }
+
 div.flask-pagedown-preview{
     background: #fcfaf2;
 }
@@ -162,6 +204,7 @@ div.post-author .author-name{
 }
 
 div.post-body.post-abstract{
+    padding:10px;
     font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
     max-height:100px;
 }
@@ -169,5 +212,5 @@ div.have-img{
     padding-right:160px;
 }
 div.have-img .post-abstract{
-    height:60px;
+    height:80px;
 }
