@@ -156,7 +156,7 @@
 {{ moment.include_moment() }}
 {{ moment.lang("zh-CN") }}
 <script>
-function wordlimit(){
+$(function (){
     var cname=document.getElementsByClassName("post-abstract");
     for(var i=0;i<cname.length;i++){
         var patt=new RegExp(/.*!\[\]\(http.+\).*/)
@@ -176,7 +176,7 @@ function wordlimit(){
 　　　　　　cname[i].innerHTML= abstract.slice(0,130)+'...';
 　　　　}
 　　}　
-}
+});
 </script>
 <script>
     var cname=document.getElementsByClassName("hot-post-body");
