@@ -1,21 +1,19 @@
 {% extends "bootstrap/base.html" %}
-{% block title %}升本圈儿_升本人的精神家园!{% endblock %}
+{% block title %}爱的方法本人的精神家园!{% endblock %}
 
 {% block head %}
 {{ super() }}
 <script type="text/javascript" src="/static/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="/static/ckeditor/ckeditor.js"></script>
-
-<!--<script src="{{ url_for('static', filename='js/ckeditor.js') }}"></script>-->
 <script type="text/javascript" src="/static/js/marked.js"></script>
 <script type="text/javascript" src="/static/js/ace/ace.js"></script>
 <link rel="stylesheet" href=" {{ url_for('static', filename='github-markdown.css') }}"/>
 <link rel="shortcut icon" href="{{ url_for('static', filename = 'favicon.ico') }}"
       type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='timer.css') }}">
-<link rel="icon" href="{{ url_for('static', filename = 'favicon.ico') }}"
-      type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename = 'favicon.ico') }}" type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mobile.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mystyle.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='iconfont.css') }}">
 {% endblock %}
@@ -24,12 +22,15 @@
 {% block navbar %}
 <header>
     <div class='logo'>
-        <a href="###" class="time-item">考试倒计时
-            <strong id="day_show">0天</strong>
-            <strong id="hour_show">0时</strong>
-            <strong id="minute_show">0分</strong>
-            <strong id="second_show">0秒</strong>
-        </a>
+        <div>
+            <p>考试倒计时</p>
+            <a href="###" class="time-item"><span>考试倒计时</span>
+                <strong id="day_show">0天</strong>
+                <strong id="hour_show">0时</strong>
+                <strong id="minute_show">0分</strong>
+                <strong id="second_show">0秒</strong>
+            </a>
+        </div>
     </div>
     <div class="my-nav">
         <div class="navbar navbar-default" role="navigation">
@@ -48,18 +49,18 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-left">
                         <!--<li>-->
-                            <!--<a href="#" class='dropdown-toggle' data-toggle="dropdown">-->
-                                <!--技术杂谈<b class="caret"></b>-->
-                            <!--</a>-->
-                            <!--<ul class="dropdown-menu">-->
-                                <!--<li><a href="#">Python</a></li>-->
-                                <!--<li><a href="#">Java</a></li>-->
-                                <!--<li><a href="#">Machine Learning </a></li>-->
-                                <!--<li><a href="#">Algorithm</a></li>-->
-                                <!--<li><a href="#">Linux</a></li>-->
-                                <!--<li><a href="#">Web</a></li>-->
-                                <!--<li><a href="#">Other</a></li>-->
-                            <!--</ul>-->
+                        <!--<a href="#" class='dropdown-toggle' data-toggle="dropdown">-->
+                        <!--技术杂谈<b class="caret"></b>-->
+                        <!--</a>-->
+                        <!--<ul class="dropdown-menu">-->
+                        <!--<li><a href="#">Python</a></li>-->
+                        <!--<li><a href="#">Java</a></li>-->
+                        <!--<li><a href="#">Machine Learning </a></li>-->
+                        <!--<li><a href="#">Algorithm</a></li>-->
+                        <!--<li><a href="#">Linux</a></li>-->
+                        <!--<li><a href="#">Web</a></li>-->
+                        <!--<li><a href="#">Other</a></li>-->
+                        <!--</ul>-->
                         <!--</li>-->
                         <li><a href="#">复习经验</a></li>
                         <li><a href="#">资料下载</a></li>
@@ -107,6 +108,37 @@
                     </ul>
                 </div>
             </div>
+        </div>
+
+
+        <div class="account-for-mobile" style="display:none;">
+            {% if current_user.is_authenticated %}
+            <li class="dropdown">
+                <a href="#" class='dropdown-toggle' data-toggle="dropdown">
+                    <!--<img src="{{ current_user.gravatar(size=18) }}">-->
+                    {% if current_user.avatar %}
+                    <img class="img-rounded profile-thumbnail-header"
+                         width='18' height='18' src="{{ current_user.avatar }}">
+                    {% else %}
+                    <img class="img-rounded profile-thumbnail-header"
+                         src="{{ current_user.gravatar(size=18) }}">
+                    {% endif %}
+                    <span>设置</span><b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu pull-right">
+                    {% if current_user.can(Permission.MODERATE_COMMENTS) %}
+                    <li><a href="{{ url_for('main.moderate') }}">Moderate Comments</a></li>
+                    {% endif %}
+                    <li><a href="{{url_for('auth.change_password') }}">更改密码</a></li>
+                    <li><a href="{{ url_for('main.user', username=current_user.username) }}">个人资料</a></li>
+                    <li><a href="{{ url_for('auth.password_reset_request') }}">忘记密码</a></li>
+                    <li><a href="{{ url_for('auth.change_email_request') }}">注册邮箱更改</a></li>
+                    <li><a href="{{ url_for('auth.logout') }}">退出</a></li>
+                </ul>
+            </li>
+            {% else %}
+            <li><a href="{{ url_for('auth.login')  }}">登录/注册</a></li>
+            {% endif %}
         </div>
     </div>
 </header>
@@ -167,7 +199,7 @@ $(function (){
                          $(parent).find(".read")[0]+ "' >" +
                          "<img src='"+cname[i].innerHTML.match(/(\()(http.+)(\))/)[2]+
                          "' class='wrap-img'></a>"
-            $(parent).after(img);
+            $(cname[i]).after(img);
             cname[i].innerHTML=cname[i].innerHTML.replace(/!\[\]\(http.+\)/," ")
         }
 　　　　var nowLength=cname[i].innerHTML.length;
@@ -177,12 +209,22 @@ $(function (){
 　　　　}
 　　}　
 });
+
+
+
+
+
 </script>
 <script>
     var cname=document.getElementsByClassName("hot-post-body");
     for(var i=0;i<cname.length;i++){
         cname[i].innerHTML=cname[i].innerHTML.replace(/!\[\]\(http.+\)/," ")
     }
+
+
+
+
+
 </script>
 <script>
 $(document).ready(function(){
@@ -194,6 +236,11 @@ $(document).ready(function(){
             }});
     });
 });
+
+
+
+
+
 
 </script>
 <script>
@@ -208,6 +255,11 @@ $(document).ready(function(){
         $('html, body').animate({scrollTop: 0}, 1000);
     });
 });
+
+
+
+
+
 
 </script>
 <script type="text/javascript">
@@ -241,26 +293,11 @@ $(function(){
     timer(intDiff);
 });
 
+
+
+
+
+
 </script>
-<!--<script>-->
-<!--$(document).ready(function(){-->
-<!--$(.post-row .li )-->
-<!--});-->
-<!--</script>-->
-<!--<script>-->
-<!--$('.navbar-nav.navbar-left > li >a').click(function () {-->
-<!--$(this).addClass("actived").siblings().remove("actived");-->
-<!--});-->
-<!--</script>-->
-<!--<script>-->
-<!--$(document).ready(function(){-->
-<!--$(".navbar-left > li >a").each(function(){-->
-<!--var this = $(this);-->
-<!--if(var[0].href==String(window.location)){-->
-<!--var.addClass("actived");-->
-<!--}-->
-<!--});-->
-<!--});-->
-<!--</script>-->
 
 {% endblock %}

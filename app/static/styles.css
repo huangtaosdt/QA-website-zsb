@@ -34,6 +34,7 @@ form input#submit{
     min-height: 260px;
     margin-left: 280px;
     padding-left:20px;
+    overflow:hidden;
 }
 .profile-header > h1 {
     margin-bottom:30px;
@@ -57,7 +58,7 @@ ul.posts {
     list-style-type: none;
     padding: 0px;
     margin: 16px 0px 0px 0px;
-    border-top: 1px solid #e0e0e0;
+    /*border-top: 1px solid #e0e0e0;*/
 }
 div.post-tabs ul.posts {
     margin: 0px;
@@ -67,7 +68,7 @@ ul.posts li.post {
     position:relative;
     background:#fff;
     margin:0 0 15px;
-    padding: 8px;
+    padding: 8px 8px 8px 0;
     border-bottom: 1px solid #e0e0e0;
 }
 /*ul.posts li.post:hover {
@@ -88,6 +89,7 @@ div.post-content {
     overflow:hidden;
 }
 div.post-footer {
+    float:right;
     text-align: right;
     padding-top:5px;
 }
@@ -117,7 +119,7 @@ div.comment-thumbnail {
     position: absolute;
 }
 div.comment-content {
-    margin-left: 48px;
+    margin-left: 46px;
     min-height: 48px;
 }
 div.comment-form {
@@ -204,13 +206,19 @@ div.post-author .author-name{
 }
 
 div.post-body.post-abstract{
-    padding:10px;
+    padding:10px 0;
     font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
-    max-height:100px;
 }
-div.have-img{
-    padding-right:160px;
+˙
+    /* 修改粉丝数量徽章*/
+.badge{
+    margin-right:10px;
+    background-color:mediumturquoise;
 }
-div.have-img .post-abstract{
-    height:80px;
+
+
+#second_col .page-header + h3{
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
 }

@@ -5,13 +5,17 @@
     <li class="post">
         <div class="post-thumbnail">
             <a href="{{ url_for('.user', username=post.author.username) }}">
-                <img class="img-rounded profile-thumbnail" src="{{ post.author.gravatar(size=40) }}">
+                {% if post.author.avatar %}
+                    <img class="img-rounded profile-thumbnail" width="40" height="40" src="{{ post.author.avatar }}">
+                    {% else %}
+                    <img class="img-rounded profile-thumbnail" src="{{ post.author.gravatar(size=40) }}">
+                    {% endif %}
             </a>
         </div>
         <div class="post-content">
             <div class="post-author">
                 <a class="author-name" href="{{ url_for('.user', username=post.author.username) }}">{{
-                post.author.username }}</a>
+                post.author.name }}</a>
                 <span class="create-time">{{ moment(post.timestamp).format('YYYY/MM/DD hh:mm ') }}</span>
             </div>
             <div class="post-title">

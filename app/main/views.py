@@ -111,7 +111,19 @@ def edit_profile():
         current_user.about_me = form.about_me.data
         # user icon
         avatar = request.files['avatar']
-        filename = secure_filename(avatar.filename)
+        filename = secure_filename(avatar.filename).strip()
+        if filename:
+            print("here")
+        print('filename is none? ',filename == "")
+
+        if filename != "":
+            try:
+                filename.rsplit('.')[1]
+            except:
+                # 中文文件名无法读取，若是中文文件名，用用户名做前缀：✖️✖️✖️.jpg
+                print("filename:",filename)
+                filename=current_user.username + '.' +filename
+                print('..:',filename)
         UPLOAD_FOLDER = '{}{}'.format(os.getcwd(), '/app/static/avatar/')
         print('当前工作目录：', UPLOAD_FOLDER)
         ALLOWED_EXTENSIONS = ['png', 'gif', 'jpeg', 'jpg', '']
@@ -122,19 +134,20 @@ def edit_profile():
             return redirect(url_for('.edit_profile'))
 
         if filename:
-            file_location = '{}{}_{}'.format(UPLOAD_FOLDER, current_user.username, filename)
+            new_file_name=current_user.username + '_avatar.' + filename.rsplit(".")[1]
+            file_location = '{}{}'.format(UPLOAD_FOLDER,new_file_name )
             avatar.save(file_location)
-            current_user.avatar = '/static/avatar/{}_{}'.format(current_user.username, filename)
-
+            current_user.avatar = '/static/avatar/{}_avatar.{}'.format(current_user.username, filename.rsplit(".")[1])
+            print(current_user.avatar)
         db.session.add(current_user)
         flash('您的资料已经更新')
         return redirect(url_for('.user', username=current_user.username))
+
     form.name.data = current_user.name
     form.school.data = current_user.school
     form.major.data = current_user.major
     form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', form=form)
-
 
 @main.route('/edit-profile/<int:id>', methods=['GET', 'POST'])
 @login_required

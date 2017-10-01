@@ -1,61 +1,68 @@
 <ul class="posts" id="temp-like-times" name="0">
     {% for post in posts %}
     <div class="post-row">
-    <!--添加if-->
-    <li class="post">
-        <div class="post-thumbnail">
-            <a href="{{ url_for('.user', username=post.author.username) }}">
-                <img class="img-rounded profile-thumbnail" src="{{ post.author.gravatar(size=40) }}">
-            </a>
-        </div>
-        <div class="post-content">
-            <!--<div class="post-date">{{ moment(post.timestamp).format('YYYY/MM/DD hh:mm ') }}</div>-->
-            <div class="post-author">
-                <a class="author-name" href="{{ url_for('.user', username=post.author.username) }}">{{
-                post.author.username }}</a>
-                <span class="create-time">{{ moment(post.timestamp).format('YYYY/MM/DD hh:mm ') }}</span>
-            </div>
-            <!--<div class="post-title">-->
-            <!--<a  target="_blank" href="{{ url_for('.post', id=post.id) }}">-->
-                <!--{{ post.title }}-->
-            <!--</a>-->
-            <!--</div>-->
-            <div class="post-body post-abstract">
-                {{ post.body |safe}}
-            </div>
-            <div class="post-footer">
-                <a href="{{ url_for('.post', id=post.id) }}" class="icon_lists read">
-                    <i class="iconfont">
-                        &#xe6ab;
-                    </i>{{post.read_times}}
+        <!--添加if-->
+        <li class="post">
+            <div class="post-thumbnail">
+                <a href="{{ url_for('.user', username=post.author.username) }}">
+                    {% if post.author.avatar %}
+                    <img class="img-rounded profile-thumbnail" width="40" height="40" src="{{ post.author.avatar }}">
+                    {% else %}
+                    <img class="img-rounded profile-thumbnail" src="{{ post.author.gravatar(size=40) }}">
+                    {% endif %}
+
                 </a>
-                <a target="_blank" href="{{ url_for('.post',id=post.id)}}" class="icon_lists">
-                <i class="iconfont">
-                    &#xe6a5;
-                </i>{{ post.comments.count() }}
+            </div>
+            <div class="post-content">
+                <!--<div class="post-date">{{ moment(post.timestamp).format('YYYY/MM/DD hh:mm ') }}</div>-->
+                <div class="post-author">
+                    <a class="author-name" href="{{ url_for('.user', username=post.author.username) }}">{{
+                        post.author.name }}</a>
+                    <span class="create-time">{{ moment(post.timestamp).format('YYYY/MM/DD hh:mm ') }}</span>
+                </div>
+                <!--<div class="post-title">-->
+                <!--<a  target="_blank" href="{{ url_for('.post', id=post.id) }}">-->
+                <!--{{ post.title }}-->
+                <!--</a>-->
+                <!--</div>-->
+                <div class="body-and-img">
+                    <div class="post-body post-abstract">
+                        {{ post.body |safe}}
+                    </div>
+                </div>
+                <div class="post-footer">
+                    <a href="{{ url_for('.post', id=post.id) }}" class="icon_lists read">
+                        <i class="iconfont">
+                            &#xe6ab;
+                        </i>{{post.read_times}}
+                    </a>
+                    <a target="_blank" href="{{ url_for('.post',id=post.id)}}" class="icon_lists">
+                        <i class="iconfont">
+                            &#xe6a5;
+                        </i>{{ post.comments.count() }}
                     </a>
 
-                <a href="###" class="icon_lists add_like" name="{{ url_for('.add_like',id=post.id) }}">
-                    <i class="iconfont">
-                        &#xe633;
-                    </i>{{post.like_times}}
-                </a>
+                    <a href="###" class="icon_lists add_like" name="{{ url_for('.add_like',id=post.id) }}">
+                        <i class="iconfont">
+                            &#xe633;
+                        </i>{{post.like_times}}
+                    </a>
 
-                {% if current_user == post.author %}
-                <a href="{{ url_for('.edit', id=post.id) }}" class="post-edit">
-                    <i class="iconfont">
-                        &#xe649;
-                    </i>编辑
-                </a>
-                {% elif current_user.is_administrator() %}
-                <a href="{{ url_for('.edit', id=post.id) }}">
-                    <span class="label label-danger">Edit [Admin]</span>
-                </a>
-                {% endif %}
+                    {% if current_user == post.author %}
+                    <a href="{{ url_for('.edit', id=post.id) }}" class="post-edit">
+                        <i class="iconfont">
+                            &#xe649;
+                        </i>编辑
+                    </a>
+                    {% elif current_user.is_administrator() %}
+                    <a href="{{ url_for('.edit', id=post.id) }}">
+                        <span class="label label-danger">Edit [Admin]</span>
+                    </a>
+                    {% endif %}
 
+                </div>
             </div>
-        </div>
-    </li>
-        </div>
+        </li>
+    </div>
     {% endfor %}
 </ul>

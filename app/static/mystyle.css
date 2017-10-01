@@ -15,6 +15,9 @@ header .logo {
     text-align: center;
     line-height: 100px;
 }
+header .logo p{
+    display:none;
+}
 header .logo a{
     font-size:2em;
     font-family:Arial;
@@ -61,11 +64,7 @@ ul.navbar-left li>a :active {
 
 
 
-@media screen and (max-width:1200px){
-    ul.navbar-right{
-        display:none !important;
-    }
-}
+
 header .navbar-brand:hover {
     background: rgba(213, 100, 100, 1) !important;
     color: #262626 !important;
@@ -155,6 +154,7 @@ aside#first_col .title p{
     color:gray;
     margin:0 10px;
     padding:10px 0;
+    border-bottom: 2px solid #eee;
 }
 aside#first_col .inner .topic{
     background:#fff;
@@ -174,24 +174,7 @@ article#second_col .nav-tabs div{
 
 /* 响应式布局*/
 
-/* 屏宽小于768，隐藏侧边栏：top栏 */
-@media screen and (max-width: 768px){
-    section#main_area aside{
-        display:none;
-    }
-    section#main_area article{
-        width:100%;
-    }
-    section#main_area div.page-header img{
-        width:128px;
-        height:128px;
-        margin-top: 95px;
-        margin-left: 2px;
-    }
-    section#main_area .profile-header{
-        margin-left: 135px;
-    }
-}
+
 
 
 /* 源文件中是min-width：992px，但还有min-width：1200等，所以不用指定max-width*/
@@ -229,7 +212,7 @@ article#second_col .nav-tabs div{
 }
 .dropdown-menu > li > a:focus,
 .dropdown-menu > li > a:hover {
-    color: #262626; /*建议每个导航hover时字体颜色都为这个。*/
+    color: #eee; /*建议每个导航hover时字体颜色都为这个。*/
     text-decoration: none;
     background-color: rgba(213, 100, 100, 1);
 }
@@ -255,7 +238,6 @@ ul.navbar-left .dropdown-menu:hover {
 
 /* 文章摘要列表，添加显示图片*/
 img.wrap-img{
-    position:absolute;
     top:0%;
     right:0%;
     width:150px;
@@ -423,3 +405,9 @@ a:link,a:visited {
 
 
 
+/* right navbar --改动：把navbar-right从collapse in 中取出去作为其兄弟元素*/
+ul.navbar-right{
+    position: absolute;
+    top: 0%;
+    right: 0%;
+}

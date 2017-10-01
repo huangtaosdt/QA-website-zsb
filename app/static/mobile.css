@@ -1,0 +1,147 @@
+@media screen and (max-width:1200px){
+
+}
+/* 屏宽小于768，隐藏侧边栏：top栏 */
+@media screen and (max-width: 768px){
+    section#main_area aside{
+        display:none;
+    }
+    section#main_area article{
+        width:100%;
+    }
+    section#main_area article{
+        width:100% !important;
+    }
+    section#main_area div.page-header img{
+        width:128px;
+        height:128px;
+        margin-top: 95px;
+        margin-left: 2px;
+    }
+    section#main_area .profile-header{
+        margin-left: 135px;
+    }
+    /* mynav菜单项 */
+    /* 将主页及其下拉按钮组调至左侧*/
+    .my-nav{
+        text-align:left !important;
+    }
+    .my-nav .navbar{
+        margin: 0 0 0 3px;
+    }
+    /* 停用right 启用它的替代account-for-mobile*/
+    .my-nav .navbar-right{
+        display:none;
+    }
+    .my-nav .account-for-mobile{
+        display:block !important;
+        list-style-type:none;
+        font-size: 18px;
+        position: absolute;
+        top: 0%;
+        right: 5%;
+        line-height: 55px;
+    }
+    .dropdown-menu > li > a {
+        color: #eee;
+    }
+    .account-for-mobile a{
+        color:#eee;
+    }
+    .my-nav .account-for-mobile a:focus,
+    .my-nav .account-for-mobile a:hover，
+    .my-nav .account-for-mobile a:link{
+        color:#eee;
+        text-decoration:none;
+    }
+}
+
+
+/* 建议596px  */
+@media screen and (max-width:420px){
+    /* logo */
+    .logo > div >p{
+        display:block !important;
+        padding: 20px 0 0 0;
+        margin: 0 0 5px;
+        font-size: 1.2em;
+        line-height: normal;
+        color:#fff;
+    }
+    .logo a > span{
+        display:none;
+    }
+    .time-item strong {
+        line-height: normal;
+        font-size: 17px ;
+    }
+    header .logo{
+        line-height:30px !important;
+    }
+
+    /* 调整main_area 布局 */
+    /* aside */
+    section#main_area aside{
+        display:none !important;
+    }
+    section#main_area article {
+        width: 100% !important;
+        padding-left: 5px !important;
+    }
+
+    /* user 页面调整 */
+    /* 隐藏原头像和用户名 */
+    .page-header > img,
+    .profile-header > h1{
+        display:none;
+    }
+    .profile-header{
+        margin:0 !important;
+        padding:0 !important;
+    }
+    .user-gravatar-for-mobile{
+        display:block !important;
+        padding-bottom:10px;
+        margin-bottom:10px;
+        border-bottom:1px solid #eee;
+    }
+    .user-gravatar-for-mobile span{
+        line-height: 80px;
+        font-size: 40px;
+        color: gray;
+        font-weight: 400;
+    }
+    .user-gra-img{
+        width:80px !important;
+        height:80px !important;
+        margin: 0 20px 0 0 !important;
+        border-radius: 50%;
+        float:left;
+    }
+
+
+    /* 修改ckeditor */
+    /* 图片加载弹出框的大小 */
+    .ImagePreviewBox{
+        width:auto !important;
+    }
+   /* 修改弹出框整体大小*/
+    .cke_single_page{
+        width:90% !important;
+   }
+
+   /* comment page */
+    div.comment-form {
+        margin: auto;
+    }
+    ul.comments li.comment {
+        margin-left:0px;
+    }
+    .page-header + h3{
+        border-bottom: 1px solid #eee;
+        padding-bottom: 20px;
+        font-size: 20px;
+    }
+
+}
+
