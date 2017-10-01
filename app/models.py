@@ -31,7 +31,7 @@ class Role(db.Model):
             # 利用各权限对并集表示角色
             # --------------alter: 去掉普通用户User的写作功能。
             # 'User': (Permission.FOLLOW | Permission.COMMENT | Permission.WRITE_ARTICLES, True),
-            'User': (Permission.FOLLOW | Permission.COMMENT, Permission.WRITE_ARTICLES, True),
+            'User': (Permission.FOLLOW | Permission.COMMENT | Permission.WRITE_ARTICLES, True),
             'Moderator': (
                 Permission.FOLLOW | Permission.COMMENT | Permission.WRITE_ARTICLES | Permission.MODERATE_COMMENTS,
                 False),
