@@ -63,9 +63,9 @@
                         <!--<li><a href="#">Other</a></li>-->
                         <!--</ul>-->
                         <!--</li>-->
-                        <li><a href="#">复习经验</a></li>
-                        <li><a href="#">资料下载</a></li>
-                        <li><a href="#">考试大纲</a></li>
+                        <li><a href="{{ url_for('main.other',type=2) }}">复习经验</a></li>
+                        <li><a href="{{ url_for('main.other',type=3) }}">资料下载</a></li>
+                        <li><a href="{{ url_for('main.other',type=4) }}">考试大纲</a></li>
                         <li><a href="{{ url_for('main.show_score')}}">分数</a></li>
 
                     </ul>

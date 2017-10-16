@@ -21,6 +21,7 @@ def index():
     #                 body=form.body.data,
     #                 author=current_user._get_current_object())
     if current_user.can(Permission.WRITE_ARTICLES) and form.validate_on_submit():
+
         post = Post(body=form.body.data,
                     author=current_user._get_current_object())
         db.session.add(post)
@@ -47,6 +48,7 @@ def index():
         query = current_user.followed_posts
     else:
         query = Post.query
+
     pagination = query.order_by(Post.timestamp.desc()).paginate(
         page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'],
         error_out=False)
@@ -54,6 +56,30 @@ def index():
     hot_posts=Post.query.order_by(Post.read_times.desc()).limit(10).all()
     return render_template('index.html', form=form, posts=posts,
                            show_followed=show_followed, pagination=pagination,hot_posts=hot_posts)
+
+@main.route('/other/<type>',methods=['GET','POST'])
+def other(type):
+    # posts = Post.query.filter_by(group_id=type).all()
+    form = PostForm()
+
+    page = request.args.get('page', 1, type=int)
+    pagination = Post.query.filter_by(group_id=type).order_by(Post.timestamp.desc()).paginate(
+        page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'],
+        error_out=False)
+    posts = pagination.items
+    hot_posts = Post.query.order_by(Post.read_times.desc()).limit(10).all()
+
+    if current_user.can(Permission.WRITE_ARTICLES) and form.validate_on_submit():
+
+        post = Post(body=form.body.data,group_id=type,
+                    author=current_user._get_current_object())
+        db.session.add(post)
+        print(url_for('.other',type=type,_anchor="#"))
+        return redirect(url_for('.other',type=type,_anchor="#"))
+
+    return render_template('other.html', posts=posts,form=form,
+                           pagination=pagination, hot_posts=hot_posts)
+
 
 # 新增选择文章类别路由
 # @main.route('/group/<group>')

@@ -420,3 +420,9 @@ ul.navbar-right{
 .score_form{
     margin-top:20px;
 }
+
+/* other页面 */
+#new_article textarea{
+    height:130px;
+    resize:none;
+}

@@ -75,10 +75,11 @@ class PostForm(Form):
 
     # body = PageDownField("有什么新鲜事想告诉大家?", validators=[Required()])
     body = TextAreaField(u'有什么新鲜事想告诉大家?', validators=[DataRequired(u'内容不能为空！')])
-    type= SelectField('发文类别',choices=[(0,'默认'),
-                                      (1, '复习经验'),
-                                      (2, '资料专区'),
-                                      (3, '政策专区'),])
+
+    # type= SelectField('发文类别',choices=[(1,'默认'),
+    #                                   (2, '复习经验'),
+    #                                   (3, '资料专区'),
+    #                                   (4, '政策专区'),])
     submit = SubmitField('发布')
 
 
