@@ -3,9 +3,9 @@ from  datetime import datetime
 from flask import jsonify, render_template, session, redirect, url_for, abort, flash, request, current_app, \
     make_response
 from . import main
-from .forms import NameForm, EditProfileForm, EditProfileAdminForm, PostForm, CommentForm
+from .forms import NameForm, EditProfileForm, EditProfileAdminForm, PostForm, CommentForm,ScoreFrom
 from .. import db
-from ..models import User, Role, Post, Permission, Comment, Group, AnonymousUser
+from ..models import User, Role, Post, Permission, Comment, Group, AnonymousUser,Score
 from flask_login import login_required, current_user
 from ..decorators import admin_required, permission_required
 from werkzeug.utils import secure_filename
@@ -64,6 +64,30 @@ def index():
 
 
 # 主页仅显示自己的文章，暂时去掉show_followed、all判断
+
+@main.route('/score',methods=['GET', 'POST'])
+def show_score():
+    form=ScoreFrom()
+    # # 用户点击查询，则返回相应专业的成绩数据--json格式
+    # if form.validate_on_submit():
+    # #     major = form.major.data
+    # #     score = Score.query.filter_by(major=major).first()
+    # #     json_data = {major: score.major}
+    # #     return jsonify(json_data)
+    #     return query_score(form.major.data)
+    return render_template('score.html',form=form)
+
+@main.route('/query_score/<major_id>',methods=['GET', 'POST'])
+def query_score(major_id):
+    # query.get_or_404(id)
+    print('score here!!')
+    print(major_id)
+    score=Score.query.filter_by(id=major_id).first()
+    all_score=[score.year_2013 , score.year_2014 , score.year_2015,score.year_2016,score.year_2017]
+    print(all_score)
+    json_data={'major':score.major,'score':all_score}
+    print('vvvv')
+    return jsonify(json_data)
 
 @main.route('/all')
 @login_required
@@ -165,7 +189,7 @@ def edit_profile_admin(id):
         user.major = form.major.data
         user.about_me = form.about_me.data
         db.session.add(user)
-        flash('The profile has been updated.')
+        flash('资料更新成功！')
         return redirect(url_for('.user', username=user.username))
     form.email.data = user.email
     form.username.data = user.username
@@ -215,15 +239,26 @@ def edit(id):
     form = PostForm()
     if form.validate_on_submit():
         # post.group_id = form.category.data
-        print(post.group_id)
         # post.title = form.title.data
         post.body = form.body.data
         db.session.add(post)
-        flash('The post has benn updated.')
+        flash('文章发布成功 (≥◇≤)～')
         return redirect(url_for('.post', id=post.id))
     # form.title.data = post.title
     form.body.data = post.body
     return render_template('edit_post.html', form=form)
+
+@main.route('/delete/<int:id>')
+@login_required
+@permission_required(Permission.WRITE_ARTICLES)
+def delete(id):
+    post=Post.query.get_or_404(id)
+    if current_user != post.author and not current_user.can(Permission.ADMINISTER):
+        abort(403)
+    db.session.delete(post)
+    flash("文章已经删除！")
+    return redirect(url_for(".index"))
+
 
 
 # 新增写作功能--- 单独页面

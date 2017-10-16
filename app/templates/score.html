@@ -1,0 +1,146 @@
+{% extends "index.html" %}
+{% block title %}本圈儿_!{% endblock %}
+{% import "_macros.html" as macros %}
+
+{% block page_content %}
+<div>
+    <!--{{ wtf.quick_form(form) }}-->
+    <form action="" class="form score_form" role="form">
+        <div class="form-group "><label class="control-label" for="query_score">专业</label>
+            <select class="form-control" id="query_score" name="major" style="width:45%;">
+                <option selected="" value="1">师范英语</option>
+                <option value="2">学前教育</option>
+                <option value="3">日语</option>
+                <option value="4">公共事业管理</option>
+                <option value="5">工程管理</option>
+                <option value="6">金 融 学</option>
+                <option value="7">旅游管理</option>
+                <option value="8">土木工程</option>
+                <option value="9">法学</option>
+                <option value="10">会计</option>
+                <option value="11">工商管理</option>
+                <option value="12">国际贸易</option>
+                <option value="13">交通运输</option>
+                <option value="14">电气工程</option>
+                <option value="15">市场营销</option>
+                <option value="16">计算机</option>
+                <option value="17">生物科学</option>
+                <option value="18">小学教育</option>
+                <option value="19">汉语言文学</option>
+                <option value="20">高职英语</option>
+                <option value="21">电子商务</option>
+                <option value="22">机械设计制造</option>
+                <option value="23">艺术设计</option>
+                <option value="24">临床医学</option>
+                <option value="25">护理学</option>
+                <option value="26">口腔医学</option>
+                <option value="27">药学</option>
+                <option value="28">服装设计</option>
+                <option value="29">中药</option>
+                <option value="30">医学影像学</option>
+                <option value="31">中医学</option>
+                <option value="32">针灸</option>
+                <option value="33">医学检验</option>
+            </select>
+        </div>
+        <button id='query_button' class="btn btn-default" id="submit" type="button">查询录取分数</button>
+    </form>
+
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main'));
+        // 显示标题，图例和空的坐标轴
+        myChart.setOption({
+            title: {
+                text: '山东专升本分数线'
+            },
+            tooltip: {},
+            legend: {
+                data:['分数线']
+            },
+            xAxis: {
+                data: [],
+                axisLabel: {
+                        formatter: '{value} 年',
+                        fontStyle:'bolder',
+                        fontSize:13
+                }
+            },
+            yAxis: {
+                min:100,
+                axisLabel: {
+                        fontStyle:'bold',
+                        fontSize:13
+                }
+            },
+            series: [{
+                name: '分数线',
+                type: 'line',
+                data: [],
+                smooth:true
+            }],
+            backgroundColor:'#FFFAFA',
+            graphic:[{
+                    type: 'text',
+                    z: 100,
+                    right: 20,
+                    top: 20,
+                    style: {
+                        opacity:0.5,
+                        fill: '#333',
+                        text: [
+                            '山东专升本论坛',
+                            '微信：www_zsblab_com',
+                        ].join('\n'),
+                        font: '14px Microsoft YaHei'
+                    }
+            }]
+        });
+        $("#query_button").click(function(e){
+          var major_id=$(".form-control").val()
+          $.get('/query_score/'+major_id,function(data,status){
+            myChart.setOption({
+                title: {
+                    left:'center',
+                    text: '山东专升本论坛',
+                    show:true
+                },
+                xAxis: {
+                    data: ['2013','2014','2015','2016','2017'],
+                },
+                series: [{
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'top'
+                        }
+                    },
+                    areaStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                offset: 0,
+                                color: 'rgb(255, 158, 68)'
+                            }, {
+                                offset: 1,
+                                color: 'rgb(255, 70, 131)'
+                            }])
+                        }
+                    },
+                    // 根据名字对应到相应的系列
+                    name: data.major,
+                    data: data.score
+                }]
+            });
+
+          });
+        });
+
+
+
+
+    </script>
+</div>
+
+
+{% endblock %} <!-- page_content end-->
+

@@ -54,9 +54,12 @@
                             &#xe649;
                         </i>编辑
                     </a>
-                    {% elif current_user.is_administrator() %}
+                    {% elif current_user.is_administrator()  %}
                     <a href="{{ url_for('.edit', id=post.id) }}">
                         <span class="label label-danger">Edit [Admin]</span>
+                    </a>
+                    <a href="{{ url_for('.delete',id=post.id) }}">
+                        <span class="label label-danger">Dele [Admin]</span>
                     </a>
                     {% endif %}
 

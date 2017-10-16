@@ -12,7 +12,7 @@ CKEDITOR.editorConfig = function( config ) {
 	config.toolbarGroups = [
 //		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
 //		{ name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
-//		{ name: 'links' },
+		{ name: 'links' },
 
 //		{ name: 'document',	   groups: [ 'mode', 'document', 'doctools' ] },
 
@@ -23,8 +23,8 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'tools' },
 		{ name: 'others' },
 		'/',
-//		{ name: 'styles' },
 		{ name: 'colors' },
+		{ name: 'styles' },
 	];
 
 	// Remove some buttons provided by the standard plugins, which are

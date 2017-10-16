@@ -4,7 +4,7 @@ from .. import db
 from flask_login import login_user, logout_user, login_required, current_user
 from .forms import LoginForm, RegistrationForm, ChangePasswordForm, PasswordResetRequestForm, PasswordResetForm, \
     ChangeEmailForm
-from ..models import User
+from ..models import User,InvitationCode
 from ..email import send_email
 
 
@@ -56,6 +56,12 @@ def logout():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
+        invit_code=form.validation_code.data
+
+        if InvitationCode.query.filter_by(code=invit_code).first() is None:
+            flash('您输入的邀请码无效！')
+            # return redirect(url_for("auth.register",form=form))
+            return render_template('auth/register.html', form=form)
         user = User(email=form.email.data,
                     username=form.username.data,
                     password=form.password.data)
@@ -111,8 +117,8 @@ def change_password():
 
 @auth.route('/reset', methods=['GET', 'POST'])
 def password_reset_request():
-    if current_user.is_anonymous:
-        return redirect(url_for('main.index'))
+    # if current_user.is_anonymous:
+    #     return redirect(url_for('main.index'))
     form = PasswordResetRequestForm()
     if form.validate_on_submit():
         print('提交邮箱：',form.email.data)
@@ -133,8 +139,8 @@ def password_reset_request():
 
 @auth.route('/reset/<token>', methods=['GET', 'POST'])
 def password_reset(token):
-    if current_user.is_anonymous:
-        return redirect(url_for('main.index'))
+    # if current_user.is_anonymous:
+    #     return redirect(url_for('main.index'))
     form = PasswordResetForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()

@@ -17,7 +17,7 @@ if os.path.exists('.env'):
             os.environ[var[0]]=var[1]
 
 from app import create_app, db
-from app.models import Role, User, Post,Group
+from app.models import Role, User, Post,Group,Score,InvitationCode
 from flask_script import Manager, Shell
 from flask_migrate import Migrate, MigrateCommand
 
@@ -27,7 +27,7 @@ migrate = Migrate(app, db)
 
 
 def make_shell_context():
-    return dict(app=app, db=db, User=User, Role=Role, Post=Post,Group=Group)
+    return dict(app=app, db=db, User=User, Role=Role, Post=Post,Group=Group,Score=Score,InvitationCode=InvitationCode)
 
 
 manager.add_command('shell', Shell(make_context=make_shell_context))

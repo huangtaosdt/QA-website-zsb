@@ -9,17 +9,18 @@ from ..models import User
 class LoginForm(Form):
     email = StringField('邮箱', validators=[Required(), Length(1, 64), Email()])
     password = PasswordField('密码', validators=[Required()])
-    remember_me = BooleanField('记住我的登录状态')
+    remember_me = BooleanField('记住我')
     submit = SubmitField('登录')
 
 
 # 用户注册表单
 class RegistrationForm(Form):
     email = StringField('请输入您的邮箱', validators=[Required(), Length(1, 64), Email()])
-    username = StringField('用户名（一经注册不可更改）', validators=[Required(), Length(1, 64), Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0,
-                                                                                     'Usernames must have only letters, numbers, dots or underscores')])
+    username = StringField('用户名', validators=[Required(), Length(1, 64), Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0,
+                                                                                     '用户名必须字母开头！仅可包含以下字符：数字、字母、下划线！')])
     password = PasswordField('请输入密码', validators=[Required(), EqualTo('password2', message='Password must match.')])
-    password2 = PasswordField('确认密码', validators=[Required()])
+    password2 = PasswordField('密码确认', validators=[Required()])
+    validation_code=StringField('邀请码',validators=[Required(),Length(6,6),])
     submit = SubmitField('注册')
 
     def validate_email(self, field):

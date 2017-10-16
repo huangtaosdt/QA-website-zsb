@@ -30,48 +30,84 @@
                 {{ post.body |safe}}
                 {% endif %}
             </div>
-            <div class="post-footer">
-                <a href="{{ url_for('.post', id=post.id) }}" class="icon_lists">
-                    <i class="iconfont">
-                        &#xe6ab;
-                    </i>17
-                </a>
-                <a target="_blank comment" href="{{ url_for('.post',id=post.id)}}#comments" class="icon_lists">
-                <i class="iconfont">
-                    &#xe6a5;
-                </i>{{ post.comments.count() }}
-                    </a>
-                <a href="#" class="icon_lists">
-                <i class="iconfont">
-                    &#xe633;
-                </i>104
-                    </a>
+            <!--<div class="post-footer">-->
+                <!--<a href="{{ url_for('.post', id=post.id) }}" class="icon_lists">-->
+                    <!--<i class="iconfont">-->
+                        <!--&#xe6ab;-->
+                    <!--</i>17-->
+                <!--</a>-->
+                <!--<a target="_blank comment" href="{{ url_for('.post',id=post.id)}}#comments" class="icon_lists">-->
+                <!--<i class="iconfont">-->
+                    <!--&#xe6a5;-->
+                <!--</i>{{ post.comments.count() }}-->
+                    <!--</a>-->
+                <!--<a href="#" class="icon_lists">-->
+                <!--<i class="iconfont">-->
+                    <!--&#xe633;-->
+                <!--</i>104-->
+                    <!--</a>-->
 
-                {% if current_user == post.author %}
+                <!--{% if current_user == post.author %}-->
+                <!--&lt;!&ndash;<a href="{{ url_for('.edit', id=post.id) }}">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<span class="label label-primary">Edit</span>&ndash;&gt;-->
+                <!--&lt;!&ndash;</a>&ndash;&gt;-->
+                <!--<a href="{{ url_for('.edit', id=post.id) }}" class="post-edit">-->
+                    <!--<i class="iconfont">-->
+                        <!--&#xe649;-->
+                    <!--</i>编辑-->
+                <!--</a>-->
+
+                <!--{% elif current_user.is_administrator() %}-->
                 <!--<a href="{{ url_for('.edit', id=post.id) }}">-->
-                    <!--<span class="label label-primary">Edit</span>-->
+                    <!--<span class="label label-danger">Edit [Admin]</span>-->
                 <!--</a>-->
-                <a href="{{ url_for('.edit', id=post.id) }}" class="post-edit">
-                    <i class="iconfont">
-                        &#xe649;
-                    </i>编辑
-                </a>
+                <!--{% endif %}-->
+                <!--&lt;!&ndash;<a href="{{ url_for('.post', id=post.id) }}">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<span class="label label-default">view</span>&ndash;&gt;-->
+                <!--&lt;!&ndash;</a>&ndash;&gt;-->
+                <!--&lt;!&ndash;<a href="{{ url_for('.post',id=post.id)}}#comments" >&ndash;&gt;-->
+                        <!--&lt;!&ndash;<span class="label label-primary">&ndash;&gt;-->
+                            <!--&lt;!&ndash;{{ post.comments.count() }} Comments&ndash;&gt;-->
+                        <!--&lt;!&ndash;</span>&ndash;&gt;-->
+                <!--&lt;!&ndash;</a>&ndash;&gt;-->
+            <!--</div>-->
+             <div class="post-footer">
+                    <a href="{{ url_for('.post', id=post.id) }}" class="icon_lists read">
+                        <i class="iconfont">
+                            &#xe6ab;
+                        </i>{{post.read_times}}
+                    </a>
+                    <a target="_blank" href="{{ url_for('.post',id=post.id)}}" class="icon_lists">
+                        <i class="iconfont">
+                            &#xe6a5;
+                        </i>{{ post.comments.count() }}
+                    </a>
 
+                    <a href="###" class="icon_lists add_like" name="{{ url_for('.add_like',id=post.id) }}">
+                        <i class="iconfont">
+                            &#xe633;
+                        </i>{{post.like_times}}
+                    </a>
 
-                {% elif current_user.is_administrator() %}
-                <a href="{{ url_for('.edit', id=post.id) }}">
-                    <span class="label label-danger">Edit [Admin]</span>
-                </a>
-                {% endif %}
-                <!--<a href="{{ url_for('.post', id=post.id) }}">-->
-                    <!--<span class="label label-default">view</span>-->
-                <!--</a>-->
-                <!--<a href="{{ url_for('.post',id=post.id)}}#comments" >-->
-                        <!--<span class="label label-primary">-->
-                            <!--{{ post.comments.count() }} Comments-->
-                        <!--</span>-->
-                <!--</a>-->
-            </div>
+                    {% if current_user == post.author %}
+                    <a href="{{ url_for('.edit', id=post.id) }}" class="post-edit">
+                        <i class="iconfont">
+                            &#xe649;
+                        </i>编辑
+                    </a>
+                    <a href="{{ url_for('.delete',id=post.id) }}" class="post-edit">
+                        <span class="label label-danger" >删除</span>
+                    </a>
+                    {% elif current_user.is_administrator() %}
+                    <a href="{{ url_for('.edit', id=post.id) }}">
+                        <span class="label label-danger">Edit [Admin]</span>
+                    </a>
+                    <a href="{{ url_for('.delete',id=post.id) }}">
+                        <span class="label label-danger">Dele [Admin]</span>
+                    </a>
+                    {% endif %}
+
+                </div>
         </div>
     </li>
         </div>

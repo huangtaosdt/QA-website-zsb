@@ -17,6 +17,7 @@ class Follow(db.Model):
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
 
+
 class Role(db.Model):
     __tablename__ = 'roles'
     id = db.Column(db.Integer, primary_key=True)
@@ -52,6 +53,15 @@ class Role(db.Model):
     def __repr__(self):
         return '<Role %r>' % self.name
 
+class Score(db.Model):
+    __tablename__ = 'scores'
+    id=db.Column(db.Integer,primary_key=True)
+    major=db.Column(db.String(64),unique=True)
+    year_2017=db.Column(db.Integer)
+    year_2016=db.Column(db.Integer)
+    year_2015=db.Column(db.Integer)
+    year_2014=db.Column(db.Integer)
+    year_2013=db.Column(db.Integer)
 
 class Group(db.Model):
     __tablename__ = 'groups'
@@ -412,8 +422,43 @@ class Comment(db.Model):
             raise ValidationError('comment does not have a body')
         return Comment(body=body)
 
+class InvitationCode(db.Model):
+    __tablename__ = 'invitationcodes'
+    id=db.Column(db.Integer,primary_key=True, autoincrement=True)
+    code=db.Column(db.Text,unique=True)
 
-# db.event.listen(Post.body, 'set', Post.on_changed_body)
+    @staticmethod
+    def generate_code(count=100):
+        import random
+        import string
+        ''' 
+            @count:生成激活码的个数 
+            @length:生成激活码的长度 
+        '''
+        length=6
+        result = {}
+        source = list(string.ascii_uppercase)
+        for index in range(0, 10):
+            source.append(str(index))
+        while len(result) < count:
+            key = ''
+            for index in range(length):
+                key += random.choice(source)
+            if key in result:
+                pass
+            else:
+                result[key] = 1
+        for key in result:
+            print(key)
+            c=InvitationCode(code=key)
+            db.session.add(c)
+        db.session.commit()
+
+
+
+
+            # db.event.listen(Post.body, 'set', Post.on_changed_body)
+
 db.event.listen(Comment.body, 'set', Comment.on_changed_body)
 
 

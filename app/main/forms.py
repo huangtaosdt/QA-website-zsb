@@ -1,5 +1,5 @@
 from flask_wtf import Form
-from ..models import Role, User
+from ..models import Role, User,Score
 from wtforms import StringField, SubmitField, TextAreaField, BooleanField, SelectField, FileField
 from wtforms.validators import DataRequired, Length, Required, Email, ValidationError, Regexp
 from flask_pagedown.fields import PageDownField
@@ -75,9 +75,51 @@ class PostForm(Form):
 
     # body = PageDownField("有什么新鲜事想告诉大家?", validators=[Required()])
     body = TextAreaField(u'有什么新鲜事想告诉大家?', validators=[DataRequired(u'内容不能为空！')])
+    type= SelectField('发文类别',choices=[(0,'默认'),
+                                      (1, '复习经验'),
+                                      (2, '资料专区'),
+                                      (3, '政策专区'),])
     submit = SubmitField('发布')
 
 
 class CommentForm(Form):
     body = StringField('', validators=[Required()])
     submit = SubmitField('Submit')
+
+class ScoreFrom(Form):
+    choices=[(1, '师范英语'),
+             (2, '学前教育'),
+             (3, '日语'),
+             (4, '公共事业管理'),
+             (5, '工程管理'),
+             (6, '金 融 学'),
+             (7, '旅游管理'),
+             (8, '土木工程'),
+             (9, '法学'),
+             (10, '会计'),
+             (11, '工商管理'),
+             (12, '国际贸易'),
+             (13, '交通运输'),
+             (14, '电气工程'),
+             (15, '市场营销'),
+             (16, '计算机'),
+             (17, '生物科学'),
+             (18, '小学教育'),
+             (19, '汉语言文学'),
+             (20, '高职英语'),
+             (21, '电子商务'),
+             (22, '机械设计制造'),
+             (23, '艺术设计'),
+             (24, '临床医学'),
+             (25, '护理学'),
+             (26, '口腔医学'),
+             (27, '药学'),
+             (28, '服装设计'),
+             (29, '中药'),
+             (30, '医学影像学'),
+             (31, '中医学'),
+             (32, '针灸'),
+             (33, '医学检验')]
+    major = SelectField('专业',id="query_score",coerce=int, choices=choices)
+    submit=SubmitField('查询')
+

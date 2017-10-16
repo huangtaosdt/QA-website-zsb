@@ -3,6 +3,14 @@
 {% import "_macros.html" as macros %}
 {% block title %} 圈儿！  {% endblock%}
 
+
+{% block notice %}
+    <div class="alert alert-success" id="notice" role="alert" >
+       <i class="iconfont" style="color:red;">&#xe60d;</i>&nbsp;公告&nbsp;&nbsp;&nbsp;
+        <span id="notice">论坛官方微信公众号上线啦！<strong>www_zsblab_com</strong>, 最新考试消息、资料将会第一时间发布在公众号！快来关注吧！</span>
+    </div>
+{% endblock %}
+
 {% block page_content %}
 <div class="page-header">
     <h1>Hello, {% if current_user.is_authenticated %}{{ current_user.username }}{% else %}Stranger{% endif %}!</h1>
@@ -44,6 +52,7 @@
     {% include '_hot_posts.html' %}
 </div>
 {% endblock %}
+
 
 
 {% block scripts %}

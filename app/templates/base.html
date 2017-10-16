@@ -4,6 +4,7 @@
 {% block head %}
 {{ super() }}
 <script type="text/javascript" src="/static/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/static/js/echarts.simple.min.js"></script>
 <script type="text/javascript" src="/static/ckeditor/ckeditor.js"></script>
 <script type="text/javascript" src="/static/js/marked.js"></script>
 <script type="text/javascript" src="/static/js/ace/ace.js"></script>
@@ -65,6 +66,7 @@
                         <li><a href="#">复习经验</a></li>
                         <li><a href="#">资料下载</a></li>
                         <li><a href="#">考试大纲</a></li>
+                        <li><a href="{{ url_for('main.show_score')}}">分数</a></li>
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -158,8 +160,12 @@
     </div>
     {% endfor %}
 
+
     <section id="main_area">
         <!-- first level -->
+        {% block notice %}
+
+        {% endblock %}
         {% block page_content_for_write %}
         <aside id="first_col">
             <div class="inner">
@@ -173,7 +179,6 @@
                 {% endblock %}
             </div>
         </article>
-
         {% endblock %}
     </section>
 </div>
@@ -214,6 +219,7 @@ $(function (){
 
 
 
+
 </script>
 <script>
     var cname=document.getElementsByClassName("hot-post-body");
@@ -221,10 +227,20 @@ $(function (){
         cname[i].innerHTML=cname[i].innerHTML.replace(/!\[\]\(http.+\)/," ")
     }
 
+</script>
+<!--<script>-->
+    <!--var tab=document.getElementsByClassName("post-tabs");-->
+    <!--if(tab.length==0){-->
+        <!--console.info('here')-->
+        <!--$("#notice").attr("style","display:none;");-->
+        <!--console.info('succ')-->
+    <!--}-->
+<!--</script>-->
+<script>
+$('.comment_reply').click(function() {
+    $("input#body").val("回复 "+ $($(this).parent()).siblings('.comment-author').text() +"：");
 
-
-
-
+});
 </script>
 <script>
 $(document).ready(function(){
@@ -236,11 +252,6 @@ $(document).ready(function(){
             }});
     });
 });
-
-
-
-
-
 
 </script>
 <script>
@@ -255,11 +266,6 @@ $(document).ready(function(){
         $('html, body').animate({scrollTop: 0}, 1000);
     });
 });
-
-
-
-
-
 
 </script>
 <script type="text/javascript">
@@ -292,6 +298,7 @@ function timer(intDiff){
 $(function(){
     timer(intDiff);
 });
+
 
 
 

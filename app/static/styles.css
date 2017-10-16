@@ -5,6 +5,14 @@
 .profile-thumbnail {
     position: absolute;
 }*/
+/* 主页 */
+#notice{
+    margin-bottom:1px;
+}
+.page-header > h1{
+    font-size:2em;
+}
+
 
 /* 更改个人资料页面*/
 
@@ -18,6 +26,12 @@
     min-width:190px;
 }
 
+/* 单个文章页面 */
+#second_col > .inner > .posts{
+    margin-top:50px;
+}
+
+
 /* 发布文章按钮*/
 form input#submit{
     border:1px solid #f77c3d;
@@ -27,12 +41,15 @@ form input#submit{
 .img-rounded.profile-thumbnail{
     position:absolute;
 }
+.for-pc{
+    margin-top:60px;
+}
 .img-rounded{
     border-radius:50%;
 }
 .profile-header {
     min-height: 260px;
-    margin-left: 280px;
+    margin-left: 220px;
     padding-left:20px;
     overflow:hidden;
 }
@@ -46,7 +63,7 @@ form input#submit{
 }
 
 .page-header{
-    margin-bottom:40px;
+    margin-bottom:10px;
 }
 .profile-header > h3 {
     margin-bottom:40px;
