@@ -14,8 +14,13 @@
     }
 
     /* logo 部分*/
-    header .logo {
+    header .logo,
+    .footer{
+        min-width:100% !important;
         width: 100% !important;
+    }
+    .ft-app{
+        display:none;
     }
 
     /* mynav菜单项 */
