@@ -5,21 +5,17 @@
 {% block title %}升本圈儿_升本人的精神家园!{% endblock %}
 
 {% block page_content %}
-
 {% include '_posts.html' %}
-
-<h4 id="comments">评论</h4>
 {% include '_comments.html' %}
-{% if current_user.can(Permission.COMMENT) %}
-<div id="comment" class="comment-form">
-    {{ wtf.quick_form(form) }}
-</div>
-{% endif %}
-
 
 {% if pagination %}
 <div class="pagination">
     {{ macros.pagination_widget(pagination, '.post', fragment='#comments', id=posts[0].id) }}
+</div>
+{% endif %}
+{% if current_user.can(Permission.COMMENT) %}
+<div id="comment" class="comment-form">
+    {{ wtf.quick_form(form) }}
 </div>
 {% endif %}
 {% endblock %}

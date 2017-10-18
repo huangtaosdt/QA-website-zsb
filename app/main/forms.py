@@ -84,7 +84,7 @@ class PostForm(Form):
 
 
 class CommentForm(Form):
-    body = StringField('', validators=[Required()])
+    body = StringField('发表评论', validators=[Required()])
     submit = SubmitField('Submit')
 
 class ScoreFrom(Form):

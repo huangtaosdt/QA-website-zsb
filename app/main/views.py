@@ -94,6 +94,8 @@ def other(type):
 @main.route('/score',methods=['GET', 'POST'])
 def show_score():
     form=ScoreFrom()
+    hot_posts = Post.query.order_by(Post.read_times.desc()).limit(10).all()
+
     # # 用户点击查询，则返回相应专业的成绩数据--json格式
     # if form.validate_on_submit():
     # #     major = form.major.data
@@ -101,7 +103,7 @@ def show_score():
     # #     json_data = {major: score.major}
     # #     return jsonify(json_data)
     #     return query_score(form.major.data)
-    return render_template('score.html',form=form)
+    return render_template('score.html',form=form,hot_posts=hot_posts)
 
 @main.route('/query_score/<major_id>',methods=['GET', 'POST'])
 def query_score(major_id):
@@ -147,8 +149,9 @@ def user(username):
         page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'],
         error_out=False)
     posts = pagination.items
+    hot_posts = Post.query.order_by(Post.read_times.desc()).limit(10).all()
     return render_template('user.html', user=user, posts=posts,
-                           pagination=pagination)
+                           hot_posts=hot_posts,pagination=pagination)
 
 @main.route('/edit-profile', methods=['GET', 'POST'])
 @login_required

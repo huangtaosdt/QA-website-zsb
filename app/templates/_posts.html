@@ -3,17 +3,24 @@
     <div class="post-row">
     <!--添加if-->
     <li class="post">
-        <div class="post-thumbnail">
-            <a href="{{ url_for('.user', username=post.author.username) }}">
+        <!--<div class="post-thumbnail">-->
+            <!--<a href="{{ url_for('.user', username=post.author.username) }}">-->
+                <!--{% if post.author.avatar %}-->
+                    <!--<img class="img-rounded profile-thumbnail" width="40" height="40" src="{{ post.author.avatar }}">-->
+                    <!--{% else %}-->
+                    <!--<img class="img-rounded profile-thumbnail" src="{{ post.author.gravatar(size=40) }}">-->
+                    <!--{% endif %}-->
+            <!--</a>-->
+        <!--</div>-->
+        <div class="post-content">
+            <div class="post-author">
+                <a href="{{ url_for('.user', username=post.author.username) }}">
                 {% if post.author.avatar %}
                     <img class="img-rounded profile-thumbnail" width="40" height="40" src="{{ post.author.avatar }}">
                     {% else %}
                     <img class="img-rounded profile-thumbnail" src="{{ post.author.gravatar(size=40) }}">
                     {% endif %}
             </a>
-        </div>
-        <div class="post-content">
-            <div class="post-author">
                 <a class="author-name" href="{{ url_for('.user', username=post.author.username) }}">{{
                 post.author.name }}</a>
                 <span class="create-time">{{ moment(post.timestamp).format('YYYY/MM/DD hh:mm ') }}</span>
@@ -24,54 +31,9 @@
             <!--</a>-->
                 </div>
             <div class="post-body" >
-                {% if post.body_html %}
-                {{ post.body_html | safe }}
-                {% else %}
                 {{ post.body |safe}}
-                {% endif %}
             </div>
-            <!--<div class="post-footer">-->
-                <!--<a href="{{ url_for('.post', id=post.id) }}" class="icon_lists">-->
-                    <!--<i class="iconfont">-->
-                        <!--&#xe6ab;-->
-                    <!--</i>17-->
-                <!--</a>-->
-                <!--<a target="_blank comment" href="{{ url_for('.post',id=post.id)}}#comments" class="icon_lists">-->
-                <!--<i class="iconfont">-->
-                    <!--&#xe6a5;-->
-                <!--</i>{{ post.comments.count() }}-->
-                    <!--</a>-->
-                <!--<a href="#" class="icon_lists">-->
-                <!--<i class="iconfont">-->
-                    <!--&#xe633;-->
-                <!--</i>104-->
-                    <!--</a>-->
-
-                <!--{% if current_user == post.author %}-->
-                <!--&lt;!&ndash;<a href="{{ url_for('.edit', id=post.id) }}">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<span class="label label-primary">Edit</span>&ndash;&gt;-->
-                <!--&lt;!&ndash;</a>&ndash;&gt;-->
-                <!--<a href="{{ url_for('.edit', id=post.id) }}" class="post-edit">-->
-                    <!--<i class="iconfont">-->
-                        <!--&#xe649;-->
-                    <!--</i>编辑-->
-                <!--</a>-->
-
-                <!--{% elif current_user.is_administrator() %}-->
-                <!--<a href="{{ url_for('.edit', id=post.id) }}">-->
-                    <!--<span class="label label-danger">Edit [Admin]</span>-->
-                <!--</a>-->
-                <!--{% endif %}-->
-                <!--&lt;!&ndash;<a href="{{ url_for('.post', id=post.id) }}">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<span class="label label-default">view</span>&ndash;&gt;-->
-                <!--&lt;!&ndash;</a>&ndash;&gt;-->
-                <!--&lt;!&ndash;<a href="{{ url_for('.post',id=post.id)}}#comments" >&ndash;&gt;-->
-                        <!--&lt;!&ndash;<span class="label label-primary">&ndash;&gt;-->
-                            <!--&lt;!&ndash;{{ post.comments.count() }} Comments&ndash;&gt;-->
-                        <!--&lt;!&ndash;</span>&ndash;&gt;-->
-                <!--&lt;!&ndash;</a>&ndash;&gt;-->
-            <!--</div>-->
-             <div class="post-footer">
+            <div class="post-footer">
                     <a href="{{ url_for('.post', id=post.id) }}" class="icon_lists read">
                         <i class="iconfont">
                             &#xe6ab;

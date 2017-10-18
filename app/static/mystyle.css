@@ -1,13 +1,13 @@
 body{
-    background:#fff !important;
+    background:#f3f3f3 !important;
 }
+
+/* 顶部header  logo+nav导航区域*/
 
 header {
     position: relative;
     height: 160px;
 }
-
-
 header .logo {
     height: 100px;
     width: 100%;
@@ -97,33 +97,51 @@ header form.search {
 
 
 /*main_area区域*/
-
+.container{
+    width:1060px;
+}
+section#main_area .page-header,
+section#main_area .topic,
+section#main_area article{
+    border-radius:2px;
+}
+section#main_area .page-header{
+    margin: 0px 0 20px;
+}
+section#main_area .user-profiile-header{
+    background:#fff;
+    margin-bottom:10px;
+}
 section#main_area {
     min-height:800px;
-    width:100%;
-    margin: 0 3px;
+    width:1020px;
+    padding:0 3px;
 }
 
 section#main_area div.inner {
-    margin: 0px 10px;
+   /* margin: 0px 10px;*/
     /*border: 3px solid red;*/
 }
 
 section#main_area #first_col div.inner {
-    margin:16px 0 0;
+  /*  margin:16px 0 0;*/
     /*border: 3px solid red;*/
 }
 
 section#main_area article {
     float: left;
-    width: 70%;
-    padding-left:30px;
+    width: 700px;
     /*    border: 2px solid black;*/
+}
+section#main_area .page-header ~ article {
+    background:#fff;
+    margin-bottom:35px;
+    padding:0 20px;
 }
 
 section#main_area aside {
     float: right;
-    width: 30%;
+    width: 300px;
 }
 
 
@@ -148,19 +166,76 @@ article#second_col a.post-edit:hover{
 }
 
 /*侧边栏*/
+/* social */
+#social_area{
+    padding:10px;
+    margin-bottom:10px;
+}
+#social_area .inner{
+    position:relative;
+}
+#social_area span{
+    display:inline-block;
+    margin: 0 5px;
+}
+a:link,a:hover{
+    text-decoration:none;
+}
+#social_area svg:hover{
+    opacity:.5;
+}
+.popup{
+    position:absolute;
+    display:none;
+    top:140%;
+    border:1px solid #f58c21;
+    border-radius:3px;
+}
+.popup img{
+    width:200px;
+}
+#social_area span:hover .popup{
+    display:block;
+}
+#social_area span .popup:before { /*橙色三角形*/
+    content:""; /*需要有内容，这里是一个空字符串*/
+    position:absolute; /*相对于弹出层定位*/
+    border:12px solid;
+    border-color: transparent transparent #f58c21 transparent;
+    top: -12%; left:10%;
+    height:0px;width:0px
+    z-index:10;
+}
+#social_area span .popup:after { /*白色三角形*/
+    content:""; /*需要有内容，这里是一个空字符串*/
+    position:absolute; /*相对于弹出层定位*/
+    border:10px solid;
+    border-color: transparent transparent #fff transparent  ;
+    top: -10%; left:11%;
+    height:0px;width:0px
+    z-index:1000;
+}
+
+
+
+
+/* 侧边栏之topic */
 aside#first_col .title p{
     font-size:1.3em;
     font-weight:500;
-    color:gray;
+    color:#555;
     margin:0 10px;
     padding:10px 0;
-    border-bottom: 2px solid #eee;
+    border-bottom: 1px solid #eee;
 }
 aside#first_col .inner .topic{
     background:#fff;
     height:300px;
     margin:0 0 5px;
+    border:none;
+    border-radius:3px;
     overflow:hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,.1)
 }
 
 
@@ -256,7 +331,7 @@ div.go-top {
     z-index: 999999;
     position: fixed;
     bottom: 250px;
-    left: 85%;
+    left: 75%;
     margin-left: 40px;
     border: 1px solid #0482ba;
     width: 38px;

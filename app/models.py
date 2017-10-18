@@ -321,20 +321,22 @@ class Post(db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     group_id = db.Column(db.Integer, db.ForeignKey('groups.id'))
+    #body_html 实际应改为body_no_html,我们利用bleach ，基本上把所有标签去掉了，方便显示abstract
     body_html = db.Column(db.Text)
     # disabled=db.Column(db.Boolean)
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
 
     @staticmethod
     def on_changed_body(target, value, oldvalue, initiator):
-        allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
-                        'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
-                        'h1', 'h2', 'h3', 'p']
+        # allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code',
+        #                 'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
+        #                 'h1', 'h2', 'h3', 'p']
+        allowed_tags=['b','code','em','i']
         # target.body_html = bleach.linkify(
         #     bleach.clean(markdown(value, output_format='html'), tags=allowed_tags, strip=True))
         # 由于markdown生成但图片但html会被clean清除某个标签，会导致失效，所以采取直接不 clean但方式，
         # 但此方式存在跨站脚本隐患，建议升级修复！！
-        target.body_html = bleach.linkify(markdown(value, output_format='html'))
+        target.body_html = bleach.linkify(bleach.clean(markdown(value, output_format='html'),tags=allowed_tags,strip=True))
         print("value is :", value)
         print("markdown:",markdown(value, output_format='html'))
         print('clean:',bleach.clean(markdown(value, output_format='html'), tags=allowed_tags, strip=True))
@@ -459,6 +461,7 @@ class InvitationCode(db.Model):
 
             # db.event.listen(Post.body, 'set', Post.on_changed_body)
 
+db.event.listen(Post.body,'set',Post.on_changed_body)
 db.event.listen(Comment.body, 'set', Comment.on_changed_body)
 
 

@@ -1,17 +1,8 @@
-@media screen and (max-width:1200px){
 
-}
-/* 屏宽小于768，隐藏侧边栏：top栏 */
-@media screen and (max-width: 768px){
-    section#main_area aside{
-        display:none;
-    }
-    section#main_area article{
-        width:100%;
-    }
-    section#main_area article{
-        width:100% !important;
-    }
+/* 建议596px  */
+@media screen and (max-width:420px){
+
+    /* user界面的header部分：头像、简介 */
     section#main_area div.page-header img{
         width:128px;
         height:128px;
@@ -21,6 +12,7 @@
     section#main_area .profile-header{
         margin-left: 135px;
     }
+
     /* mynav菜单项 */
     /* 将主页及其下拉按钮组调至左侧*/
     .my-nav{
@@ -54,11 +46,8 @@
         color:#eee;
         text-decoration:none;
     }
-}
 
 
-/* 建议596px  */
-@media screen and (max-width:420px){
     /* logo */
     .logo > div >p{
         display:block !important;
@@ -79,14 +68,25 @@
         line-height:30px !important;
     }
 
+    /* 修改posts列表,微调 */
+    ul.posts li.post {
+        padding: 8px;
+    }
+
     /* 调整main_area 布局 */
+    .container{
+        width:auto !important;
+    }
+    section#main_area{
+        width:100% !important;
+    }
     /* aside */
     section#main_area aside{
         display:none !important;
     }
     section#main_area article {
         width: 100% !important;
-        padding-left: 5px !important;
+        padding: 5px !important;
     }
 
     /* user 页面调整 */

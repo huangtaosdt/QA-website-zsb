@@ -2,8 +2,8 @@
 {% block title %}本圈儿_!{% endblock %}
 {% import "_macros.html" as macros %}
 
-{% block page_content %}
-<div class="page-header">
+{% block page_header %}
+<div class="page-header user-profiile-header">
     {% if user.avatar %}
     <img class="img-rounded profile-thumbnail for-pc" width='200' height='200' src="{{ user.avatar }}">
     {% else %}
@@ -21,14 +21,8 @@
 
         <h1>{{ user.name }}</h1>
         <p>
-            {% if user.major %}
-            专业：{{ user.major }}
-            {% endif %}
-        </p>
-        <p>
             {% if user.school %}
-            学校：<a href="http://maps.google.com/?q={{ user.school }}">
-            {{ user.school }}</a>
+            <strong>学校：</strong>{{ user.school }}&nbsp;<strong>·</strong>&nbsp;{{ user.major }}
             {% endif %}
         </p>
         <!--注意，is__administrator要加括号！！-->
@@ -36,12 +30,19 @@
         <p><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
         {% endif %}
         {% if user.about_me %}
-        <p>简介：{{ user.about_me }}</p>
+        <p><strong>简介：</strong>{{ user.about_me }}</p>
         {% endif %}
-        <p>注册时间：{{ moment(user.member_since).format('L') }}.</p>
-        <p>上次登陆： {{ moment(user.last_seen).fromNow() }}.</p>
-        <p>微博：{{ user.posts.count() }} </p>
+        <p><strong>注册时间：</strong>{{ moment(user.member_since).format('L') }}.</p>
+        <p><strong>上次登陆：</strong> {{ moment(user.last_seen).fromNow() }}.</p>
+        <p><strong>文章成就：</strong>{{ user.posts.count() }} </p>
         <p>
+            <a href="{{ url_for('.followers', username=user.username) }}">粉丝 <span class="badge">{{ user.followers.count()-1 }}</span></a>
+            <a href="{{ url_for('.followed_by', username=user.username) }}">关注 <span class="badge">{{ user.followed.count()-1 }}</span></a>
+            {% if current_user.is_authenticated and user != current_user and
+            user.is_following(current_user) %}
+            | <span class="label label-default">已关注你</span>
+            {% endif %}
+
             {% if current_user.can(Permission.FOLLOW) and user != current_user %}
             {% if not current_user.is_following(user) %}
             <a href="{{ url_for('.follow', username=user.username) }}"
@@ -50,12 +51,6 @@
             <a href="{{ url_for('.unfollow', username=user.username) }}"
                class="btn btn-default">取消关注</a>
             {% endif %}
-            {% endif %}
-            <a href="{{ url_for('.followers', username=user.username) }}">粉丝 <span class="badge">{{ user.followers.count()-1 }}</span></a>
-            <a href="{{ url_for('.followed_by', username=user.username) }}">关注 <span class="badge">{{ user.followed.count()-1 }}</span></a>
-            {% if current_user.is_authenticated and user != current_user and
-            user.is_following(current_user) %}
-            | <span class="label label-default">Follows you</span>
             {% endif %}
         </p>
         <p>
@@ -71,7 +66,11 @@
         </p>
     </div>
 </div>
-<h3> {{ user.name }}的文章列表</h3>
+{% endblock%}
+
+
+{% block page_content %}
+<div><h3> 最新动态</h3></div>
 {% include '_posts_abstract.html' %}
 {% if pagination %}
 <div class="pagination">
