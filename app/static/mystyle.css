@@ -10,7 +10,7 @@ header {
 }
 header .logo {
     height: 100px;
-    width: 100%;
+    width: 1060px;
     background: rgba(213, 100, 100, 1);
     text-align: center;
     line-height: 100px;
@@ -484,7 +484,7 @@ a:link,a:visited {
 ul.navbar-right{
     position: absolute;
     top: 0%;
-    right: 0%;
+    right: 2%;
 }
 
 /* 分数查询页面 */

@@ -13,6 +13,11 @@
         margin-left: 135px;
     }
 
+    /* logo 部分*/
+    header .logo {
+        width: 100% !important;
+    }
+
     /* mynav菜单项 */
     /* 将主页及其下拉按钮组调至左侧*/
     .my-nav{
