@@ -68,7 +68,8 @@ def other(type):
         error_out=False)
     posts = pagination.items
     hot_posts = Post.query.order_by(Post.read_times.desc()).limit(10).all()
-
+    if current_user.is_authenticated == False:
+        return render_template("need_login.html")
     if current_user.can(Permission.WRITE_ARTICLES) and form.validate_on_submit():
 
         post = Post(body=form.body.data,group_id=type,

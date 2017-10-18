@@ -212,11 +212,6 @@ $(function (){
             $(cname[i]).after(img);
             cname[i].innerText=cname[i].innerText.replace(/!\[\]\(http.+\)/," ")
         }
-　　　　var nowLength=cname[i].innerText.length;
-　　　　if(nowLength>130){
-          var abstract=cname[i].innerText;
-　　　　　　cname[i].innerText= abstract.slice(0,130)+'...';
-　　　　}
 　　}　
 });
 
