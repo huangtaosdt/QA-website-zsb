@@ -95,6 +95,8 @@ def other(type):
 def show_score():
     form=ScoreFrom()
     hot_posts = Post.query.order_by(Post.read_times.desc()).limit(10).all()
+    if current_user.is_authenticated == False:
+        return render_template("need_login.html")
 
     # # 用户点击查询，则返回相应专业的成绩数据--json格式
     # if form.validate_on_submit():
@@ -107,14 +109,9 @@ def show_score():
 
 @main.route('/query_score/<major_id>',methods=['GET', 'POST'])
 def query_score(major_id):
-    # query.get_or_404(id)
-    print('score here!!')
-    print(major_id)
     score=Score.query.filter_by(id=major_id).first()
     all_score=[score.year_2013 , score.year_2014 , score.year_2015,score.year_2016,score.year_2017]
-    print(all_score)
     json_data={'major':score.major,'score':all_score}
-    print('vvvv')
     return jsonify(json_data)
 
 @main.route('/all')

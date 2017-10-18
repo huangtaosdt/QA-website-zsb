@@ -1,5 +1,5 @@
 {% extends "bootstrap/base.html" %}
-{% block title %}爱的方法本人的精神家园!{% endblock %}
+{% block title %}山东专升本论坛_升本人的精神家园!{% endblock %}
 
 {% block head %}
 {{ super() }}
@@ -10,10 +10,12 @@
 <script type="text/javascript" src="/static/js/marked.js"></script>
 <script type="text/javascript" src="/static/js/ace/ace.js"></script>
 <link rel="stylesheet" href=" {{ url_for('static', filename='github-markdown.css') }}"/>
+
 <link rel="shortcut icon" href="{{ url_for('static', filename = 'favicon.ico') }}"
       type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='timer.css') }}">
 <link rel="icon" href="{{ url_for('static', filename = 'favicon.ico') }}" type="image/x-icon">
+
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mobile.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mystyle.css') }}">
@@ -79,7 +81,7 @@
                         </li>
 
                         {% if current_user.is_authenticated %}
-                        <li><a href="{{ url_for('main.user', username=current_user.username) }}">个人资料</a></li>
+                        <li><a target="_blank" href="{{ url_for('main.user', username=current_user.username) }}">个人资料</a></li>
                         {% endif %}
 
                         {% if current_user.is_authenticated %}
@@ -200,20 +202,20 @@ $(function (){
     var cname=document.getElementsByClassName("post-abstract");
     for(var i=0;i<cname.length;i++){
         var patt=new RegExp(/.*!\[\]\(http.+\).*/)
-        if(patt.test(cname[i].innerHTML)){
+        if(patt.test(cname[i].innerText)){
             var parent=cname[i].closest('.post-content');
             $(parent).addClass('have-img')
             var img="<a href='" +
                          $(parent).find(".read")[0]+ "' >" +
-                         "<img src='"+cname[i].innerHTML.match(/(\()(http.+)(\))/)[2]+
+                         "<img src='"+cname[i].innerText.match(/(\()(http.+)(\))/)[2]+
                          "' class='wrap-img'></a>"
             $(cname[i]).after(img);
-            cname[i].innerHTML=cname[i].innerHTML.replace(/!\[\]\(http.+\)/," ")
+            cname[i].innerText=cname[i].innerText.replace(/!\[\]\(http.+\)/," ")
         }
-　　　　var nowLength=cname[i].innerHTML.length;
+　　　　var nowLength=cname[i].innerText.length;
 　　　　if(nowLength>130){
-          var abstract=cname[i].innerHTML;
-　　　　　　cname[i].innerHTML= abstract.slice(0,130)+'...';
+          var abstract=cname[i].innerText;
+　　　　　　cname[i].innerText= abstract.slice(0,130)+'...';
 　　　　}
 　　}　
 });

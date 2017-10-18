@@ -14,7 +14,7 @@ class Config:
     MAIL_USERNAME = "huangtaosdt@sina.com"
     MAIL_PASSWORD = "Huang???Tao..."
     FLASKY_MAIL_SUBJECT_PREFIX = '【重要】'
-    FLASKY_MAIL_SENDER = '升本圈儿 <huangtaosdt@sina.com>'
+    FLASKY_MAIL_SENDER = '山东专升本论坛 <huangtaosdt@sina.com>'
     MAIL_SERVER = 'smtp.sina.com'
     # FLASKY_ADMIN=os.environ.get('FLASKY_ADMIN')
     FLASKY_ADMIN = "huangtaosdt@sina.com"

@@ -323,6 +323,7 @@ class Post(db.Model):
     group_id = db.Column(db.Integer, db.ForeignKey('groups.id'))
     #body_html 实际应改为body_no_html,我们利用bleach ，基本上把所有标签去掉了，方便显示abstract
     body_html = db.Column(db.Text)
+    body_abstract=db.Column(db.Text)
     # disabled=db.Column(db.Boolean)
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
 
@@ -332,16 +333,13 @@ class Post(db.Model):
         #                 'em', 'i', 'li', 'ol', 'pre', 'strong', 'ul',
         #                 'h1', 'h2', 'h3', 'p']
         allowed_tags=['b','code','em','i']
-        # target.body_html = bleach.linkify(
-        #     bleach.clean(markdown(value, output_format='html'), tags=allowed_tags, strip=True))
-        # 由于markdown生成但图片但html会被clean清除某个标签，会导致失效，所以采取直接不 clean但方式，
-        # 但此方式存在跨站脚本隐患，建议升级修复！！
-        target.body_html = bleach.linkify(bleach.clean(markdown(value, output_format='html'),tags=allowed_tags,strip=True))
-        print("value is :", value)
-        print("markdown:",markdown(value, output_format='html'))
-        print('clean:',bleach.clean(markdown(value, output_format='html'), tags=allowed_tags, strip=True))
-        print('body_html:',target.body_html)
-        print('test:',bleach.clean("<b><i>an example</i></b>",tags=['b']))
+        bleach_body = bleach.linkify(bleach.clean(markdown(value, output_format='html'),tags=allowed_tags,strip=True))
+        target.body_html=bleach_body
+        if len(bleach_body) <= 120:
+            target.body_abstract = bleach_body
+        else:
+            target.body_abstract=bleach_body[:120]+'...'
+        print(target.body_abstract)
 
 
     @staticmethod

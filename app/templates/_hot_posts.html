@@ -3,7 +3,7 @@
     <div class="hot-posts">
         <li>
             <p class="post-content hot-post-body">
-                <a href="{{ url_for('.post', id=post.id) }}" style="color:black;"> {{ post.body_html|safe}}</a>
+                <a target="_blank" href="{{ url_for('.post', id=post.id) }}" style="color:black;"> {{ post.body_html|safe}}</a>
             </p>
         </li>
     </div>
