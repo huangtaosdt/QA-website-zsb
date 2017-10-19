@@ -3,9 +3,9 @@ from  datetime import datetime
 from flask import jsonify, render_template, session, redirect, url_for, abort, flash, request, current_app, \
     make_response
 from . import main
-from .forms import NameForm, EditProfileForm, EditProfileAdminForm, PostForm, CommentForm,ScoreFrom
+from .forms import NameForm, EditProfileForm, EditProfileAdminForm, PostForm, CommentForm, ScoreFrom
 from .. import db
-from ..models import User, Role, Post, Permission, Comment, Group, AnonymousUser,Score
+from ..models import User, Role, Post, Permission, Comment, Group, AnonymousUser, Score
 from flask_login import login_required, current_user
 from ..decorators import admin_required, permission_required
 from werkzeug.utils import secure_filename
@@ -21,7 +21,6 @@ def index():
     #                 body=form.body.data,
     #                 author=current_user._get_current_object())
     if current_user.can(Permission.WRITE_ARTICLES) and form.validate_on_submit():
-
         post = Post(body=form.body.data,
                     author=current_user._get_current_object())
         db.session.add(post)
@@ -53,11 +52,12 @@ def index():
         page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'],
         error_out=False)
     posts = pagination.items
-    hot_posts=Post.query.order_by(Post.read_times.desc()).limit(10).all()
+    hot_posts = Post.query.order_by(Post.read_times.desc()).limit(10).all()
     return render_template('index.html', form=form, posts=posts,
-                           show_followed=show_followed, pagination=pagination,hot_posts=hot_posts)
+                           show_followed=show_followed, pagination=pagination, hot_posts=hot_posts)
 
-@main.route('/other/<type>',methods=['GET','POST'])
+
+@main.route('/other/<type>', methods=['GET', 'POST'])
 def other(type):
     # posts = Post.query.filter_by(group_id=type).all()
     form = PostForm()
@@ -71,13 +71,12 @@ def other(type):
     if current_user.is_authenticated == False:
         return render_template("need_login.html")
     if current_user.can(Permission.WRITE_ARTICLES) and form.validate_on_submit():
-
-        post = Post(body=form.body.data,group_id=type,
+        post = Post(body=form.body.data, group_id=type,
                     author=current_user._get_current_object())
         db.session.add(post)
-        return redirect(url_for('.other',type=type,_anchor="#"))
+        return redirect(url_for('.other', type=type, _anchor="#"))
 
-    return render_template('other.html', posts=posts,form=form,
+    return render_template('other.html', posts=posts, form=form,
                            pagination=pagination, hot_posts=hot_posts)
 
 
@@ -91,9 +90,9 @@ def other(type):
 
 # 主页仅显示自己的文章，暂时去掉show_followed、all判断
 
-@main.route('/score',methods=['GET', 'POST'])
+@main.route('/score', methods=['GET', 'POST'])
 def show_score():
-    form=ScoreFrom()
+    form = ScoreFrom()
     hot_posts = Post.query.order_by(Post.read_times.desc()).limit(10).all()
     if current_user.is_authenticated == False:
         return render_template("need_login.html")
@@ -105,14 +104,16 @@ def show_score():
     # #     json_data = {major: score.major}
     # #     return jsonify(json_data)
     #     return query_score(form.major.data)
-    return render_template('score.html',form=form,hot_posts=hot_posts)
+    return render_template('score.html', form=form, hot_posts=hot_posts)
 
-@main.route('/query_score/<major_id>',methods=['GET', 'POST'])
+
+@main.route('/query_score/<major_id>', methods=['GET', 'POST'])
 def query_score(major_id):
-    score=Score.query.filter_by(id=major_id).first()
-    all_score=[score.year_2013 , score.year_2014 , score.year_2015,score.year_2016,score.year_2017]
-    json_data={'major':score.major,'score':all_score}
+    score = Score.query.filter_by(id=major_id).first()
+    all_score = [score.year_2013, score.year_2014, score.year_2015, score.year_2016, score.year_2017]
+    json_data = {'major': score.major, 'score': all_score}
     return jsonify(json_data)
+
 
 @main.route('/all')
 @login_required
@@ -132,7 +133,7 @@ def show_followed():
 
 @main.route('/hot-topic')
 def get_hot_topic():
-    query=Post.query.order_by(Post.read_times.desc()).limit(10).all()
+    query = Post.query.order_by(Post.read_times.desc()).limit(10).all()
 
 
 @main.route('/user/<username>')
@@ -148,7 +149,8 @@ def user(username):
     posts = pagination.items
     hot_posts = Post.query.order_by(Post.read_times.desc()).limit(10).all()
     return render_template('user.html', user=user, posts=posts,
-                           hot_posts=hot_posts,pagination=pagination)
+                           hot_posts=hot_posts, pagination=pagination)
+
 
 @main.route('/edit-profile', methods=['GET', 'POST'])
 @login_required
@@ -171,9 +173,9 @@ def edit_profile():
                 filename.rsplit('.')[1]
             except:
                 # 中文文件名无法读取，若是中文文件名，用用户名做前缀：✖️✖️✖️.jpg
-                print("头像文件名为中文:",filename)
-                filename=current_user.username + '.' +filename
-                print('文件名已更正：',filename)
+                print("头像文件名为中文:", filename)
+                filename = current_user.username + '.' + filename
+                print('文件名已更正：', filename)
         UPLOAD_FOLDER = '{}{}'.format(os.getcwd(), '/app/static/avatar/')
         # print('当前工作目录：', UPLOAD_FOLDER)
         ALLOWED_EXTENSIONS = ['png', 'gif', 'jpeg', 'jpg', '']
@@ -184,8 +186,8 @@ def edit_profile():
             return redirect(url_for('.edit_profile'))
 
         if filename:
-            new_file_name=current_user.username + '_avatar.' + filename.rsplit(".")[1]
-            file_location = '{}{}'.format(UPLOAD_FOLDER,new_file_name )
+            new_file_name = current_user.username + '_avatar.' + filename.rsplit(".")[1]
+            file_location = '{}{}'.format(UPLOAD_FOLDER, new_file_name)
             avatar.save(file_location)
             current_user.avatar = '/static/avatar/{}_avatar.{}'.format(current_user.username, filename.rsplit(".")[1])
             # print(current_user.avatar)
@@ -198,6 +200,7 @@ def edit_profile():
     form.major.data = current_user.major
     form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', form=form)
+
 
 @main.route('/edit-profile/<int:id>', methods=['GET', 'POST'])
 @login_required
@@ -223,7 +226,7 @@ def edit_profile_admin(id):
     form.role.data = user.role_id
     form.name.data = user.name
     form.school.data = user.school
-    form.major.data=user.major
+    form.major.data = user.major
     form.about_me.data = user.about_me
     return render_template('edit_profile.html', form=form, user=user)
 
@@ -274,17 +277,17 @@ def edit(id):
     form.body.data = post.body
     return render_template('edit_post.html', form=form)
 
+
 @main.route('/delete/<int:id>')
 @login_required
 @permission_required(Permission.WRITE_ARTICLES)
 def delete(id):
-    post=Post.query.get_or_404(id)
+    post = Post.query.get_or_404(id)
     if current_user != post.author and not current_user.can(Permission.ADMINISTER):
         abort(403)
     db.session.delete(post)
     flash("文章已经删除！")
     return redirect(url_for(".index"))
-
 
 
 # 新增写作功能--- 单独页面
@@ -410,6 +413,7 @@ def moderate_disable(id):
     comment.disabled = True
     db.session.add(comment)
     return redirect(url_for('.moderate', page=request.args.get('page', 1, type=int)))
+
 
 # @main.route('/moderate')
 # @login_required
