@@ -101,6 +101,7 @@
                                 {% if current_user.can(Permission.MODERATE_COMMENTS) %}
                                 <li><a href="{{ url_for('main.moderate') }}">Moderate Comments</a></li>
                                 {% endif %}
+
                                 <li><a href="{{url_for('auth.change_password') }}">更改密码</a></li>
                                 <li><a href="{{ url_for('auth.password_reset_request') }}">忘记密码</a></li>
                                 <li><a href="{{ url_for('auth.change_email_request') }}">注册邮箱更改</a></li>
@@ -114,7 +115,6 @@
                 </div>
             </div>
         </div>
-
 
         <div class="account-for-mobile" style="display:none;">
             {% if current_user.is_authenticated %}
@@ -190,7 +190,7 @@
 {% endblock %}
 
 {% block footer %}
-{% include "_footer.html"%}
+{% include "_footer.html" %}
 {% endblock %}
 
 {% block scripts %}
@@ -228,14 +228,6 @@ $(function (){
     }
 
 </script>
-<!--<script>-->
-    <!--var tab=document.getElementsByClassName("post-tabs");-->
-    <!--if(tab.length==0){-->
-        <!--console.info('here')-->
-        <!--$("#notice").attr("style","display:none;");-->
-        <!--console.info('succ')-->
-    <!--}-->
-<!--</script>-->
 <script>
 $('.comment_reply').click(function() {
     $("input#body").val("回复 "+ $($(this).parent()).siblings('.comment-author').text() +"：");

@@ -35,7 +35,6 @@ def before_request():
 @auth.route('/unconfirmed')
 def unconfirmed():
     if current_user.is_anonymous or current_user.confirmed:
-        print('用户已确认:', current_user.confirmed)
         return redirect('main.index')
     print('该账户尚未确认unconfirmed: %s \n' %current_user.email)
     return render_template('auth/unconfirmed.html')

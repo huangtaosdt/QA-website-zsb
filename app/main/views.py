@@ -411,6 +411,17 @@ def moderate_disable(id):
     db.session.add(comment)
     return redirect(url_for('.moderate', page=request.args.get('page', 1, type=int)))
 
+# @main.route('/moderate')
+# @login_required
+# @permission_required(Permission.MODERATE_COMMENTS)
+# def moderate_user():
+#     page = request.args.get('page', 1, type=int)
+#     pagination = User.query.order_by(User.member_since.desc()).paginate(
+#         page, per_page=current_app.config['FLASKY_COMMENTS_PER_PAGE'], error_out=False)
+#     users = pagination.items
+#     return render_template('moderate.html', comments=comments, pagination=pagination, page=page)
+
+
 
 @main.route('/shutdown')
 def server_shutdown():
