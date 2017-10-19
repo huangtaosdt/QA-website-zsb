@@ -22,316 +22,273 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='iconfont.css') }}">
 {% endblock %}
 
-
-{% block navbar %}
-<header>
-    <div class='logo'>
-        <div>
-            <p>考试倒计时</p>
-            <a href="###" class="time-item"><span>考试倒计时</span>
-                <strong id="day_show">0天</strong>
-                <strong id="hour_show">0时</strong>
-                <strong id="minute_show">0分</strong>
-                <strong id="second_show">0秒</strong>
-            </a>
-        </div>
-    </div>
-    <div class="my-nav">
-        <div class="navbar navbar-default" role="navigation">
-            <div class="container">
-                <div class="navbar-header" id="navbar-header-id">
-                    <button type="button" class="navbar-toggle"
-                            data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="{{ url_for('main.index') }}">主页</a>
-                    <!--<a class="navbar-brand" href="{{url_for('main.index') }}">主页</a>-->
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-left">
-                        <!--<li>-->
-                        <!--<a href="#" class='dropdown-toggle' data-toggle="dropdown">-->
-                        <!--技术杂谈<b class="caret"></b>-->
-                        <!--</a>-->
-                        <!--<ul class="dropdown-menu">-->
-                        <!--<li><a href="#">Python</a></li>-->
-                        <!--<li><a href="#">Java</a></li>-->
-                        <!--<li><a href="#">Machine Learning </a></li>-->
-                        <!--<li><a href="#">Algorithm</a></li>-->
-                        <!--<li><a href="#">Linux</a></li>-->
-                        <!--<li><a href="#">Web</a></li>-->
-                        <!--<li><a href="#">Other</a></li>-->
-                        <!--</ul>-->
-                        <!--</li>-->
-                        <li><a href="{{ url_for('main.other',type=2) }}">复习经验</a></li>
-                        <li><a href="{{ url_for('main.other',type=3) }}">资料下载</a></li>
-                        <li><a href="{{ url_for('main.other',type=4) }}">考试大纲</a></li>
-                        <li><a href="{{ url_for('main.show_score')}}">分数</a></li>
-
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <form class="search" action="#" method="post">
-                                <label for="user_name">search</label>
-                                <input type="text" id="user_name" name="user_name" placeholder="搜一搜"/>
-                            </form>
-                        </li>
-
-                        {% if current_user.is_authenticated %}
-                        <li><a target="_blank" href="{{ url_for('main.user', username=current_user.username) }}">个人资料</a></li>
-                        {% endif %}
-
-                        {% if current_user.is_authenticated %}
-                        <li class="dropdown">
-                            <a href="#" class='dropdown-toggle' data-toggle="dropdown">
-                                <!--<img src="{{ current_user.gravatar(size=18) }}">-->
-                                {% if current_user.avatar %}
-                                <img class="img-rounded profile-thumbnail-header"
-                                     width='18' height='18' src="{{ current_user.avatar }}">
-                                {% else %}
-                                <img class="img-rounded profile-thumbnail-header"
-                                     src="{{ current_user.gravatar(size=18) }}">
-                                {% endif %}
-                                设置<b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                {% if current_user.can(Permission.MODERATE_COMMENTS) %}
-                                <li><a href="{{ url_for('main.moderate') }}">Moderate Comments</a></li>
-                                {% endif %}
-
-                                <li><a href="{{url_for('auth.change_password') }}">更改密码</a></li>
-                                <li><a href="{{ url_for('auth.password_reset_request') }}">忘记密码</a></li>
-                                <li><a href="{{ url_for('auth.change_email_request') }}">注册邮箱更改</a></li>
-                                <li><a href="{{ url_for('auth.logout') }}">退出</a></li>
-                            </ul>
-                        </li>
-                        {% else %}
-                        <li><a href="{{ url_for('auth.login')  }}">登录/注册</a></li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="account-for-mobile" style="display:none;">
-            {% if current_user.is_authenticated %}
-            <li class="dropdown">
-                <a href="#" class='dropdown-toggle' data-toggle="dropdown">
-                    <!--<img src="{{ current_user.gravatar(size=18) }}">-->
-                    {% if current_user.avatar %}
-                    <img class="img-rounded profile-thumbnail-header"
-                         width='18' height='18' src="{{ current_user.avatar }}">
-                    {% else %}
-                    <img class="img-rounded profile-thumbnail-header"
-                         src="{{ current_user.gravatar(size=18) }}">
-                    {% endif %}
-                    <span>设置</span><b class="caret"></b>
+{% block body %}
+    {% block navbar %}
+    <header>
+        <div class='logo'>
+            <div>
+                <p>考试倒计时</p>
+                <a href="###" class="time-item"><span>考试倒计时</span>
+                    <strong id="day_show">0天</strong>
+                    <strong id="hour_show">0时</strong>
+                    <strong id="minute_show">0分</strong>
+                    <strong id="second_show">0秒</strong>
                 </a>
-                <ul class="dropdown-menu pull-right">
-                    {% if current_user.can(Permission.MODERATE_COMMENTS) %}
-                    <li><a href="{{ url_for('main.moderate') }}">Moderate Comments</a></li>
-                    {% endif %}
-                    <li><a href="{{url_for('auth.change_password') }}">更改密码</a></li>
-                    <li><a href="{{ url_for('main.user', username=current_user.username) }}">个人资料</a></li>
-                    <li><a href="{{ url_for('auth.password_reset_request') }}">忘记密码</a></li>
-                    <li><a href="{{ url_for('auth.change_email_request') }}">注册邮箱更改</a></li>
-                    <li><a href="{{ url_for('auth.logout') }}">退出</a></li>
-                </ul>
-            </li>
-            {% else %}
-            <li><a href="{{ url_for('auth.login')  }}">登录/注册</a></li>
-            {% endif %}
-        </div>
-    </div>
-</header>
-{% endblock %}
-
-
-{% block content %}
-<div class="container">
-    <div class="go-top">
-        <div class="arrow"></div>
-        <div class="stick"></div>
-    </div>
-    {% for message in get_flashed_messages() %}
-    <div class="alert alert-warning">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        {{ message }}
-    </div>
-    {% endfor %}
-
-
-    <section id="main_area">
-        <!-- first level -->
-        {% block notice %}
-        {% endblock %}
-        {% block page_header %}
-        {% endblock %}
-
-        {% block page_content_for_write %}
-        <aside id="first_col">
-            <div class="inner">
-                {% block aside_page %}
-                {% endblock%}
             </div>
-        </aside>
-        <article id="second_col">
-            <div class="inner">
-                {% block page_content %}
-                {% endblock %}
-            </div>
-        </article>
-        {% endblock %}
-    </section>
-</div>
-{% endblock %}
-
-{% block footer %}
-<div class="footer">
-    <div class="footer-cont clearfix">
-        <dl class="ft-web-info">
-            <dt class="ft-web-name">升本圈儿，升本人必备的升学论坛</dt>
-            <dd class="ft-info-item">QQ群：601186975</dd>
-            <dd class="ft-info-item">微信：www_zsblab_com</dd>
-            <dd class="ft-info-item"></dd>
-        </dl>
-        <div class="ft-app">
-            <div class="ft-qrcode-box">
-                <img width="128" src="http://uploadfiles.nowcoder.com/app/app_download.png">
-            </div>
-            <p>扫一扫，寻找更多战友</p>
         </div>
+        <div class="my-nav">
+            <div class="navbar navbar-default" role="navigation">
+                <div class="container">
+                    <div class="navbar-header" id="navbar-header-id">
+                        <button type="button" class="navbar-toggle"
+                                data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="{{ url_for('main.index') }}">主页</a>
+                        <!--<a class="navbar-brand" href="{{url_for('main.index') }}">主页</a>-->
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-left">
+                            <!--<li>-->
+                            <!--<a href="#" class='dropdown-toggle' data-toggle="dropdown">-->
+                            <!--技术杂谈<b class="caret"></b>-->
+                            <!--</a>-->
+                            <!--<ul class="dropdown-menu">-->
+                            <!--<li><a href="#">Python</a></li>-->
+                            <!--<li><a href="#">Java</a></li>-->
+                            <!--<li><a href="#">Machine Learning </a></li>-->
+                            <!--<li><a href="#">Algorithm</a></li>-->
+                            <!--<li><a href="#">Linux</a></li>-->
+                            <!--<li><a href="#">Web</a></li>-->
+                            <!--<li><a href="#">Other</a></li>-->
+                            <!--</ul>-->
+                            <!--</li>-->
+                            <li><a href="{{ url_for('main.other',type=2) }}">复习经验</a></li>
+                            <li><a href="{{ url_for('main.other',type=3) }}">资料下载</a></li>
+                            <li><a href="{{ url_for('main.other',type=4) }}">考试大纲</a></li>
+                            <li><a href="{{ url_for('main.show_score')}}">分数</a></li>
 
-        <div class="ft-main">
-            <ul class="ft-links">
-                <li><a href="###">关于我们</a></li>
-                <li><a href="###">升本经验</a></li>
-                <li><a href="###">政策大纲</a></li>
-                <li><a href="###">资料下载</a></li>
-                <li><a href="###">分数查询</a></li>
-            </ul>
-            <ul class="webrights">
-                <li>
-                    <span style="color:#a9b8ca;">已备案</span>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <form class="search" action="#" method="post">
+                                    <label for="user_name">search</label>
+                                    <input type="text" id="user_name" name="user_name" placeholder="搜一搜"/>
+                                </form>
+                            </li>
+
+                            {% if current_user.is_authenticated %}
+                            <li><a target="_blank" href="{{ url_for('main.user', username=current_user.username) }}">个人资料</a></li>
+                            {% endif %}
+
+                            {% if current_user.is_authenticated %}
+                            <li class="dropdown">
+                                <a href="#" class='dropdown-toggle' data-toggle="dropdown">
+                                    <!--<img src="{{ current_user.gravatar(size=18) }}">-->
+                                    {% if current_user.avatar %}
+                                    <img class="img-rounded profile-thumbnail-header"
+                                         width='18' height='18' src="{{ current_user.avatar }}">
+                                    {% else %}
+                                    <img class="img-rounded profile-thumbnail-header"
+                                         src="{{ current_user.gravatar(size=18) }}">
+                                    {% endif %}
+                                    设置<b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    {% if current_user.can(Permission.MODERATE_COMMENTS) %}
+                                    <li><a href="{{ url_for('main.moderate') }}">Moderate Comments</a></li>
+                                    {% endif %}
+
+                                    <li><a href="{{url_for('auth.change_password') }}">更改密码</a></li>
+                                    <li><a href="{{ url_for('auth.password_reset_request') }}">忘记密码</a></li>
+                                    <li><a href="{{ url_for('auth.change_email_request') }}">注册邮箱更改</a></li>
+                                    <li><a href="{{ url_for('auth.logout') }}">退出</a></li>
+                                </ul>
+                            </li>
+                            {% else %}
+                            <li><a href="{{ url_for('auth.login')  }}">登录/注册</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="account-for-mobile" style="display:none;">
+                {% if current_user.is_authenticated %}
+                <li class="dropdown">
+                    <a href="#" class='dropdown-toggle' data-toggle="dropdown">
+                        <!--<img src="{{ current_user.gravatar(size=18) }}">-->
+                        {% if current_user.avatar %}
+                        <img class="img-rounded profile-thumbnail-header"
+                             width='18' height='18' src="{{ current_user.avatar }}">
+                        {% else %}
+                        <img class="img-rounded profile-thumbnail-header"
+                             src="{{ current_user.gravatar(size=18) }}">
+                        {% endif %}
+                        <span>设置</span><b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu pull-right">
+                        {% if current_user.can(Permission.MODERATE_COMMENTS) %}
+                        <li><a href="{{ url_for('main.moderate') }}">Moderate Comments</a></li>
+                        {% endif %}
+                        <li><a href="{{url_for('auth.change_password') }}">更改密码</a></li>
+                        <li><a href="{{ url_for('main.user', username=current_user.username) }}">个人资料</a></li>
+                        <li><a href="{{ url_for('auth.password_reset_request') }}">忘记密码</a></li>
+                        <li><a href="{{ url_for('auth.change_email_request') }}">注册邮箱更改</a></li>
+                        <li><a href="{{ url_for('auth.logout') }}">退出</a></li>
+                    </ul>
                 </li>
-                <li>
-                    <span>
-                    <img src="/static/web-file/wechat.jpg"
-                         style="width:18px;height:18px;">
-                    <a style="font-size:12px;" class="ft-info-item"
-                       href="##">
-                        阿里云支持</a>
-                    </span>
-                </li>
-                <li>
-                    <a href="javascript:void(0);">山东专升本论坛©2017 All Rights Reserved</a>
-                </li>
-            </ul>
+                {% else %}
+                <li><a href="{{ url_for('auth.login')  }}">登录/注册</a></li>
+                {% endif %}
+            </div>
         </div>
+    </header>
+    {% endblock %}
+
+    {% block content %}
+    <div class="container">
+        <div class="go-top">
+            <div class="arrow"></div>
+            <div class="stick"></div>
+        </div>
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+        </div>
+        {% endfor %}
+
+
+        <section id="main_area">
+            <!-- first level -->
+            {% block notice %}
+            {% endblock %}
+            {% block page_header %}
+            {% endblock %}
+
+            {% block page_content_for_write %}
+            <aside id="first_col">
+                <div class="inner">
+                    {% block aside_page %}
+                    {% endblock%}
+                </div>
+            </aside>
+            <article id="second_col">
+                <div class="inner">
+                    {% block page_content %}
+                    {% endblock %}
+                </div>
+            </article>
+            {% endblock %}
+        </section>
     </div>
-</div>
-{% endblock %}
+    {% endblock %}
 
-{% block scripts %}
-{{ super() }}
-{{ moment.include_moment() }}
-{{ moment.lang("zh-CN") }}
-<script>
-$(function (){
-    var cname=document.getElementsByClassName("post-abstract");
-    for(var i=0;i<cname.length;i++){
-        var patt=new RegExp(/.*!\[\]\(http.+\).*/)
-        if(patt.test(cname[i].innerText)){
-            var parent=cname[i].closest('.post-content');
-            $(parent).addClass('have-img')
-            var img="<a href='" +
-                         $(parent).find(".read")[0]+ "' >" +
-                         "<img src='"+cname[i].innerText.match(/(\()(http.+)(\))/)[2]+
-                         "' class='wrap-img'></a>"
-            $(cname[i]).after(img);
-            cname[i].innerText=cname[i].innerText.replace(/!\[\]\(http.+\)/," ")
+    {% block footer %}
+    {% include '_footer.html' %}
+    {% endblock %}
+
+    {% block scripts %}
+    {{ super() }}
+    {{ moment.include_moment() }}
+    {{ moment.lang("zh-CN") }}
+    <script>
+    $(function (){
+        var cname=document.getElementsByClassName("post-abstract");
+        for(var i=0;i<cname.length;i++){
+            var patt=new RegExp(/.*!\[\]\(http.+\).*/)
+            if(patt.test(cname[i].innerText)){
+                var parent=cname[i].closest('.post-content');
+                $(parent).addClass('have-img')
+                var img="<a href='" +
+                             $(parent).find(".read")[0]+ "' >" +
+                             "<img src='"+cname[i].innerText.match(/(\()(http.+)(\))/)[2]+
+                             "' class='wrap-img'></a>"
+                $(cname[i]).after(img);
+                cname[i].innerText=cname[i].innerText.replace(/!\[\]\(http.+\)/," ")
+            }
+    　　}　
+    });
+
+
+
+
+
+
+    </script>
+    <script>
+        var cname=document.getElementsByClassName("hot-post-body");
+        for(var i=0;i<cname.length;i++){
+            cname[i].innerHTML=cname[i].innerHTML.replace(/!\[\]\(http.+\)/," ")
         }
-　　}　
-});
 
+    </script>
+    <script>
+    $('.comment_reply').click(function() {
+        $("input#body").val("回复 "+ $($(this).parent()).siblings('.comment-author').text() +"：");
 
+    });
+    </script>
+    <script>
+    $(document).ready(function(){
+        $(".add_like").click(function(e){
+                var ele=$(this)
+                $.ajax({type:"GET",url:$(this).attr("name"),dataType:'json',
+                    success:function(data){
+                        ele.html("<i class='iconfont'>&#xe633;</i>"+data.like_times)
+                }});
+        });
+    });
 
+    </script>
+    <script>
+        $(function() {
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > 1000)
+                $('div.go-top').show();
+            else
+                $('div.go-top').hide();
+        });
+        $('div.go-top').click(function() {
+            $('html, body').animate({scrollTop: 0}, 1000);
+        });
+    });
 
+    </script>
+    <script type="text/javascript">
+    var current_time=new Date();
+    var end_time='2018/03/25 00:00:00'
+    var uSecondDiff = new Date(end_time).getTime()-current_time;   //时间差的毫秒数
 
-
-</script>
-<script>
-    var cname=document.getElementsByClassName("hot-post-body");
-    for(var i=0;i<cname.length;i++){
-        cname[i].innerHTML=cname[i].innerHTML.replace(/!\[\]\(http.+\)/," ")
+    var intDiff = parseInt(uSecondDiff/1000);//倒计时总秒数量
+    function timer(intDiff){
+        window.setInterval(function(){
+        var day=0,
+            hour=0,
+            minute=0,
+            second=0;//时间默认值
+        if(intDiff > 0){
+            day = Math.floor(intDiff / (60 * 60 * 24));
+            hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+            minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+            second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+        }
+        if (minute <= 9) minute = '0' + minute;
+        if (second <= 9) second = '0' + second;
+        $('#day_show').html(day+"天");
+        $('#hour_show').html('<s id="h"></s>'+hour+'时');
+        $('#minute_show').html('<s></s>'+minute+'分');
+        $('#second_show').html('<s></s>'+second+'秒');
+        intDiff--;
+        }, 1000);
     }
-
-</script>
-<script>
-$('.comment_reply').click(function() {
-    $("input#body").val("回复 "+ $($(this).parent()).siblings('.comment-author').text() +"：");
-
-});
-</script>
-<script>
-$(document).ready(function(){
-    $(".add_like").click(function(e){
-            var ele=$(this)
-            $.ajax({type:"GET",url:$(this).attr("name"),dataType:'json',
-                success:function(data){
-                    ele.html("<i class='iconfont'>&#xe633;</i>"+data.like_times)
-            }});
+    $(function(){
+        timer(intDiff);
     });
-});
-
-</script>
-<script>
-    $(function() {
-    $(window).scroll(function() {
-        if ($(window).scrollTop() > 1000)
-            $('div.go-top').show();
-        else
-            $('div.go-top').hide();
-    });
-    $('div.go-top').click(function() {
-        $('html, body').animate({scrollTop: 0}, 1000);
-    });
-});
-
-</script>
-<script type="text/javascript">
-var current_time=new Date();
-var end_time='2018/03/25 00:00:00'
-var uSecondDiff = new Date(end_time).getTime()-current_time;   //时间差的毫秒数
-
-var intDiff = parseInt(uSecondDiff/1000);//倒计时总秒数量
-function timer(intDiff){
-    window.setInterval(function(){
-    var day=0,
-        hour=0,
-        minute=0,
-        second=0;//时间默认值
-    if(intDiff > 0){
-        day = Math.floor(intDiff / (60 * 60 * 24));
-        hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
-        minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
-        second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
-    }
-    if (minute <= 9) minute = '0' + minute;
-    if (second <= 9) second = '0' + second;
-    $('#day_show').html(day+"天");
-    $('#hour_show').html('<s id="h"></s>'+hour+'时');
-    $('#minute_show').html('<s></s>'+minute+'分');
-    $('#second_show').html('<s></s>'+second+'秒');
-    intDiff--;
-    }, 1000);
-}
-$(function(){
-    timer(intDiff);
-});
 
 
 
@@ -339,5 +296,6 @@ $(function(){
 
 
 
-</script>
+    </script>
+    {% endblock %}
 {% endblock %}
