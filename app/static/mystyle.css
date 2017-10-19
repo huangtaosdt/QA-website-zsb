@@ -87,6 +87,7 @@ header form.search {
 }
 
 .search input {
+    display:none;
     width: 7em;
     height:30px;
     margin: 12px;

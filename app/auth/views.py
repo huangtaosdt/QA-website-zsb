@@ -97,6 +97,7 @@ def confirm(token):
         return redirect(url_for('main.index'))
     if current_user.confirm(token):
         flash('您已成功确认账户，欢迎您的到来~!')
+        return redirect(url_for("main.edit_profile"))
     else:
         flash('您的激活链接无效或已失效，如您尚未激活，请重新发送激活邮件.')
     return redirect(url_for('main.index'))
