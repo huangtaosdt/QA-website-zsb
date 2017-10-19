@@ -1,4 +1,4 @@
-from flask_wtf import Form
+from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from  wtforms.validators import Required, Length, Email, Regexp, EqualTo
 from wtforms import ValidationError
@@ -6,7 +6,7 @@ from ..models import User
 
 
 # 用户登陆表单
-class LoginForm(Form):
+class LoginForm(FlaskForm):
     email = StringField('邮箱', validators=[Required(), Length(1, 64), Email()])
     password = PasswordField('密码', validators=[Required()])
     remember_me = BooleanField('记住我')
@@ -14,7 +14,7 @@ class LoginForm(Form):
 
 
 # 用户注册表单
-class RegistrationForm(Form):
+class RegistrationForm(FlaskForm):
     email = StringField('请输入您的邮箱', validators=[Required(), Length(1, 64), Email()])
     username = StringField('用户名', validators=[Required(), Length(1, 64), Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0,
                                                                                      '用户名必须字母开头！仅可包含以下字符：数字、字母、下划线！')])
@@ -32,7 +32,7 @@ class RegistrationForm(Form):
             raise ValidationError('用户名已存在！')
 
 
-class ChangePasswordForm(Form):
+class ChangePasswordForm(FlaskForm):
     old_password = PasswordField('请输入您的旧密码', validators=[Required()])
     password = PasswordField("新密码", validators=[
         Required(), EqualTo('password2', message="Password must match.")])
@@ -40,12 +40,12 @@ class ChangePasswordForm(Form):
     submit = SubmitField("更新密码")
 
 
-class PasswordResetRequestForm(Form):
+class PasswordResetRequestForm(FlaskForm):
     email = StringField('邮箱地址', validators=[Required(), Length(1, 64), Email()])
     submit = SubmitField('找回密码')
 
 
-class PasswordResetForm(Form):
+class PasswordResetForm(FlaskForm):
     email = StringField('邮箱地址', validators=[Required(), Length(1, 64), Email()])
     password = PasswordField('请输入新密码', validators=[Required()])
     password2 = PasswordField('确认密码', validators=[Required(), EqualTo('password', 'Password must match.')])
@@ -56,7 +56,7 @@ class PasswordResetForm(Form):
             raise ValidationError('邮箱地址错误，请确认是否输入正确！')
 
 
-class ChangeEmailForm(Form):
+class ChangeEmailForm(FlaskForm):
     email = StringField('请输入新邮箱', validators=[Required(), Length(1, 64),
                                                  Email()])
     password = PasswordField('请输入密码', validators=[Required()])

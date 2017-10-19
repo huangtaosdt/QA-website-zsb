@@ -1,4 +1,4 @@
-from flask_wtf import Form
+from flask_wtf import FlaskForm
 from ..models import Role, User,Score
 from wtforms import StringField, SubmitField, TextAreaField, BooleanField, SelectField, FileField
 from wtforms.validators import DataRequired, Length, Required, Email, ValidationError, Regexp
@@ -7,12 +7,12 @@ from flask_pagedown.fields import PageDownField
 from wtforms import RadioField
 
 
-class NameForm(Form):
+class NameForm(FlaskForm):
     name=StringField("What is your name?",validators=[DataRequired()])
     submit=SubmitField('Submit')
 
 
-class EditProfileForm(Form):
+class EditProfileForm(FlaskForm):
     avatar = FileField('上传头像')
     name = StringField('用户名', validators=[Length(0, 64)])
     school = StringField('学校', validators=[Length(0, 64)])
@@ -21,7 +21,7 @@ class EditProfileForm(Form):
     submit = SubmitField('确定')
 
 
-class EditProfileAdminForm(Form):
+class EditProfileAdminForm(FlaskForm):
     email = StringField('Email', validators=[Required(), Length(1, 64), Email()])
     username = StringField('Username', validators=[
         Required(), Length(1, 64), Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0,
@@ -51,7 +51,7 @@ class EditProfileAdminForm(Form):
             raise ValidationError('Username already in use.')
 
 
-class PostForm(Form):
+class PostForm(FlaskForm):
     # body = TextAreaField('Whats on your mind?', validators=[Required()])
     # 修改为markdown格式的编辑框
 
@@ -83,11 +83,11 @@ class PostForm(Form):
     submit = SubmitField('发布')
 
 
-class CommentForm(Form):
+class CommentForm(FlaskForm):
     body = StringField('发表评论', validators=[Required()])
     submit = SubmitField('Submit')
 
-class ScoreFrom(Form):
+class ScoreFrom(FlaskForm):
     choices=[(1, '师范英语'),
              (2, '学前教育'),
              (3, '日语'),

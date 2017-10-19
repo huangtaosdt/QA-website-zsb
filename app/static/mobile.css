@@ -107,7 +107,7 @@
     }
     .profile-header{
         margin:0 !important;
-        padding:0 !important;
+        /* padding:0 !important;*/
     }
     .user-gravatar-for-mobile{
         display:block !important;
@@ -152,6 +152,21 @@
         padding-bottom: 20px;
         font-size: 20px;
     }
+
+    /* 分数页面 */
+    #main{
+        width:auto !important;
+        height:auto !important;
+    }
+    #main > div {
+        width:290px !important;
+        height:200px !important;
+    }
+    #main canvas{
+        width:290px !important;
+        height:200px !important;
+    }
+
 
 }
 

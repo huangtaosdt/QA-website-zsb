@@ -16,10 +16,18 @@
             {% else %}
             <img src="{{ user.gravatar(size=80) }}" class=" user-gra-img">
             {% endif %}
+            {% if user.name %}
             <span>{{ user.name }}</span>
+            {% else %}
+             <span>{{ user.username }}</span>
+            {% endif %}
         </div>
 
+        {% if user.name %}
         <h1>{{ user.name }}</h1>
+        {% else %}
+        <h1>{{ user.username }}</h1>
+        {% endif %}
         <p>
             {% if user.school %}
             <strong>学校：</strong>{{ user.school }}&nbsp;<strong>·</strong>&nbsp;{{ user.major }}

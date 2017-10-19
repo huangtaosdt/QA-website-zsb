@@ -91,7 +91,7 @@ form input#submit{
     margin-bottom:40px;
 }
 div.post-tabs {
-    margin-top: 16px;
+    /* margin-top: 16px;*/
 }
 div.post-tabs > .nav-tabs{
     background:#fff;
