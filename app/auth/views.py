@@ -8,27 +8,36 @@ from ..models import User,InvitationCode
 from ..email import send_email
 
 
+# @auth.before_app_request
+# def before_requeset():
+#     # if current_user.is_authenticated \
+#     #         and not current_user.confirmed \
+#     #         and request.endpoint \
+#     #         and request.endpoint[:5]!='auth.' \
+#     #         and request.endpoint!='static':
+#     #     return redirect(url_for('auth.unconfirmed'))
+#     if current_user.is_authenticated:
+#         current_user.ping()
+#         if not current_user.confirmed and request.endpoint[:5] != 'auth.':
+#             return redirect(url_for('auth.unconfirmed'))
 @auth.before_app_request
-def before_requeset():
-    # if current_user.is_authenticated \
-    #         and not current_user.confirmed \
-    #         and request.endpoint \
-    #         and request.endpoint[:5]!='auth.' \
-    #         and request.endpoint!='static':
-    #     return redirect(url_for('auth.unconfirmed'))
+def before_request():
     if current_user.is_authenticated:
         current_user.ping()
-        if not current_user.confirmed and request.endpoint[:5] != 'auth.':
+        if not current_user.confirmed \
+                and request.endpoint \
+                and request.endpoint[:5] != 'auth.' \
+                and request.endpoint != 'static':
             return redirect(url_for('auth.unconfirmed'))
+
 
 
 @auth.route('/unconfirmed')
 def unconfirmed():
     if current_user.is_anonymous or current_user.confirmed:
-        print('confirmed:', current_user.confirmed)
+        print('用户已确认:', current_user.confirmed)
         return redirect('main.index')
-    print('confirmed:', current_user.confirmed)
-    print('----unconfirmed')
+    print('该账户尚未确认unconfirmed: %s \n' %current_user.email)
     return render_template('auth/unconfirmed.html')
 
 
@@ -94,9 +103,10 @@ def confirm(token):
 
 
 @auth.route('/confirm')
+@login_required
 def resend_confirmation():
     token = current_user.generate_confirmation_token()
-    send_email(current_user.email, 'Confirm Your Accout', 'auth/email/confirm', user=current_user, token=token)
+    send_email(current_user.email, '账户确认', 'auth/email/confirm', user=current_user, token=token)
     flash('激活邮件已成功发送到您的邮箱，请登录邮箱查看！')
     return redirect(url_for('main.index'))
 

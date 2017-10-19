@@ -7,7 +7,7 @@
     {% if user.avatar %}
     <img class="img-rounded profile-thumbnail for-pc" width='200' height='200' src="{{ user.avatar }}">
     {% else %}
-    <img class="img-rounded profile-thumbnail" src="{{ user.gravatar(size=256) }}">
+    <img class="img-rounded profile-thumbnail for-pc" width='200' height='200' src="{{ user.gravatar(size=256) }}">
     {% endif %}
     <div class="profile-header">
         <div class="user-gravatar-for-mobile" style="display:none;">

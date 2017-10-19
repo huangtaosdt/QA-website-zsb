@@ -75,7 +75,6 @@ def other(type):
         post = Post(body=form.body.data,group_id=type,
                     author=current_user._get_current_object())
         db.session.add(post)
-        print(url_for('.other',type=type,_anchor="#"))
         return redirect(url_for('.other',type=type,_anchor="#"))
 
     return render_template('other.html', posts=posts,form=form,
@@ -163,20 +162,20 @@ def edit_profile():
         # user icon
         avatar = request.files['avatar']
         filename = secure_filename(avatar.filename).strip()
-        if filename:
-            print("here")
-        print('filename is none? ',filename == "")
+        # if filename:
+        #     print("here")
+        # print('filename is none? ',filename == "")
 
         if filename != "":
             try:
                 filename.rsplit('.')[1]
             except:
                 # 中文文件名无法读取，若是中文文件名，用用户名做前缀：✖️✖️✖️.jpg
-                print("filename:",filename)
+                print("头像文件名为中文:",filename)
                 filename=current_user.username + '.' +filename
-                print('..:',filename)
+                print('文件名已更正：',filename)
         UPLOAD_FOLDER = '{}{}'.format(os.getcwd(), '/app/static/avatar/')
-        print('当前工作目录：', UPLOAD_FOLDER)
+        # print('当前工作目录：', UPLOAD_FOLDER)
         ALLOWED_EXTENSIONS = ['png', 'gif', 'jpeg', 'jpg', '']
         flag = '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
@@ -189,7 +188,7 @@ def edit_profile():
             file_location = '{}{}'.format(UPLOAD_FOLDER,new_file_name )
             avatar.save(file_location)
             current_user.avatar = '/static/avatar/{}_avatar.{}'.format(current_user.username, filename.rsplit(".")[1])
-            print(current_user.avatar)
+            # print(current_user.avatar)
         db.session.add(current_user)
         flash('您的资料已经更新')
         return redirect(url_for('.user', username=current_user.username))
@@ -301,7 +300,7 @@ def write():
                     author=current_user._get_current_object())
         db.session.add(post)
         db.session.commit()
-        print('group_id in write:', post.group_id)
+        # print('group_id in write:', post.group_id)
         flash('Article has benn published.')
         return redirect(url_for('.post', id=post.id))
     return render_template('create_post.html', form=form)
@@ -309,7 +308,7 @@ def write():
 
 @main.route('/add_like/<int:id>')
 def add_like(id):
-    print('here add like .')
+    # print('here add like .')
     post = Post.query.get_or_404(id)
     post.like_times = post.like_times + 1
     db.session.add(post)
