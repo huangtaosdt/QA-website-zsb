@@ -339,7 +339,6 @@ class Post(db.Model):
             target.body_abstract = bleach_body
         else:
             target.body_abstract=bleach_body[:120]+'...'
-        print(target.body_abstract)
 
 
     @staticmethod

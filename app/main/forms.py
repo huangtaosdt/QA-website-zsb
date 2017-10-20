@@ -9,7 +9,7 @@ from wtforms import RadioField
 
 class NameForm(FlaskForm):
     name=StringField("What is your name?",validators=[DataRequired()])
-    submit=SubmitField('Submit')
+    submit=SubmitField('确定')
 
 
 class EditProfileForm(FlaskForm):
@@ -18,7 +18,7 @@ class EditProfileForm(FlaskForm):
     school = StringField('学校', validators=[Length(0, 64)])
     major = StringField('专业',validators=[Length(0,64)])
     about_me = TextAreaField('个人简介')
-    submit = SubmitField('确定')
+    submit = SubmitField('提交')
 
 
 class EditProfileAdminForm(FlaskForm):
@@ -33,7 +33,7 @@ class EditProfileAdminForm(FlaskForm):
     school = StringField('学校', validators=[Length(0, 64)])
     major = StringField('专业', validators=[Length(0, 64)])
     about_me = TextAreaField('个人简介')
-    submit = SubmitField('确认')
+    submit = SubmitField('提交')
 
     def __init__(self, user, *args, **kwargs):
         super(EditProfileAdminForm, self).__init__(*args, **kwargs)
@@ -74,7 +74,7 @@ class PostForm(FlaskForm):
     # title=StringField('Title',validators=[Required()])
 
     # body = PageDownField("有什么新鲜事想告诉大家?", validators=[Required()])
-    body = TextAreaField(u'有什么新鲜事想告诉大家?', validators=[DataRequired(u'内容不能为空！')])
+    body = TextAreaField(u'发布文章', validators=[DataRequired(u'内容不能为空！')])
 
     # type= SelectField('发文类别',choices=[(1,'默认'),
     #                                   (2, '复习经验'),
@@ -85,7 +85,7 @@ class PostForm(FlaskForm):
 
 class CommentForm(FlaskForm):
     body = StringField('发表评论', validators=[Required()])
-    submit = SubmitField('Submit')
+    submit = SubmitField('确定')
 
 class ScoreFrom(FlaskForm):
     choices=[(1, '师范英语'),

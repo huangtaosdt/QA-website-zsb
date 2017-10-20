@@ -193,7 +193,7 @@ def edit_profile():
             # print(current_user.avatar)
         db.session.add(current_user)
         flash('您的资料已经更新')
-        return redirect(url_for('.user', username=current_user.username))
+        return redirect(url_for('.index'))
 
     form.name.data = current_user.name
     form.school.data = current_user.school
@@ -326,13 +326,13 @@ def add_like(id):
 def follow(username):
     user = User.query.filter_by(username=username).first()
     if user is None:
-        flash('Invalid user.')
+        flash('用户无效或不存在！')
         return redirect(url_for('.index'))
     if current_user.is_following(user):
         flash('You are already following this user.')
         return redirect(url_for('.user', username=username))
     current_user.follow(user)
-    flash('You are now following %s.' % username)
+    flash('您已关注 %s.' % username)
     return redirect(url_for('.user', username=username))
 
 
@@ -342,13 +342,13 @@ def follow(username):
 def unfollow(username):
     user = User.query.filter_by(username=username).first()
     if user is None:
-        flash('Invalid user.')
+        flash('当前用户不存在！')
         return redirect(url_for('.index'))
     if not current_user.is_following(user):
-        flash('You are not following this user.')
+        flash('您已取消关注该用户！')
         return redirect(url_for('.user', username=username))
     current_user.unfollow(user)
-    flash('You are not following %s anymore.' % username)
+    flash('您当前尚未关注 %s .' % username)
     return redirect(url_for('.user', username=username))
 
 
@@ -356,7 +356,7 @@ def unfollow(username):
 def followers(username):
     user = User.query.filter_by(username=username).first()
     if user is None:
-        flash('Invalid user.')
+        flash('当前用户不存在.')
         return redirect(url_for('.index'))
     page = request.args.get('page', 1, type=int)
     pagination = user.followers.paginate(page, per_page=current_app.config['FLASKY_FOLLOWERS_PER_PAGE'],
@@ -372,7 +372,7 @@ def followers(username):
 def followed_by(username):
     user = User.query.filter_by(username=username).first()
     if user is None:
-        flash('Invalid user.')
+        flash('用户不存在.')
         return redirect(url_for('.index'))
     page = request.args.get('page', 1, type=int)
     pagination = user.followed.paginate(page, per_page=current_app.config['FLASKY_FOLLOWERS_PER_PAGE'],
@@ -442,7 +442,16 @@ def moderate_user():
 @permission_required(Permission.ADMINISTER)
 def delete_user(id):
     user=User.query.get_or_404(id)
+    # 删除用户以后应将其文章、评论一起删除！
+    posts=Post.query.filter_by(author_id=id).all()
+    for post in posts:
+        db.session.delete(post)
+    comments=Comment.query.filter_by(author_id=id).all()
+    for comment in comments:
+        db.session.delete(comment)
+    # 用户必须最后删除，因为post、comment引用其id作为外键author_id，一旦先删除用户，会导致无法删除post、comment
     db.session.delete(user)
+    db.session.commit()
     flash("用户已删除！")
     return redirect(url_for(".moderate_user",_anchor='manage_body'))
 

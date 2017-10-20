@@ -1,14 +1,99 @@
 {% extends "base.html" %}
 {% import "_macros.html" as macros %}
 {% block title %}山东专升本论坛_升本人的精神家园! - Comment Moderation{% endblock %}
-{% block page_content %}
-<div class="page-header">
-    <h1>评论管理</h1>
+{% block page_content_for_write %}
+<div id="manage_body">
+<div class="panel panel-success">
+    <!-- Default panel contents -->
+    <div class="alert alert-success" role="alert">评论管理</div>
+    <div class="panel-body">
+        <!--<p>评论列表</p>-->
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>内容</th>
+                <th>屏蔽</th>
+                <th>删除</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for comment in comments %}
+            <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <th>
+                    <div class="comment-thumbnail">
+                        <a href="{{ url_for('.user', username=comment.author.username) }}">
+                            {% if comment.author.avatar %}
+                            <img class="img-rounded profile-thumbnail" width="40" height="40"
+                                 src="{{ comment.author.avatar }}">
+                            {% else %}
+                            <img class="img-rounded profile-thumbnail" src="{{ comment.author.gravatar(size=40) }}">
+                            {% endif %}
+                        </a>
+                    </div>
+                    <div class="comment-content">
+                        <div class="comment-date">{{ moment(comment.timestamp).fromNow() }}</div>
+                        <div class="comment-author"><a href="{{ url_for('.user', username=comment.author.username) }}">{{
+                            comment.author.name }}</a></div>
+                        <div class="comment-body">
+                            {% if comment.disabled %}
+                            <p></p><i>This comment has been disabled by a moderator.</i></p>
+                            {% endif %}
+                            {% if moderate or not comment.disabled %}
+                            {% if comment.body_html %}
+                            {{ comment.body_html | safe }}
+                            {% else %}
+                            {{ comment.body }}
+                            {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </th>
+                <th>
+                    <div>
+                        {% if comment.disabled %}
+                        <a class="btn btn-xs" href="{{ url_for('.moderate_enable',
+                                                 id=comment.id, page=page) }}" style="padding:0;">
+                            <button class="btn btn-success"  type="button" style="border:none;">
+                                Enable
+                            </button>
+                        </a>
+                        {% else %}
+                        <a class="btn btn-xs" href="{{ url_for('.moderate_disable',
+                                                 id=comment.id, page=page) }}" style="padding:0;">
+                            <button class="btn btn-success"  type="button" style="border:none;">
+                                Disable
+                            </button>
+                        </a>
+                        {% endif %}
+                    </div>
+                </th>
+                <th>
+                    <div>
+                        {% if current_user.can(Permission.MODERATE_COMMENTS) %}
+                        <a href="{{ url_for('.delete_comment', post_id=comment.post_id,comment_id=comment.id) }}"
+                           class="post-edit">
+                            <button id='comment_delete' class="btn btn-danger" id="submit" type="button">删除</button>
+                        </a>
+
+                        {% endif%}
+                    </div>
+                </th>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% if pagination %}
+    <div class="pagination">
+        {{ macros.pagination_widget(pagination, '.moderate_user') }}
+    </div>
+    {% endif %}
 </div>
-{% set moderate = True %}
-{% include '_comments.html' %} {% if pagination %}
-<div class="pagination">
-    {{ macros.pagination_widget(pagination, '.moderate') }}
 </div>
-{% endif %}
+
+
 {% endblock %}

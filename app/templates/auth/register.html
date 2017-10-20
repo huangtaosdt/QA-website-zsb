@@ -3,12 +3,18 @@
 {% block title %}山东专升本论坛 - 注册账号{% endblock %}
 {% block page_content_for_write %}
 <div class="page-header">
-    <h2>欢迎来到升本圈儿！</h2>
+    <h2>欢迎来到山东专升本论坛！</h2>
 </div>
 
-<div class="col-md-4">
-    {{ wtf.quick_form(form) }}
-
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">新用户注册</h3>
+  </div>
+  <div class="panel-body">
+      <div class="col-md-4">
+          {{ wtf.quick_form(form) }}
+      </div>
+  </div>
 </div>
 
 {% endblock %}

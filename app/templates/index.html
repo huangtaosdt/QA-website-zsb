@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block page_content %}
-<div style="overflow:hidden;background:#fff;">
+<div style="overflow:hidden;background:#fff;border-radius:3px;">
     {% if current_user.can(Permission.WRITE_ARTICLES) %}
     {{ wtf.quick_form(form) }}
     {% endif %}

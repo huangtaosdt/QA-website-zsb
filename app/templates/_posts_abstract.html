@@ -3,24 +3,16 @@
     <div class="post-row">
         <!--添加if-->
         <li class="post">
-            <!--<div class="post-thumbnail">-->
-                <!--<a href="{{ url_for('.user', username=post.author.username) }}">-->
-                    <!--{% if post.author.avatar %}-->
-                    <!--<img class="img-rounded profile-thumbnail" width="40" height="40" src="{{ post.author.avatar }}">-->
-                    <!--{% else %}-->
-                    <!--<img class="img-rounded profile-thumbnail" src="{{ post.author.gravatar(size=40) }}">-->
-                    <!--{% endif %}-->
-
-                <!--</a>-->
-            <!--</div>-->
             <div class="post-content">
                 <div class="post-author">
                     <a href="{{ url_for('.user', username=post.author.username) }}">
+                        {% if post.author %}
                     {% if post.author.avatar %}
                     <img class="img-rounded profile-thumbnail" width="40" height="40" src="{{ post.author.avatar }}">
                     {% else %}
                     <img class="img-rounded profile-thumbnail" src="{{ post.author.gravatar(size=40) }}">
                     {% endif %}
+                        {% endif %}
                     </a>
                     <a class="author-name" href="{{ url_for('.user', username=post.author.username) }}">{{
                         post.author.name }}</a>

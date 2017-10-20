@@ -7,7 +7,12 @@
     <h2>登录</h2>
 </div>
 
-<div class="col-md-4">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">用户登录</h3>
+  </div>
+  <div class="panel-body">
+      <div class="col-md-4">
     {{ wtf.quick_form(form) }}
     <p >
         新用户?
@@ -17,6 +22,8 @@
         <a href="{{ url_for('auth.password_reset_request') }}" style="float:right;">忘记密码？</a>
     </p>
 
+</div>
+  </div>
 </div>
 
 {% endblock %}
