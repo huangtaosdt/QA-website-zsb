@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% import "_macros.html" as macros %}
+{% block title %}用户管理{% endblock %}
+
+{% block page_content_for_write %}
+<div id="manage_body">
+        <div class="panel panel-default" >
+              <!-- Default panel contents -->
+            <div class="alert alert-success" role="alert">用户管理</div>
+            <div class="panel-body">
+                <p>...</p>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>昵称</th>
+                      <th>Email</th>
+                      <th>角色</th>
+                        <th>注册时间</th>
+                        <th>操作</th>
+                        <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for user in users %}
+                    <tr>
+                      <th scope="row">{{ loop.index }}</th>
+                        <td>
+                            <a href="{{ url_for('.user', username=user.username) }}">
+                            {% if user.avatar %}
+                            <img class="img-rounded profile-thumbnail" width="30" height="30" src="{{ user.avatar }}">
+                            {% else %}
+                            <img class="img-rounded profile-thumbnail" src="{{ user.gravatar(size=30) }}">
+                            {% endif %}
+                            </a>
+                            {{ user.username }}
+                        </td>
+                      <td>{{ user.email }}</td>
+                      <td>{{ user.role_id }}</td>
+                      <td>{{ user.member_since.strftime('%Y-%m-%d %H:%M') }}</td>
+                        <td>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                身份 <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu for-user-manage">
+                                    <li><a href="{{ url_for('main.chang_user_role',user_id=user.id,role_id=1) }}">普通</a></li>
+                                    <li><a href="{{ url_for('main.chang_user_role',user_id=user.id,role_id=2) }}">协管</a></li>
+                                    <li><a href="{{ url_for('main.chang_user_role',user_id=user.id,role_id=3) }}">管理</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                            <a href="{{ url_for('main.delete_user',id=user.id )}}">
+                                <button id='user_delete' class="btn btn-danger" id="submit" type="button">删除</button>
+                            </a>
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+
+                </table>
+            </div>
+            {% if pagination %}
+            <div class="pagination">
+                {{ macros.pagination_widget(pagination, '.moderate_user') }}
+            </div>
+{% endif %}
+        </div>
+</div>
+<!--class="panel-heading"-->
+
+
+
+{% endblock %}
+
+

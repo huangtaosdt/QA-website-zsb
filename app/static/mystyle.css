@@ -508,3 +508,40 @@ ul.navbar-right{
     height:130px;
     resize:none;
 }
+
+
+
+    /* 用户管理页面 */
+
+#manage_body {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+#manage_body .table-responsive{
+    padding: 20px;
+}
+#manage_body .pagination{
+    text-align: center;
+}
+#manage_body .table{
+    border-bottom: 1px solid gainsboro;
+}
+#manage_body .btn{
+    font-size: 12px;
+}
+.dropdown-menu.for-user-manage{
+    background:#fff;
+    min-width:auto;
+}
+.dropdown-menu.for-user-manage a{
+    line-height:2em;
+}
+.dropdown-menu.for-user-manage > li > a:focus,
+.dropdown-menu.for-user-manage> li > a:hover {
+    text-decoration: none;
+    background-color: #5CB85D;
+    border: 1px solid #4cae4c;
+}

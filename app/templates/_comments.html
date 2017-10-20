@@ -30,7 +30,13 @@
                 {% endif %}
             </div>
             <div style="text-align:right;">
+                {% if current_user == comment.author or current_user.can(Permission.MODERATE_COMMENTS) %}
+                    <a href="{{ url_for('.delete_comment', post_id=comment.post_id,comment_id=comment.id) }}" class="post-edit">
+                        删除
+                    </a>
+                {% endif%}
                 <a href="#body" class="comment_reply">回复</a>
+
             </div>
             {% if moderate %}
             <br>

@@ -415,17 +415,47 @@ def moderate_disable(id):
     return redirect(url_for('.moderate', page=request.args.get('page', 1, type=int)))
 
 
-# @main.route('/moderate')
-# @login_required
-# @permission_required(Permission.MODERATE_COMMENTS)
-# def moderate_user():
-#     page = request.args.get('page', 1, type=int)
-#     pagination = User.query.order_by(User.member_since.desc()).paginate(
-#         page, per_page=current_app.config['FLASKY_COMMENTS_PER_PAGE'], error_out=False)
-#     users = pagination.items
-#     return render_template('moderate.html', comments=comments, pagination=pagination, page=page)
+@main.route('/delete_comment/<int:post_id>/<int:comment_id>')
+@login_required
+def delete_comment(post_id,comment_id):
+    comment = Comment.query.get_or_404(comment_id)
+    if current_user != comment.author and not current_user.can(Permission.MODERATE_COMMENTS):
+        abort(403)
+    db.session.delete(comment)
+    flash("评论已删除！")
+    return redirect(url_for(".post",id=post_id))
 
 
+
+@main.route('/moderate_user')
+@login_required
+@permission_required(Permission.ADMINISTER)
+def moderate_user():
+    page = request.args.get('page', 1, type=int)
+    pagination = User.query.order_by(User.member_since.desc()).paginate(
+        page, per_page=current_app.config['FLASKY_COMMENTS_PER_PAGE'], error_out=False)
+    users = pagination.items
+    return render_template('moderate_user.html', users=users, pagination=pagination, page=page)
+
+@main.route('/moderate_user/delete/<int:id>')
+@login_required
+@permission_required(Permission.ADMINISTER)
+def delete_user(id):
+    user=User.query.get_or_404(id)
+    db.session.delete(user)
+    flash("用户已删除！")
+    return redirect(url_for(".moderate_user",_anchor='manage_body'))
+
+@main.route('/moderate_user/chang_user_role/<int:user_id>/<int:role_id>')
+@login_required
+@permission_required(Permission.ADMINISTER)
+def chang_user_role(user_id,role_id):
+    user=User.query.get_or_404(user_id)
+    user.role_id=role_id
+    db.session.add(user)
+    db.session.commit()
+    flash('用户权限已更改！')
+    return redirect(url_for(".moderate_user",_anchor='manage_body'))
 
 @main.route('/shutdown')
 def server_shutdown():

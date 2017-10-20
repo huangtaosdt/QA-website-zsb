@@ -295,10 +295,6 @@ div.post-body.post-abstract{
 #second_col > .inner div + .posts {
     margin-top: 0px;
 }
-/* 修改资料*/
-input#avatar{
-    background:lightgray;
-}
 
     /* 登录、注册、修改等页面 */
 #main_area .col-md-4{

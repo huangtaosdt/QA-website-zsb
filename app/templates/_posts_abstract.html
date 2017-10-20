@@ -21,7 +21,7 @@
                     {% else %}
                     <img class="img-rounded profile-thumbnail" src="{{ post.author.gravatar(size=40) }}">
                     {% endif %}
-                </a>
+                    </a>
                     <a class="author-name" href="{{ url_for('.user', username=post.author.username) }}">{{
                         post.author.name }}</a>
                     <span class="create-time">{{ moment(post.timestamp).format('YYYY/MM/DD hh:mm ') }}</span>
@@ -60,15 +60,15 @@
                             &#xe649;
                         </i>编辑
                     </a>
-                    {% elif current_user.is_administrator()  %}
-                    <a href="{{ url_for('.edit', id=post.id) }}">
-                        <span class="label label-danger">Edit [Admin]</span>
-                    </a>
-                    <a href="{{ url_for('.delete',id=post.id) }}">
-                        <span class="label label-danger">Dele [Admin]</span>
-                    </a>
+                    {% endif%}
+                    {% if current_user.can(Permission.ADMINISTER) %}
+                        <a href="{{ url_for('.edit', id=post.id) }}">
+                            <span class="label label-danger">Edit [Admin]</span>
+                        </a>
+                        <a href="{{ url_for('.delete',id=post.id) }}">
+                            <span class="label label-danger">Dele [Admin]</span>
+                        </a>
                     {% endif %}
-
                 </div>
             </div>
         </li>
