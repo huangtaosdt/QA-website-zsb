@@ -39,7 +39,7 @@
                         </td>
                       <td>{{ user.email }}</td>
                       <td>{{ user.role_id }}</td>
-                      <td>{{ user.member_since.strftime('%Y-%m-%d %H:%M') }}</td>
+                      <td>{{ moment(user.member_since).format('YYYY/MM/DD HH:mm ') }}</td>
                         <td>
                             <div class="btn-group">
                                 <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

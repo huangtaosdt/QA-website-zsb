@@ -21,9 +21,14 @@
                     <img class="img-rounded profile-thumbnail" src="{{ post.author.gravatar(size=40) }}">
                     {% endif %}
             </a>
-                <a class="author-name" href="{{ url_for('.user', username=post.author.username) }}">{{
-                post.author.name }}</a>
-                <span class="create-time">{{ moment(post.timestamp).format('YYYY/MM/DD hh:mm ') }}</span>
+                <a class="author-name" href="{{ url_for('.user', username=post.author.username) }}">
+                    {% if post.author.name%}
+                        {{post.author.name }}
+                        {% else %}
+                        {{ post.author.username }}
+                        {% endif %}
+                </a>
+                <span class="create-time">{{ moment(post.timestamp).format('YYYY/MM/DD HH:mm ') }}</span>
             </div>
             <div class="post-title">
             <!--<a  target="_blank" href="{{ url_for('.post', id=post.id) }}">-->

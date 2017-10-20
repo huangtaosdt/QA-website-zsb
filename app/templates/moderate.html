@@ -35,9 +35,14 @@
                         </a>
                     </div>
                     <div class="comment-content">
-                        <div class="comment-date">{{ moment(comment.timestamp).fromNow() }}</div>
-                        <div class="comment-author"><a href="{{ url_for('.user', username=comment.author.username) }}">{{
-                            comment.author.name }}</a></div>
+                        <div class="comment-date">{{ moment(comment.timestamp).format('YYYY/MM/DD HH:mm') }}</div>
+                        <div class="comment-author"><a href="{{ url_for('.user', username=comment.author.username) }}">
+                            {% if comment.author.name %}
+                            {{comment.author.name }}
+                            {% else %}
+                            {{ comment.author.username }}
+                            {% endif %}
+                        </a></div>
                         <div class="comment-body">
                             {% if comment.disabled %}
                             <p></p><i>This comment has been disabled by a moderator.</i></p>
