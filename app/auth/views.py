@@ -64,16 +64,17 @@ def logout():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        invit_code=form.validation_code.data
-
-        if InvitationCode.query.filter_by(code=invit_code).first() is None:
-            flash('您输入的邀请码无效！')
-            # return redirect(url_for("auth.register",form=form))
-            return render_template('auth/register.html', form=form)
-        else:
-            #     删除已使用邀请码
-            code=InvitationCode.query.filter_by(code=invit_code).first()
-            db.session.delete(code)
+        # 暂停邀请码功能
+        # invit_code=form.validation_code.data
+        #
+        # if InvitationCode.query.filter_by(code=invit_code).first() is None:
+        #     flash('您输入的邀请码无效！')
+        #     # return redirect(url_for("auth.register",form=form))
+        #     return render_template('auth/register.html', form=form)
+        # else:
+        #     #     删除已使用邀请码
+        #     code=InvitationCode.query.filter_by(code=invit_code).first()
+        #     db.session.delete(code)
         user = User(email=form.email.data,
                     username=form.username.data,
                     password=form.password.data)

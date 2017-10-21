@@ -20,7 +20,7 @@ class RegistrationForm(FlaskForm):
                                                                                      '用户名必须字母开头！仅可包含以下字符：数字、字母、下划线！')])
     password = PasswordField('请输入密码', validators=[Required(), EqualTo('password2', message='Password must match.')])
     password2 = PasswordField('密码确认', validators=[Required()])
-    validation_code=StringField('邀请码',validators=[Required(),Length(6,6),])
+    # validation_code=StringField('邀请码',validators=[Required(),Length(6,6),])
     submit = SubmitField('注册')
 
     def validate_email(self, field):
