@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}山东专升本论坛_升本人的精神家园!{% endblock %}
+
+{% block page_content_for_write %}
+<!--增加 class 、placeholder即可！！-->
+<div class="panel panel-default upload-resource">
+  <div class="panel-body">
+      <h4>上传资源</h4>
+      <form class="form form-horizontal" action="" method="post" role="form">
+          {{ form.hidden_tag() }}
+    <div class="form-group required">
+        {{ form.title.label(class="col-sm-2 control-label") }}
+        <div class="col-sm-8">
+            {{ form.title(class="form-control",required=True) }}
+        </div>
+    </div>
+    <div class="form-group required">
+        {{form.category.label(class="col-sm-2 control-label")}}
+        <div class="col-sm-3">
+            {{ form.category(class="form-control") }}
+        </div>
+    </div>
+    <div class="form-group required">
+        {{form.point.label(class="col-sm-2 control-label")}}
+        <div class="col-sm-3">
+            {{ form.point(class="form-control") }}
+        </div>
+    </div>
+    <div class="form-group required">
+        {{form.body.label(class="col-sm-2 control-label")}}
+        <div class="col-sm-8">
+            {{ form.body(class="form-control",required=True,placeholder="描述不支持HTML标签；详细的资源描述有机会获得我们的推荐，更有利于他人下载，赚取更多积分。如资源描述不清，有可能审核不通过。") }}
+            {% for error in form.errors.body %}
+                <p class="help-block" style="color:red;">{{ error }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="form-group required">
+        {{form.link.label(class="col-sm-2 control-label")}}
+        <div class="col-sm-8">
+            {{ form.link(class="form-control",required=True,placeholder="建议使用百度云盘存储文件！") }}
+        </div>
+    </div>
+    <div class="form-group required">
+        <div class="col-sm-offset-2 col-sm-8" style="text-align: center;">
+            <button type="submit" class="btn btn-default">提交</button>
+        </div>
+    </div>
+</form>
+      <dl class="create_album_list upld_tips clearfix">
+                <dt class="source_tips">上传须知</dt>
+                <dd class="source_tips">* 如涉及侵权内容,您的资源将被移除</dd>
+                <dd class="source_tips">* 请勿上传小说、mp3、图片等与学习无关的内容.一旦发现将被删除</dd>
+                <dd class="source_tips">* 请勿在未经授权的情况下上传任何涉及著作权侵权的资源，除非该资源完全由您个人创作</dd>
+                <dd class="source_tips">* 点击上传资源即表示您确认该资源不违反资源分享的使用条款，并且您拥有该资源的所有版权或者上传资源的授权</dd>
+              </dl>
+  </div>
+</div>
+
+{% endblock %}

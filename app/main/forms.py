@@ -52,9 +52,7 @@ class EditProfileAdminForm(FlaskForm):
 
 
 class PostForm(FlaskForm):
-    # body = TextAreaField('Whats on your mind?', validators=[Required()])
     # 修改为markdown格式的编辑框
-
     # category = SelectField(u'Category', choices=[('diary','生活笔记'),
     #                                  ('reading-notes','阅读笔记'),
     #                                  ('python','Python'),
@@ -75,12 +73,28 @@ class PostForm(FlaskForm):
 
     # body = PageDownField("有什么新鲜事想告诉大家?", validators=[Required()])
     body = TextAreaField(u'发布文章', validators=[DataRequired(u'内容不能为空！')])
-
     # type= SelectField('发文类别',choices=[(1,'默认'),
     #                                   (2, '复习经验'),
     #                                   (3, '资料专区'),
     #                                   (4, '政策专区'),])
     submit = SubmitField('发布')
+
+class UploadForm(FlaskForm):
+    title=StringField('资源名称：',validators=[DataRequired()])
+    category = SelectField('资源类型：', coerce=int, choices=[(1, '公共课-计算机'),
+                                                        (2, '公共课-英语'),
+                                                        (3, '公共课-语文'),
+                                                        (4, '专业课')])
+    point = SelectField('资源分：', coerce=int, choices=[(2, '2'),
+                                                     (3, '3'),
+                                                     (5, '5'),
+                                                     (8, '8'),
+                                                     (10, '10')])
+    body=TextAreaField('资源描述：',
+                       validators=[DataRequired(),Length(50,500,message='摘要必须大于50个字！' )],)
+    link=StringField('资源链接：',validators=[DataRequired()])
+    submit=SubmitField('提交')
+
 
 
 class CommentForm(FlaskForm):

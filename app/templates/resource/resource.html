@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}山东专升本论坛_升本人的精神家园!{% endblock %}
+
+<!-- 单个资源详情页面，参数为单个资源，调用_resource.html  -->
+<!-- 对应的资源列表页面为：resource_list，调用_resource_abstact.html -->
+{% block page_content %}
+{% include 'resource/_resources.html' %}
+{% include 'resource/_comments_for_resource.html' %}
+
+{% if pagination %}
+<div class="pagination">
+    {{ macros.pagination_widget(pagination, '.resource', fragment='#comments', id=resources[0].id) }}
+</div>
+{% endif %}
+{% if current_user.can(Permission.COMMENT) %}
+<div id="comment" class="comment-form">
+    {{ wtf.quick_form(form) }}
+</div>
+{% endif %}
+{% endblock %}

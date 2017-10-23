@@ -83,15 +83,35 @@ class Group(db.Model):
         db.session.commit()
 
 
+class ResourceGroup(db.Model):
+    __tablename__ = 'resource_groups'
+    id = db.Column(db.Integer, primary_key=True)
+    resource_type = db.Column(db.String(64), unique=True)
+    resources = db.relationship('Resource', backref='resource_group', lazy='dynamic')
+
+    @staticmethod
+    def insert_groups():
+        groups = ['公共课-英语','公共课-计算机','公共课-语文','专业课']
+        for g in groups:
+            group = ResourceGroup.query.filter_by(resource_type=g).first()
+            if group is None:
+                group = ResourceGroup(resource_type=g)
+            print('ResourceGroupe.resource_type:', group.resource_type)
+            db.session.add(group)
+        db.session.commit()
+
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
     email = db.Column(db.String(64), unique=True, index=True)
+    # 用户积分
+    point=db.Column(db.Integer,default=0)
     # foreignkey里面要写我们自己定义的那个表明，即__tablename__
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     posts = db.relationship('Post', backref='author', lazy='dynamic')
+    resources=db.relationship('Resource', backref='author', lazy='dynamic')
     comments = db.relationship('Comment', backref='author', lazy='dynamic')
 
     # 用户信息字段，用于自我介绍
@@ -310,6 +330,37 @@ class Permission:
     ADMINISTER = 0x80
 
 
+class Resource(db.Model):
+    __tablename__='resources'
+    id=db.Column(db.Integer , primary_key=True)
+    title=db.Column(db.Text)
+    # 简介
+    body=db.Column(db.Text)
+    body_bleach_html = db.Column(db.Text)
+    body_abstract = db.Column(db.Text)
+    # 下载链接
+    link=db.Column(db.Text)
+    # 下载积分
+    point=db.Column(db.Integer)
+    # 下载次数
+    download_times = db.Column(db.Integer, default=0)
+    # 创建时间
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    # 资源类型
+    resource_group_id = db.Column(db.Integer, db.ForeignKey('resource_groups.id'))
+    comments = db.relationship('Comment', backref='resource', lazy='dynamic')
+
+    @staticmethod
+    def on_changed_body(target, value, oldvalue, initiator):
+        allowed_tags=[]
+        bleach_body = bleach.linkify(bleach.clean(markdown(value, output_format='html'),tags=allowed_tags,strip=True))
+        target.body_bleach_html=bleach_body
+        if len(bleach_body) <= 120:
+            target.body_abstract = bleach_body
+        else:
+            target.body_abstract=bleach_body[:120]
+
 # 文章模型
 class Post(db.Model):
     __tablename__ = 'posts'
@@ -393,8 +444,10 @@ class Comment(db.Model):
     body_html = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     disabled = db.Column(db.Boolean)
+
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
+    resource_id = db.Column(db.Integer, db.ForeignKey('resources.id'))
 
     @staticmethod
     def on_changed_body(target, value, oldvalue, initiator):
@@ -458,6 +511,7 @@ class InvitationCode(db.Model):
 
             # db.event.listen(Post.body, 'set', Post.on_changed_body)
 
+db.event.listen(Resource.body,'set',Resource.on_changed_body)
 db.event.listen(Post.body,'set',Post.on_changed_body)
 db.event.listen(Comment.body, 'set', Comment.on_changed_body)
 

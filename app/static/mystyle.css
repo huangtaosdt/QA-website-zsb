@@ -1,5 +1,5 @@
 body{
-    background:#f3f3f3 !important;
+    background:#f7f8f9 !important;
 }
 
 /* 顶部header  logo+nav导航区域*/
@@ -155,7 +155,7 @@ section#main_area aside {
 
 article#second_col a.icon_lists{
     float:left;
-    color:#B5B5B5;
+    color:#888;
     transition:.2s all;
     text-decoration:none;
     margin:0 10px 0 0;
@@ -548,4 +548,76 @@ ul.navbar-right{
     text-decoration: none;
     background-color: #5CB85D;
     border: 1px solid #4cae4c;
+}
+
+
+
+/* 资源上传页面 */
+.upload-resource{
+    max-width: 800px;
+    min-height: 500px;
+    margin: 50px auto 20px;
+}
+.upload-resource h4{
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 10px;
+    font-weight: 400;
+}
+.upload-resource label{
+    font-weight: 400;
+    color: #666;
+}
+.upload-resource input,
+.upload-resource select,
+.upload-resource textarea{
+    border: none;
+    background:#f7f8f9;
+}
+
+.upload-resource button{
+    margin-top: 20px;
+    display: inline-block;
+    padding: 0 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background: #e33f3f;
+    margin-left: 10px;
+}
+.pop-footer button,
+.download_bt button{
+    margin: 20px;
+    display: inline-block;
+    padding: 0 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background: #3fa0e3;
+}
+.pop-footer button{
+    background: #e33f3f;
+}
+
+.upload-resource .create_album_list{
+    margin-top: 15px;
+    margin-bottom:0px;
+    border: 1px solid #e6e6e6;
+    padding: 20px 0 0;
+}
+.upload-resource .create_album_list dt {
+    font-size: 14px;
+    font-weight: 700 !important;
+}
+.upload-resource .create_album_list .source_tips {
+    padding: 5px 0 10px 30px;
+    line-height: 1.2;
+    font-weight: normal;
 }

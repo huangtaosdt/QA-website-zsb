@@ -7,6 +7,7 @@
 <script type="text/javascript" src="/static/js/echarts.simple.min.js"></script>
 <script type="text/javascript" src="/static/ckeditor/ckeditor.js"></script>
 <script src="/static/js/iconfont.js"></script>
+<script type="text/javascript" src="/static/js/jquery.reveal.js"></script>
 <script type="text/javascript" src="/static/js/marked.js"></script>
 <script type="text/javascript" src="/static/js/ace/ace.js"></script>
 <link rel="stylesheet" href=" {{ url_for('static', filename='github-markdown.css') }}"/>
@@ -15,7 +16,7 @@
       type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='timer.css') }}">
 <link rel="icon" href="{{ url_for('static', filename = 'favicon.ico') }}" type="image/x-icon">
-
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='reveal_for_popup.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mobile.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mystyle.css') }}">
@@ -67,7 +68,7 @@
                             <!--</ul>-->
                             <!--</li>-->
                             <li><a href="{{ url_for('main.other',type=2) }}">复习经验</a></li>
-                            <li><a href="{{ url_for('main.other',type=3) }}">资料下载</a></li>
+                            <li><a href="{{ url_for('main.resource_list') }}">资料下载</a></li>
                             <li><a href="{{ url_for('main.other',type=4) }}">考试大纲</a></li>
                             <li><a href="{{ url_for('main.show_score')}}">分数</a></li>
 
@@ -249,7 +250,17 @@
                 }});
         });
     });
+    </script>
+    <script>
+    $(document).ready(function(){
+        $("#download-bn").click(function(e){
+                var ele=$(this)
+                $.ajax({type:"GET",url:$(this).attr("name"),dataType:'json',
+                    success:function(data){
 
+                }});
+        });
+    });
     </script>
     <script>
         $(function() {

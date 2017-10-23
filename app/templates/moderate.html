@@ -79,7 +79,7 @@
                 <th>
                     <div>
                         {% if current_user.can(Permission.MODERATE_COMMENTS) %}
-                        <a href="{{ url_for('.delete_comment', post_id=comment.post_id,comment_id=comment.id) }}"
+                        <a href="{{ url_for('.delete_comment_for_moderate', comment_id=comment.id) }}"
                            class="post-edit">
                             <button id='comment_delete' class="btn btn-danger" id="submit" type="button">删除</button>
                         </a>

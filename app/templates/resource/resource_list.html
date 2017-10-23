@@ -3,7 +3,7 @@
 {% import "_macros.html" as macros %}
 {% block title %} 山东专升本论坛_升本人的精神家园!  {% endblock%}
 
-
+<!-- 资源列表：显示所有资源，并进行分页，我们将实际的资源列表抽象出来形成模板：_resources_abstract 方便重用 -->
 {% block notice %}
     <div class="alert alert-success" id="notice" role="alert" >
        <i class="iconfont" style="color:red;">&#xe60d;</i>&nbsp;公告&nbsp;&nbsp;&nbsp;
@@ -13,12 +13,10 @@
 
 {% block page_content %}
 <div style="text-align:right;margin-top:5px;margin-bottom:10px">
-    <a href="#new_article"><button type="button" class="btn btn-primary">发表文章</button></a>
-    <a href="{{url_for('main.upload_resource')}}"><button type="button" class="btn btn-primary">发表文章</button></a>
-
+    <a href="{{url_for('main.upload_resource')}}"><button type="button" class="btn btn-primary">上传资源</button></a>
 </div>
 <div class="post-tabs">
-    {% include '_posts_abstract.html' %}
+    {% include 'resource/_resources_abstract.html' %}
 </div>
 
 {% if pagination %}
@@ -26,12 +24,6 @@
     {{ macros.pagination_widget(pagination, '.index') }}
 </div>
 {% endif %}
-<div id="new_article" style="margin-bottom:50px;">
-    {% if current_user.can(Permission.WRITE_ARTICLES) %}
-    {{ wtf.quick_form(form) }}
-    {% endif %}
-</div>
-
 {% endblock %} <!-- page_contend end -->
 
 

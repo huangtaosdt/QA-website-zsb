@@ -1,6 +1,6 @@
 
-/* 建议596px  */
-@media screen and (max-width:420px){
+/* 建议596px ,已由420改为500 */
+@media screen and (max-width:500px){
 
     /* user界面的header部分：头像、简介 */
     section#main_area div.page-header img{
@@ -167,6 +167,12 @@
         height:200px !important;
     }
 
+    /* 弹出框 */
+    .reveal-modal{
+        left:0%;
+        margin-left:auto;
+        width: auto;
+    }
 
 }
 

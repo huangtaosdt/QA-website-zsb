@@ -1,0 +1,103 @@
+<!-- 资源详情，对应摘要：_resource_abstract -->
+<!-- 主要作为单个资源页面用，只有参数传一个资源即可 -->
+<ul class="posts">
+    {% for resource in resources %}
+    <div class="post-row">
+        <!--添加if-->
+        <li class="post">
+            <div class="post-content">
+                <div class="post-author">
+                    <a href="{{ url_for('.user', username=resource.author.username) }}">
+                        {% if resource.author.avatar %}
+                        <img class="img-rounded profile-thumbnail" width="40" height="40"
+                             src="{{ resource.author.avatar }}">
+                        {% else %}
+                        <img class="img-rounded profile-thumbnail" src="{{ resource.author.gravatar(size=40) }}">
+                        {% endif %}
+                    </a>
+                    <a class="author-name" href="{{ url_for('.user', username=resource.author.username) }}">
+                        {% if resource.author.name%}
+                        {{resource.author.name }}
+                        {% else %}
+                        {{ resource.author.username }}
+                        {% endif %}
+                    </a>
+                    <span class="create-time">{{ moment(resource.timestamp).format('YYYY/MM/DD HH:mm ') }}</span>
+                </div>
+                <div class="post-title">
+                    <a target="_blank" href="{{ url_for('.resource', id=resource.id) }}">
+                        【{{resource.resource_group.resource_type}}】{{resource.title }}
+                    </a>
+                </div>
+                <div class="post-body">
+                    {{ resource.body.replace("\n","<br/>")|safe }}
+                </div>
+                <div class="post-footer" style="padding-left:10px;padding-right: 10px;">
+                    <a class="icon_lists read" style="font-size:13px;">
+                        下载次数：<span style="font-size: 18px;color: #facc16;">{{resource.download_times}}</span>&nbsp;&nbsp;
+                    </a>
+                    <a class="icon_lists" style="font-size:13px;">
+                        评论：<span style="font-size: 18px;color: #facc16;">{{ resource.comments.count() }}</span>
+                    </a>
+                    {% if current_user == resource.author %}
+                    <a href="{{ url_for('.edit_resource', id=resource.id) }}" class="post-edit">
+                        <i class="iconfont">
+                            &#xe649;
+                        </i>编辑
+                    </a>
+                    {% else %}
+                    <a href="#" class="download_bt post-edit big-link" data-reveal-id="myModal" data-animation="none">
+                        <button type="submit" class="btn btn-default">直接下载</button>
+                    </a>
+                    <div id="myModal" class="reveal-modal">
+                        <div>
+                        <table width="100%">
+                            <tbody>
+                            <tr>
+                                <td width="40%"><span>资源所需积分</span></td>
+                                <td width="40%"><span>当前拥有积分</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong class="jsNeedInte">{{ resource.point }}</strong></td>
+                                <td><strong class="jsRemainInte">{{ current_user.point }}</strong></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <div class="pop-content" id="downlaod-info">
+                            {% if current_user.point < resource.point %}
+                            <p>您的积分不足，无法下载</p>
+                            <p>您可以选择上传资料赚取积分或者充值兑换！</p>
+                            {% else %}
+                            <p>下载该资源将扣除您<b>&nbsp;{{ resource.point }}&nbsp;</b>个积分</p>
+                            <p>欢迎下载！</p>
+                            {% endif %}
+                        </div>
+                        <div class="pop-footer">
+                            <button type="button" class="btn btn-default" onclick="javascript:$(myModal).trigger('reveal:close');">返回</button>
+                            {% if current_user.point < resource.point %}
+                            <a target="_blank" href="https://weidian.com/i/2185916790?wfr=c&ifr=itemdetail"
+                               onclick="javascript:$(download-link).trigger('reveal:close');">
+                                <button type="button" class="btn btn-default" >充值积分</button>
+                            </a>
+                            {% else %}
+                            <button type="button" id="download-bn" name="{{ url_for('.add_dltime_deduct_point',resource_id=resource.id,user_id=current_user.id) }}" class="btn btn-default" onclick="javascript:document.getElementById('downlaod-info').innerHTML='<p>下载链接为{{resource.link}}</p>';">下载资源</button>
+                            {% endif %}
+                        </div>
+                        <a class="close-reveal-modal">×</a>
+                    </div>
+                    {% endif %}
+                    {% if current_user.is_administrator() %}
+                    <a href="{{ url_for('.edit_resource', id=resource.id) }}">
+                        <span class="label label-danger">Edit [Admin]</span>
+                    </a>
+                    <a href="{{ url_for('.delete_resource',id=resource.id) }}">
+                        <span class="label label-danger">Dele [Admin]</span>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </li>
+    </div>
+    {% endfor %}
+</ul>

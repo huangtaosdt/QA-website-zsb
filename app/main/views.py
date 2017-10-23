@@ -3,9 +3,9 @@ from  datetime import datetime
 from flask import jsonify, render_template, session, redirect, url_for, abort, flash, request, current_app, \
     make_response
 from . import main
-from .forms import NameForm, EditProfileForm, EditProfileAdminForm, PostForm, CommentForm, ScoreFrom
+from .forms import NameForm, EditProfileForm, EditProfileAdminForm, PostForm, CommentForm, ScoreFrom, UploadForm
 from .. import db
-from ..models import User, Role, Post, Permission, Comment, Group, AnonymousUser, Score
+from ..models import User, Role, Post, Permission, Comment, Group, AnonymousUser, Score, Resource
 from flask_login import login_required, current_user
 from ..decorators import admin_required, permission_required
 from werkzeug.utils import secure_filename
@@ -80,6 +80,115 @@ def other(type):
                            pagination=pagination, hot_posts=hot_posts)
 
 
+@main.route('/resource_list',methods=['GET','POST'])
+@login_required
+def resource_list():
+    page = request.args.get('page', 1, type=int)
+    pagination = Resource.query.order_by(Resource.timestamp.desc()).paginate(
+        page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'],
+        error_out=False)
+    resources = pagination.items
+    hot_resources = Resource.query.order_by(Resource.download_times.desc()).limit(10).all()
+    if current_user.is_authenticated == False:
+        return render_template("need_login.html")
+    return render_template('resource/resource_list.html', resources=resources,
+                           pagination=pagination, hot_resources=hot_resources)
+
+
+@main.route('/resource/<int:id>', methods=['GET', 'POST'])
+@login_required
+def resource(id):
+    resource = Resource.query.get_or_404(id)
+    form = CommentForm()
+    # if current_user.is_authenticated == False or current_user.id != post.author_id:
+    #     post.read_times = post.read_times + 1
+    #     db.session.add(post)
+    #     db.session.commit()
+    # 评论应做限制：只有下载过的人可以评论
+    if form.validate_on_submit():
+        comment = Comment(body=form.body.data, resource=resource, author=current_user._get_current_object())
+        db.session.add(comment)
+        flash('评论发表成功！')
+        return redirect(url_for('.resource', id=resource.id, page=-1))
+    page = request.args.get('page', 1, type=int)
+    if page == -1:
+        page = (resource.comments.count() - 1) // \
+               current_app.config['FLASKY_COMMENTS_PER_PAGE'] + 1
+    pagination = resource.comments.order_by(Comment.timestamp.asc()).paginate(page, per_page=current_app.config[
+        'FLASKY_COMMENTS_PER_PAGE'], error_out=False)
+    comments = pagination.items
+    return render_template('resource/resource.html', resources=[resource], form=form, comments=comments, pagination=pagination)
+    # 参数之所以传列表：[post]  是因为我们在_posts.html中使用的是列表，我们想重用_posts.html中对渲染，以实现对文章页面对渲染
+
+
+@main.route('/other/upload_resource', methods=['GET', 'POST'])
+@login_required
+@permission_required(Permission.WRITE_ARTICLES)
+def upload_resource():
+    form = UploadForm()
+    if current_user.can(Permission.WRITE_ARTICLES) and form.validate_on_submit():
+        resource = Resource(title=form.title.data,
+                            resource_group_id=form.category.data,
+                            point=form.point.data,
+                            body=form.body.data,
+                            link=form.link.data,
+                            author=current_user._get_current_object())
+        db.session.add(resource)
+        db.session.commit()
+        # print('group_id in write:', post.group_id)
+        flash('资源上传成功!')
+        return redirect(url_for('.resource', id=resource.id))  # !!!!!!!!!
+    return render_template('resource/upload_resource.html', form=form)
+
+@main.route('/edit_resource/<int:id>', methods=['GET', 'POST'])
+@login_required
+def edit_resource(id):
+    resource = Resource.query.get_or_404(id)
+    # 如果当前用户不是文章作者且不是网站管理员----若是管理员则应具有编辑任何文章的权限
+    if current_user != resource.author and not current_user.can(Permission.ADMINISTER):
+        abort(403)
+    form = UploadForm()
+    if form.validate_on_submit():
+        resource.title = form.title.data
+        resource.resource_group_id = form.category.data
+        resource.point = form.point.data
+        resource.body = form.body.data.replace("<br/>","")
+        resource.link = form.link.data
+        db.session.add(resource)
+        flash('资源上传成功 (≥◇≤)～')
+        return redirect(url_for('.resource', id=resource.id))
+    form.title.data = resource.title
+    form.category.data=resource.resource_group_id
+    form.point.data=resource.point
+    form.body.data = resource.body.replace("<br/>","")
+    form.link.data=resource.link
+    return render_template('resource/upload_resource.html', form=form)
+
+
+@main.route('/delete_resource/<int:id>')
+@login_required
+@permission_required(Permission.ADMINISTER)
+def delete_resource(id):
+    resource = Resource.query.get_or_404(id)
+    if not current_user.can(Permission.ADMINISTER):
+        abort(403)
+    db.session.delete(resource)
+    flash("资料已经删除！")
+    return redirect(url_for(".resource_list"))
+
+
+@main.route('/add_dltime_deduct_point/<int:resource_id>/<int:user_id>')
+@login_required
+def add_dltime_deduct_point(resource_id,user_id):
+    resource = Resource.query.get_or_404(resource_id)
+    user = User.query.get_or_404(user_id)
+    resource.download_times = resource.download_times + 1
+    user.point = user.point-resource.point
+    db.session.add(resource)
+    db.session.add(user)
+    db.session.commit()
+    json_data = {'download_times': resource.download_times,"user_points":user.point}
+    return jsonify(json_data)
 # 新增选择文章类别路由
 # @main.route('/group/<group>')
 # def show_group(group):
@@ -258,6 +367,9 @@ def post(id):
     # 参数之所以传列表：[post]  是因为我们在_posts.html中使用的是列表，我们想重用_posts.html中对渲染，以实现对文章页面对渲染
 
 
+
+
+
 @main.route('/edit/<int:id>', methods=['GET', 'POST'])
 @login_required
 def edit(id):
@@ -415,16 +527,38 @@ def moderate_disable(id):
     return redirect(url_for('.moderate', page=request.args.get('page', 1, type=int)))
 
 
+@main.route('/delete_comment_for_moderate/<int:comment_id>')
+@login_required
+@permission_required(Permission.MODERATE_COMMENTS)
+def delete_comment_for_moderate(comment_id):
+    comment = Comment.query.get_or_404(comment_id)
+    if not current_user.can(Permission.MODERATE_COMMENTS):
+        abort(403)
+    db.session.delete(comment)
+    flash("评论已删除！")
+    return redirect(url_for(".moderate"))
+
+
 @main.route('/delete_comment/<int:post_id>/<int:comment_id>')
 @login_required
-def delete_comment(post_id,comment_id):
+def delete_comment(post_id, comment_id):
     comment = Comment.query.get_or_404(comment_id)
     if current_user != comment.author and not current_user.can(Permission.MODERATE_COMMENTS):
         abort(403)
     db.session.delete(comment)
     flash("评论已删除！")
-    return redirect(url_for(".post",id=post_id))
+    return redirect(url_for(".post", id=post_id))
 
+
+@main.route('/delete_comment_for_resource/<int:resource_id>/<int:comment_id>')
+@login_required
+def delete_comment_for_resource(resource_id, comment_id):
+    comment = Comment.query.get_or_404(comment_id)
+    if not current_user.can(Permission.MODERATE_COMMENTS):
+        abort(403)
+    db.session.delete(comment)
+    flash("评论已删除！")
+    return redirect(url_for(".resource", id=resource_id))
 
 
 @main.route('/moderate_user')
@@ -437,34 +571,37 @@ def moderate_user():
     users = pagination.items
     return render_template('moderate_user.html', users=users, pagination=pagination, page=page)
 
+
 @main.route('/moderate_user/delete/<int:id>')
 @login_required
 @permission_required(Permission.ADMINISTER)
 def delete_user(id):
-    user=User.query.get_or_404(id)
+    user = User.query.get_or_404(id)
     # 删除用户以后应将其文章、评论一起删除！
-    posts=Post.query.filter_by(author_id=id).all()
+    posts = Post.query.filter_by(author_id=id).all()
     for post in posts:
         db.session.delete(post)
-    comments=Comment.query.filter_by(author_id=id).all()
+    comments = Comment.query.filter_by(author_id=id).all()
     for comment in comments:
         db.session.delete(comment)
     # 用户必须最后删除，因为post、comment引用其id作为外键author_id，一旦先删除用户，会导致无法删除post、comment
     db.session.delete(user)
     db.session.commit()
     flash("用户已删除！")
-    return redirect(url_for(".moderate_user",_anchor='manage_body'))
+    return redirect(url_for(".moderate_user", _anchor='manage_body'))
+
 
 @main.route('/moderate_user/chang_user_role/<int:user_id>/<int:role_id>')
 @login_required
 @permission_required(Permission.ADMINISTER)
-def chang_user_role(user_id,role_id):
-    user=User.query.get_or_404(user_id)
-    user.role_id=role_id
+def chang_user_role(user_id, role_id):
+    user = User.query.get_or_404(user_id)
+    user.role_id = role_id
     db.session.add(user)
     db.session.commit()
     flash('用户权限已更改！')
-    return redirect(url_for(".moderate_user",_anchor='manage_body'))
+    return redirect(url_for(".moderate_user", _anchor='manage_body'))
+
 
 @main.route('/shutdown')
 def server_shutdown():
