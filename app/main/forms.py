@@ -13,7 +13,7 @@ class NameForm(FlaskForm):
 
 
 class EditProfileForm(FlaskForm):
-    avatar = FileField('上传头像')
+    avatar = FileField('上传头像',validators=[DataRequired()])
     name = StringField('用户名', validators=[DataRequired(),Length(0, 64)])
     school = StringField('学校', validators=[DataRequired(),Length(0, 64)])
     major = StringField('专业',validators=[DataRequired(),Length(0,64)])

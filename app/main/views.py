@@ -71,8 +71,8 @@ def other(type):
         error_out=False)
     posts = pagination.items
     hot_posts = Post.query.order_by(Post.read_times.desc()).limit(10).all()
-    if current_user.is_authenticated == False:
-        return render_template("need_login.html")
+    # if current_user.is_authenticated == False:
+    #     return render_template("need_login.html")
     if current_user.can(Permission.WRITE_ARTICLES) and form.validate_on_submit():
         post = Post(body=form.body.data, group_id=type,
                     author=current_user._get_current_object())
@@ -92,8 +92,8 @@ def resource_list():
         error_out=False)
     resources = pagination.items
     hot_resources = Resource.query.order_by(Resource.download_times.desc()).limit(10).all()
-    if current_user.is_authenticated == False:
-        return render_template("need_login.html")
+    # if current_user.is_authenticated == False:
+    #     return render_template("need_login.html")
     return render_template('resource/resource_list.html', resources=resources,
                            pagination=pagination, hot_resources=hot_resources)
 
@@ -322,8 +322,8 @@ def show_score():
     form = ScoreFrom()
     hot_posts = Post.query.order_by(Post.read_times.desc()).limit(10).all()
     recent_registers=User.query.order_by(User.member_since.desc()).limit(5).all()
-    if current_user.is_authenticated == False:
-        return render_template("need_login.html")
+    # if current_user.is_authenticated == False:
+    #     return render_template("need_login.html")
 
     # # 用户点击查询，则返回相应专业的成绩数据--json格式
     # if form.validate_on_submit():
