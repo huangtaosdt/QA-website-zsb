@@ -1,15 +1,44 @@
-<form action="" method="post" class="form" role="form">
+
+
+<form class="form form-horizontal" action="" method="post" role="form" style="padding-left:10px;">
     {{ form.hidden_tag() }}
-    <div class="form-group">
-        {{ form.body(class="ckeditor",placeholder=form.body.label.text) }}
+    <div class="form-group required">
+        <div class="for-label">{{ form.title.label(class="col-sm-2 control-label") }}</div>
     </div>
-    <div class="form-group">
-        {{ form.submit(class="btn btn-default") }}
+    <div class="form-group required">
+        <div class="col-sm-8">
+            {{ form.title(class="form-control",required=True,placeholder='请填写文章标题') }}
+        </div>
+    </div>
+    <div class="form-group required">
+        <div class="for-label">{{form.category.label(class="col-sm-2 control-label")}}</div>
+    </div>
+    <div class="form-group required">
+        <div class="col-sm-3">
+            {{ form.category(class="form-control") }}
+        </div>
+    </div>
+    <div class="form-group required">
+        <div class="for-label">{{form.body.label(class="col-sm-2 control-label")}}</div>
+    </div>
+    <div class="form-group required">
+        <div class="col-sm-11">
+            {{ form.body(class="ckeditor",required=True,placeholder="文章内容") }}
+            {% for error in form.errors.body %}
+            <p class="help-block" style="color:red;">{{ error }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="form-group required">
+        <div class="col-sm-offset-2 col-sm-8" style="text-align: right;">
+            <button type="submit" class="btn btn-default">提交</button>
+        </div>
     </div>
     <script>
                 // Replace the <textarea id="editor1"> with a CKEditor
                 // instance, using default configuration.
                 CKEDITOR.replace( 'editor1' );
-    </script>
 
+    </script>
 </form>
+

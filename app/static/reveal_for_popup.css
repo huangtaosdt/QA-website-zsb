@@ -65,4 +65,16 @@ cursor: pointer;
     font-size: 16px;
     color: #2c3033;
 }
-
+#confirm {
+    display: block;
+    padding: 10px;
+    border: 2px dashed orange;
+    box-shadow: 0px 0px 5px 3px orange;
+}
+#confirm .btn{
+    background:#3fa0e3;
+    padding: 0 20px;
+}
+#confirm .btn:hover{
+    background-color:#e6e6e6;
+}

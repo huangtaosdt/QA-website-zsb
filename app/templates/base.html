@@ -11,7 +11,6 @@
 <script type="text/javascript" src="/static/js/marked.js"></script>
 <script type="text/javascript" src="/static/js/ace/ace.js"></script>
 <link rel="stylesheet" href=" {{ url_for('static', filename='github-markdown.css') }}"/>
-
 <link rel="shortcut icon" href="{{ url_for('static', filename = 'favicon.ico') }}"
       type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='timer.css') }}">
@@ -24,186 +23,197 @@
 {% endblock %}
 
 {% block body %}
-    {% block navbar %}
-    <header>
-        <div class='logo'>
-            <div>
-                <p>考试倒计时</p>
-                <a href="###" class="time-item"><span>考试倒计时</span>
-                    <strong id="day_show">0天</strong>
-                    <strong id="hour_show">0时</strong>
-                    <strong id="minute_show">0分</strong>
-                    <strong id="second_show">0秒</strong>
-                </a>
-            </div>
+{% block navbar %}
+<header>
+    <div class='logo'>
+        <div>
+            <p>考试倒计时</p>
+            <a href="###" class="time-item"><span>考试倒计时</span>
+                <strong id="day_show">0天</strong>
+                <strong id="hour_show">0时</strong>
+                <strong id="minute_show">0分</strong>
+                <strong id="second_show">0秒</strong>
+            </a>
         </div>
-        <div class="my-nav">
-            <div class="navbar navbar-default" role="navigation">
-                <div class="container">
-                    <div class="navbar-header" id="navbar-header-id">
-                        <button type="button" class="navbar-toggle"
-                                data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="{{ url_for('main.index') }}">主页</a>
-                        <!--<a class="navbar-brand" href="{{url_for('main.index') }}">主页</a>-->
-                    </div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav navbar-left">
-                            <!--<li>-->
-                            <!--<a href="#" class='dropdown-toggle' data-toggle="dropdown">-->
-                            <!--技术杂谈<b class="caret"></b>-->
-                            <!--</a>-->
-                            <!--<ul class="dropdown-menu">-->
-                            <!--<li><a href="#">Python</a></li>-->
-                            <!--<li><a href="#">Java</a></li>-->
-                            <!--<li><a href="#">Machine Learning </a></li>-->
-                            <!--<li><a href="#">Algorithm</a></li>-->
-                            <!--<li><a href="#">Linux</a></li>-->
-                            <!--<li><a href="#">Web</a></li>-->
-                            <!--<li><a href="#">Other</a></li>-->
-                            <!--</ul>-->
-                            <!--</li>-->
-                            <li><a href="{{ url_for('main.other',type=2) }}">复习经验</a></li>
-                            <li><a href="{{ url_for('main.resource_list') }}">资料下载</a></li>
-                            <li><a href="{{ url_for('main.other',type=4) }}">考试大纲</a></li>
-                            <li><a href="{{ url_for('main.show_score')}}">分数</a></li>
-
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <form class="search" action="#" method="post">
-                                    <label for="user_name">search</label>
-                                    <input type="text" id="user_name" name="user_name" placeholder="搜一搜"/>
-                                </form>
-                            </li>
-
-                            {% if current_user.is_authenticated %}
-                            <li><a  href="{{ url_for('main.user', username=current_user.username) }}">个人资料</a></li>
-                            {% endif %}
-
-                            {% if current_user.is_authenticated %}
-                            <li class="dropdown">
-                                <a href="#" class='dropdown-toggle' data-toggle="dropdown">
-                                    <!--<img src="{{ current_user.gravatar(size=18) }}">-->
-                                    {% if current_user.avatar %}
-                                    <img class="img-rounded profile-thumbnail-header"
-                                         width='18' height='18' src="{{ current_user.avatar }}">
-                                    {% else %}
-                                    <img class="img-rounded profile-thumbnail-header"
-                                         src="{{ current_user.gravatar(size=18) }}">
-                                    {% endif %}
-                                    设置<b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    {% if current_user.can(Permission.MODERATE_COMMENTS) %}
-                                    <li><a href="{{ url_for('main.moderate') }}">评论管理</a></li>
-                                    {% endif %}
-                                    {% if current_user.can(Permission.ADMINISTER) %}
-                                    <li><a href="{{ url_for('main.moderate_user') }}">用户管理</a></li>
-                                    {% endif %}
-
-                                    <li><a href="{{url_for('auth.change_password') }}">更改密码</a></li>
-                                    <li><a href="{{ url_for('auth.password_reset_request') }}">忘记密码</a></li>
-                                    <li><a href="{{ url_for('auth.change_email_request') }}">注册邮箱更改</a></li>
-                                    <li><a href="{{ url_for('auth.logout') }}">退出</a></li>
-                                </ul>
-                            </li>
-                            {% else %}
-                            <li><a href="{{ url_for('auth.login')  }}">登录/注册</a></li>
-                            {% endif %}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="account-for-mobile" style="display:none;">
-                {% if current_user.is_authenticated %}
-                <li class="dropdown">
-                    <a href="#" class='dropdown-toggle' data-toggle="dropdown">
-                        <!--<img src="{{ current_user.gravatar(size=18) }}">-->
-                        {% if current_user.avatar %}
-                        <img class="img-rounded profile-thumbnail-header"
-                             width='18' height='18' src="{{ current_user.avatar }}">
-                        {% else %}
-                        <img class="img-rounded profile-thumbnail-header"
-                             src="{{ current_user.gravatar(size=18) }}">
-                        {% endif %}
-                        <span>设置</span><b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu pull-right">
-                        {% if current_user.can(Permission.MODERATE_COMMENTS) %}
-                        <li><a href="{{ url_for('main.moderate') }}">评论管理</a></li>
-                        {% endif %}
-                        {% if current_user.can(Permission.ADMINISTER) %}
-                        <li><a href="{{ url_for('main.moderate_user') }}">用户管理</a></li>
-                        {% endif %}
-                        <li><a href="{{url_for('auth.change_password') }}">更改密码</a></li>
-                        <li><a href="{{ url_for('main.user', username=current_user.username) }}">个人资料</a></li>
-                        <li><a href="{{ url_for('auth.password_reset_request') }}">忘记密码</a></li>
-                        <li><a href="{{ url_for('auth.change_email_request') }}">注册邮箱更改</a></li>
-                        <li><a href="{{ url_for('auth.logout') }}">退出</a></li>
-                    </ul>
-                </li>
-                {% else %}
-                <li><a href="{{ url_for('auth.login')  }}">登录/注册</a></li>
-                {% endif %}
-            </div>
-        </div>
-    </header>
-    {% endblock %}
-
-    {% block content %}
-    <div class="container">
-        <div class="go-top">
-            <div class="arrow"></div>
-            <div class="stick"></div>
-        </div>
-        {% for message in get_flashed_messages() %}
-        <div class="alert alert-warning">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            {{ message }}
-        </div>
-        {% endfor %}
-
-
-        <section id="main_area">
-            <!-- first level -->
-            {% block notice %}
-            {% endblock %}
-            {% block page_header %}
-            {% endblock %}
-
-            {% block page_content_for_write %}
-            <aside id="first_col">
-                <div class="inner">
-                    {% block aside_page %}
-                    {% endblock%}
-                </div>
-            </aside>
-            <article id="second_col">
-                <div class="inner">
-                    {% block page_content %}
-                    {% endblock %}
-                </div>
-            </article>
-            {% endblock %}
-        </section>
     </div>
-    {% endblock %}
+    <div class="my-nav">
+        <div class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header" id="navbar-header-id">
+                    <button type="button" class="navbar-toggle"
+                            data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ url_for('main.index') }}">主页</a>
+                    <!--<a class="navbar-brand" href="{{url_for('main.index') }}">主页</a>-->
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li><a href="{{ url_for('main.other',type=2) }}">复习经验</a></li>
+                        <li><a href="{{ url_for('main.resource_list') }}">资料下载</a></li>
+                        <li><a href="{{ url_for('main.other',type=3) }}">考试大纲</a></li>
+                        <li><a href="{{ url_for('main.show_score')}}">分数</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <form class="search" action="#" method="post">
+                                <label for="user_name">search</label>
+                                <input type="text" id="user_name" name="user_name" placeholder="搜一搜"/>
+                            </form>
+                        </li>
 
-    {% block footer %}
-    {% include '_footer.html' %}
-    {% endblock %}
+                        {% if current_user.is_authenticated %}
 
-    {% block scripts %}
-    {{ super() }}
-    {{ moment.include_moment() }}
-    {{ moment.lang("zh-CN") }}
-    <script>
+                        <li><a href="{{ url_for('main.user', username=current_user.username) }}">个人资料</a></li>
+                        {% endif %}
+
+                        {% if current_user.is_authenticated %}
+                        <li class="dropdown">
+                            <a href="#" class='dropdown-toggle' data-toggle="dropdown">
+                                <!--<img src="{{ current_user.gravatar(size=18) }}">-->
+                                {% if current_user.avatar %}
+                                <img class="img-rounded profile-thumbnail-header"
+                                     width='18' height='18' src="{{ current_user.avatar }}">
+                                {% else %}
+                                <img class="img-rounded profile-thumbnail-header"
+                                     src="{{ current_user.gravatar(size=18) }}">
+                                {% endif %}
+                                设置<b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                {% if current_user.can(Permission.MODERATE_COMMENTS) %}
+                                <li><a href="{{ url_for('main.moderate') }}">评论管理</a></li>
+                                {% endif %}
+                                {% if current_user.can(Permission.ADMINISTER) %}
+                                <li><a href="{{ url_for('main.moderate_user') }}">用户管理</a></li>
+                                {% endif %}
+
+                                <li><a href="{{url_for('auth.change_password') }}">更改密码</a></li>
+                                <li><a href="{{ url_for('auth.password_reset_request') }}">忘记密码</a></li>
+                                <li><a href="{{ url_for('auth.change_email_request') }}">注册邮箱更改</a></li>
+                                <li><a href="{{ url_for('auth.logout') }}">退出</a></li>
+                            </ul>
+                        </li>
+                        {% else %}
+                        <li><a href="{{ url_for('auth.login')  }}">登录/注册</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="account-for-mobile" style="display:none;">
+            {% if current_user.is_authenticated %}
+            <li class="dropdown">
+                <a href="#" class='dropdown-toggle' data-toggle="dropdown">
+                    <!--<img src="{{ current_user.gravatar(size=18) }}">-->
+                    {% if current_user.avatar %}
+                    <img class="img-rounded profile-thumbnail-header"
+                         width='18' height='18' src="{{ current_user.avatar }}">
+                    {% else %}
+                    <img class="img-rounded profile-thumbnail-header"
+                         src="{{ current_user.gravatar(size=18) }}">
+                    {% endif %}
+                    <span>设置</span><b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu pull-right">
+                    {% if current_user.can(Permission.MODERATE_COMMENTS) %}
+                    <li><a href="{{ url_for('main.moderate') }}">评论管理</a></li>
+                    {% endif %}
+                    {% if current_user.can(Permission.ADMINISTER) %}
+                    <li><a href="{{ url_for('main.moderate_user') }}">用户管理</a></li>
+                    {% endif %}
+                    <li><a href="{{url_for('auth.change_password') }}">更改密码</a></li>
+                    <li><a href="{{ url_for('main.user', username=current_user.username) }}">个人资料</a></li>
+                    <li><a href="{{ url_for('auth.password_reset_request') }}">忘记密码</a></li>
+                    <li><a href="{{ url_for('auth.change_email_request') }}">注册邮箱更改</a></li>
+                    <li><a href="{{ url_for('auth.logout') }}">退出</a></li>
+                </ul>
+            </li>
+            {% else %}
+            <li><a href="{{ url_for('auth.login')  }}">登录/注册</a></li>
+            {% endif %}
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <ul class="float-side">
+        <li style="background: #FA8072;">
+            <a href="{{ url_for('main.write') }}">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-pinglun2"></use>
+            </svg>
+            </a>
+        </li>
+        <li>
+            <a href="#" onclick="Javascript:window.location.reload()">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-iconfontcolor09"></use>
+            </svg>
+            </a>
+        </li>
+        <li>
+            <div class="go-top">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-dingbu2"></use>
+            </svg>
+            </div>
+        </li>
+        <!--<li>-->
+            <!--<div class="go-top">-->
+                <!--<div class="arrow"></div>-->
+                <!--<div class="stick"></div>-->
+            <!--</div>-->
+        <!--</li>-->
+    </ul>
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+
+    <section id="main_area">
+        <!-- first level -->
+        {% block notice %}
+        {% endblock %}
+        {% block page_header %}
+        {% endblock %}
+
+        {% block page_content_for_write %}
+        <aside id="first_col">
+            <div class="inner">
+                {% block aside_page %}
+                {% endblock%}
+            </div>
+        </aside>
+        <article id="second_col">
+            <div class="inner">
+                {% block page_content %}
+                {% endblock %}
+            </div>
+        </article>
+        {% endblock %}
+    </section>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include '_footer.html' %}
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+{{ moment.lang("zh-CN") }}
+<script>
     $(function (){
         var cname=document.getElementsByClassName("post-abstract");
         for(var i=0;i<cname.length;i++){
@@ -226,21 +236,27 @@
 
 
 
-    </script>
-    <script>
+
+
+</script>
+<script>
         var cname=document.getElementsByClassName("hot-post-body");
         for(var i=0;i<cname.length;i++){
             cname[i].innerHTML=cname[i].innerHTML.replace(/!\[\]\(http.+\)/," ")
         }
 
-    </script>
-    <script>
+
+
+</script>
+<script>
     $('.comment_reply').click(function() {
         $("input#body").val("回复 "+ $($(this).parent()).siblings('.comment-author').text() +"：");
 
     });
-    </script>
-    <script>
+
+
+</script>
+<script>
     $(document).ready(function(){
         $(".add_like").click(function(e){
                 var ele=$(this)
@@ -250,8 +266,10 @@
                 }});
         });
     });
-    </script>
-    <script>
+
+
+</script>
+<script>
     $(document).ready(function(){
         $("#download-bn").click(function(e){
                 var ele=$(this)
@@ -261,8 +279,10 @@
                 }});
         });
     });
-    </script>
-    <script>
+
+
+</script>
+<script>
         $(function() {
         $(window).scroll(function() {
             if ($(window).scrollTop() > 1000)
@@ -275,8 +295,17 @@
         });
     });
 
-    </script>
-    <script type="text/javascript">
+
+
+</script>
+<script>
+	$("#qqqqq").click(function(){
+		$("#myModal2").modal('show');
+	})
+
+
+</script>
+<script type="text/javascript">
     var current_time=new Date();
     var end_time='2018/03/25 00:00:00'
     var uSecondDiff = new Date(end_time).getTime()-current_time;   //时间差的毫秒数
@@ -313,6 +342,8 @@
 
 
 
-    </script>
-    {% endblock %}
+
+
+</script>
+{% endblock %}
 {% endblock %}

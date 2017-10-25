@@ -23,6 +23,11 @@
                     </a>
                     <span class="create-time">{{ moment(post.timestamp).format('YYYY/MM/DD HH:mm ') }}</span>
                 </div>
+                <div class="post-title">
+                    <a target="_blank" href="{{ url_for('.post', id=post.id) }}">
+                        {{post.title }}
+                    </a>
+                </div>
                 <div class="body-and-img">
                     <div class="post-body post-abstract">
                         {{ post.body_abstract |safe}}

@@ -17,7 +17,6 @@ class Follow(db.Model):
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
 
-
 class Role(db.Model):
     __tablename__ = 'roles'
     id = db.Column(db.Integer, primary_key=True)
@@ -360,6 +359,22 @@ class Resource(db.Model):
             target.body_abstract = bleach_body
         else:
             target.body_abstract=bleach_body[:120]
+
+
+class DownloadRecord(db.Model):
+    __tablename__='download_records'
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
+    resource_id = db.Column(db.Integer, db.ForeignKey('resources.id'), primary_key=True)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
+
+class Order(db.Model):
+    __tablename__='orders'
+    id = db.Column(db.Integer, primary_key=True)
+    order_id=db.Column(db.Text,index=True)
+    money=db.Column(db.Float)
+    time=db.Column(db.DateTime)
+    email=db.Column(db.Text,index=True)
 
 # 文章模型
 class Post(db.Model):

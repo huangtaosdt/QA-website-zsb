@@ -1,0 +1,36 @@
+<ul class="posts" style="padding:0 5px;margin-top:0px">
+    <div class="list">
+        <div id="recent-register" style="display: block;">
+            {% for register in recent_registers %}
+            <dl>
+                <dt class="gravatar">
+                    <a href="{{ url_for('.user', username=register.username) }}">
+                        {% if register.avatar %}
+                        <img class="img-rounded profile-thumbnail" width="40" height="40"
+                             src="{{ register.avatar }}">
+                        {% else %}
+                        <img class="img-rounded profile-thumbnail" src="{{ register.gravatar(size=40) }}">
+                        {% endif %}
+                    </a>
+                </dt>
+                <dd>
+                    <ul>
+                        <li>
+                            <a class="author-name" href="{{ url_for('.user', username=register.username) }}">
+                                {% if register.name%}
+                                {{register.name }}
+                                {% else %}
+                                {{ register.username }}
+                                {% endif %}
+                            </a>
+                        </li>
+                        <li>{{ register.school }}</li>
+                        <li>注册时间：<span class="create-time">{{ moment(register.member_since).format('YYYY/MM/DD HH:mm ') }}</span></li>
+                    </ul>
+                </dd>
+            </dl>
+            {% endfor %}
+        </div>
+    </div>
+
+</ul>

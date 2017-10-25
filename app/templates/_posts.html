@@ -1,44 +1,45 @@
 <ul class="posts">
     {% for post in posts %}
     <div class="post-row">
-    <!--添加if-->
-    <li class="post">
-        <!--<div class="post-thumbnail">-->
+        <!--添加if-->
+        <li class="post">
+            <!--<div class="post-thumbnail">-->
             <!--<a href="{{ url_for('.user', username=post.author.username) }}">-->
-                <!--{% if post.author.avatar %}-->
-                    <!--<img class="img-rounded profile-thumbnail" width="40" height="40" src="{{ post.author.avatar }}">-->
-                    <!--{% else %}-->
-                    <!--<img class="img-rounded profile-thumbnail" src="{{ post.author.gravatar(size=40) }}">-->
-                    <!--{% endif %}-->
+            <!--{% if post.author.avatar %}-->
+            <!--<img class="img-rounded profile-thumbnail" width="40" height="40" src="{{ post.author.avatar }}">-->
+            <!--{% else %}-->
+            <!--<img class="img-rounded profile-thumbnail" src="{{ post.author.gravatar(size=40) }}">-->
+            <!--{% endif %}-->
             <!--</a>-->
-        <!--</div>-->
-        <div class="post-content">
-            <div class="post-author">
-                <a href="{{ url_for('.user', username=post.author.username) }}">
-                {% if post.author.avatar %}
-                    <img class="img-rounded profile-thumbnail" width="40" height="40" src="{{ post.author.avatar }}">
-                    {% else %}
-                    <img class="img-rounded profile-thumbnail" src="{{ post.author.gravatar(size=40) }}">
-                    {% endif %}
-            </a>
-                <a class="author-name" href="{{ url_for('.user', username=post.author.username) }}">
-                    {% if post.author.name%}
+            <!--</div>-->
+            <div class="post-content">
+                <div class="post-author">
+                    <a href="{{ url_for('.user', username=post.author.username) }}">
+                        {% if post.author.avatar %}
+                        <img class="img-rounded profile-thumbnail" width="40" height="40"
+                             src="{{ post.author.avatar }}">
+                        {% else %}
+                        <img class="img-rounded profile-thumbnail" src="{{ post.author.gravatar(size=40) }}">
+                        {% endif %}
+                    </a>
+                    <a class="author-name" href="{{ url_for('.user', username=post.author.username) }}">
+                        {% if post.author.name%}
                         {{post.author.name }}
                         {% else %}
                         {{ post.author.username }}
                         {% endif %}
-                </a>
-                <span class="create-time">{{ moment(post.timestamp).format('YYYY/MM/DD HH:mm ') }}</span>
-            </div>
-            <div class="post-title">
-            <!--<a  target="_blank" href="{{ url_for('.post', id=post.id) }}">-->
-                <!--{{post.title }}-->
-            <!--</a>-->
+                    </a>
+                    <span class="create-time">{{ moment(post.timestamp).format('YYYY/MM/DD HH:mm ') }}</span>
                 </div>
-            <div class="post-body" >
-                {{ post.body |safe}}
-            </div>
-            <div class="post-footer">
+                <div class="post-title">
+                    <a target="_blank" href="{{ url_for('.post', id=post.id) }}">
+                        {{post.title }}
+                    </a>
+                </div>
+                <div class="post-body">
+                    {{ post.body |safe}}
+                </div>
+                <div class="post-footer">
                     <a href="{{ url_for('.post', id=post.id) }}" class="icon_lists read">
                         <i class="iconfont">
                             &#xe6ab;
@@ -63,7 +64,7 @@
                         </i>编辑
                     </a>
                     <a href="{{ url_for('.delete',id=post.id) }}" class="post-edit">
-                        <span class="label label-danger" >删除</span>
+                        <span class="label label-danger">删除</span>
                     </a>
                     {% elif current_user.is_administrator() %}
                     <a href="{{ url_for('.edit', id=post.id) }}">
@@ -75,8 +76,8 @@
                     {% endif %}
 
                 </div>
-        </div>
-    </li>
-        </div>
+            </div>
+        </li>
+    </div>
     {% endfor %}
 </ul>

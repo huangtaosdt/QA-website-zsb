@@ -1,11 +1,13 @@
 import os
-from  datetime import datetime
-from flask import jsonify, render_template, session, redirect, url_for, abort, flash, request, current_app, \
+from datetime import datetime
+from datetime import timedelta
+from urllib import request as r,parse
+from flask import json, jsonify, render_template, session, redirect, url_for, abort, flash, request, current_app, \
     make_response
 from . import main
 from .forms import NameForm, EditProfileForm, EditProfileAdminForm, PostForm, CommentForm, ScoreFrom, UploadForm
 from .. import db
-from ..models import User, Role, Post, Permission, Comment, Group, AnonymousUser, Score, Resource
+from ..models import User, Role, Post, Permission, Comment, Group, AnonymousUser, Score, Resource, DownloadRecord,Order
 from flask_login import login_required, current_user
 from ..decorators import admin_required, permission_required
 from werkzeug.utils import secure_filename
@@ -53,7 +55,8 @@ def index():
         error_out=False)
     posts = pagination.items
     hot_posts = Post.query.order_by(Post.read_times.desc()).limit(10).all()
-    return render_template('index.html', form=form, posts=posts,
+    recent_registers=User.query.order_by(User.member_since.desc()).limit(5).all()
+    return render_template('index.html', form=form, posts=posts,recent_registers=recent_registers,
                            show_followed=show_followed, pagination=pagination, hot_posts=hot_posts)
 
 
@@ -80,7 +83,7 @@ def other(type):
                            pagination=pagination, hot_posts=hot_posts)
 
 
-@main.route('/resource_list',methods=['GET','POST'])
+@main.route('/resource_list', methods=['GET', 'POST'])
 @login_required
 def resource_list():
     page = request.args.get('page', 1, type=int)
@@ -117,7 +120,17 @@ def resource(id):
     pagination = resource.comments.order_by(Comment.timestamp.asc()).paginate(page, per_page=current_app.config[
         'FLASKY_COMMENTS_PER_PAGE'], error_out=False)
     comments = pagination.items
-    return render_template('resource/resource.html', resources=[resource], form=form, comments=comments, pagination=pagination)
+
+    record = DownloadRecord.query.filter_by(user_id=current_user.id, resource_id=resource.id).first()
+    has_download = False
+    if record is None:
+        print('该用户未下载过，无权评论！')
+    else:
+        print('可以评论')
+        has_download = True
+    hot_resources = Resource.query.order_by(Resource.download_times.desc()).limit(10).all()
+    return render_template('resource/resource.html', resources=[resource], form=form, has_download=has_download,
+                           comments=comments, pagination=pagination, hot_resources=hot_resources)
     # 参数之所以传列表：[post]  是因为我们在_posts.html中使用的是列表，我们想重用_posts.html中对渲染，以实现对文章页面对渲染
 
 
@@ -140,6 +153,7 @@ def upload_resource():
         return redirect(url_for('.resource', id=resource.id))  # !!!!!!!!!
     return render_template('resource/upload_resource.html', form=form)
 
+
 @main.route('/edit_resource/<int:id>', methods=['GET', 'POST'])
 @login_required
 def edit_resource(id):
@@ -152,16 +166,16 @@ def edit_resource(id):
         resource.title = form.title.data
         resource.resource_group_id = form.category.data
         resource.point = form.point.data
-        resource.body = form.body.data.replace("<br/>","")
+        resource.body = form.body.data.replace("<br/>", "")
         resource.link = form.link.data
         db.session.add(resource)
         flash('资源上传成功 (≥◇≤)～')
         return redirect(url_for('.resource', id=resource.id))
     form.title.data = resource.title
-    form.category.data=resource.resource_group_id
-    form.point.data=resource.point
-    form.body.data = resource.body.replace("<br/>","")
-    form.link.data=resource.link
+    form.category.data = resource.resource_group_id
+    form.point.data = resource.point
+    form.body.data = resource.body.replace("<br/>", "")
+    form.link.data = resource.link
     return render_template('resource/upload_resource.html', form=form)
 
 
@@ -179,16 +193,120 @@ def delete_resource(id):
 
 @main.route('/add_dltime_deduct_point/<int:resource_id>/<int:user_id>')
 @login_required
-def add_dltime_deduct_point(resource_id,user_id):
+def add_dltime_deduct_point(resource_id, user_id):
     resource = Resource.query.get_or_404(resource_id)
     user = User.query.get_or_404(user_id)
+
+    record = DownloadRecord.query.filter_by(user_id=user_id, resource_id=resource_id).first()
+    if record is None:
+        print('未下载过')
+        user.point = user.point - resource.point
+        record = DownloadRecord(user_id=user_id, resource_id=resource_id)
+        db.session.add(record)
+    else:
+        print('已下载过')
     resource.download_times = resource.download_times + 1
-    user.point = user.point-resource.point
     db.session.add(resource)
     db.session.add(user)
     db.session.commit()
-    json_data = {'download_times': resource.download_times,"user_points":user.point}
+    json_data = {'download_times': resource.download_times, "user_points": user.point}
     return jsonify(json_data)
+
+
+@main.route('/get_orders')
+@login_required
+def get_orders(order_type="unship", page_num=1, page_size=50, version="1.2"):
+    """
+    使用场景
+        获取订单列表
+
+    方法名称
+        vdian.order.list.get
+
+    参数说明：
+        order_type： 当version为1.1时： 此参数为可选，不传返回全部状态的订单
+            unpay（未付款订单）
+            unship（待处理订单，已就是待发货订单）
+            refund（退款中订单，version参数必须传1.1）
+            close（关闭的订单）
+            finish（完成的订单）
+            refund（退款中订单）
+
+    """
+    try:
+        headers = {"User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0"}
+        res = request.urlopen(request.Request(
+            url='https://oauth.open.weidian.com/token?grant_type=client_credential&appkey=688400&secret=851a5fc9f0980edb701c13424ffcfeec',
+            headers=headers)).read()
+        res_json = json.loads(res)
+        access_token = res_json.get('result').get('access_token')
+    except:
+        print('token获取失败')
+    add_start = (datetime.now() - timedelta(hours=24)).strftime('%Y-%m-%d %H:%M:%S')
+    add_end = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    param = {"page_num": page_num, "page_size": page_size, "order_type": order_type}
+    if add_start and len(add_start) > 0:
+        param['add_start'] = parse.quote(add_start)
+    if add_end and len(add_end) > 0:
+        param['add_end'] = parse.quote(add_end)
+    pub = {"method": "vdian.order.list.get", "access_token": access_token, "version": version}
+    url = 'https://api.vdian.com/api?param=%s&public=%s' % (param, pub)
+    url = url.replace(': ', ':')
+    url = url.replace(', ', ',')
+    url = url.replace("'", '"')
+    res_orders_json = None
+    try:
+        res_orders = r.urlopen(r.Request(url=url, headers=headers)).read()
+        res_orders_json = json.loads(res_orders)
+    except:
+        print('订单列表获取失败')
+    return res_orders_json
+
+
+@main.route('/query_currentuser_purchase/<int:user_id>/<int:resource_id>')
+@login_required
+def query_current_user_purchase(user_id,resource_id):
+    '''
+    get_orders路由返回订单列表json
+    先判定状态是否为0（正常）：.get（'status'）.get('status_code')==0
+
+    订单列表：先判断列表长度，大于0时：get('result').get('orders')
+        对于每个订单，重点提取信息：
+            订单号 :order_id   string格式
+            订单时间:time
+            订单金额:total
+            订单收货人信息：姓名--要求填写用户注册邮箱
+                orders-buyer_info-name
+    '''
+    user = User.query.get_or_404(user_id)
+    res_orders=get_orders()
+    order_num=res_orders.get('result').get('order_num')
+    orders=res_orders.get('result').get('orders')
+    if order_num > 0:
+        for order in orders:
+            order_id=order.get('order_id')
+            time=datetime.strptime(order.get('time'),'%Y-%m-%d %H:%M:%S')
+            money=float(order.get('total'))
+            email = order.get('buyer_info').get('name')
+            print('\norder_id:%s\ntime：%s\n money:%s\n email:%s\n'%(order_id,time,money,email))
+            ord=Order.query.filter_by(order_id=order_id).first()
+            if ord==None:
+                if user.email==email:
+                    user.point=user.point + int(money*10)
+                    db.session.add(user)
+                    flash('积分充值成功！')
+                else:
+                    # 非当前用户充值，未主动点击已完成的用户
+                    user.point = user.point + int(money * 10)
+                    db.session.add(user)
+                order_row = Order(order_id=order_id, money=money, time=time, email=email)
+                db.session.add(order_row)
+                db.session.commit()
+    else:
+        flash('系统暂未收到您的付款订单,请确认是否充值成功！')
+    return redirect(url_for('.resource', id=resource_id))
+
+
 # 新增选择文章类别路由
 # @main.route('/group/<group>')
 # def show_group(group):
@@ -203,6 +321,7 @@ def add_dltime_deduct_point(resource_id,user_id):
 def show_score():
     form = ScoreFrom()
     hot_posts = Post.query.order_by(Post.read_times.desc()).limit(10).all()
+    recent_registers=User.query.order_by(User.member_since.desc()).limit(5).all()
     if current_user.is_authenticated == False:
         return render_template("need_login.html")
 
@@ -213,7 +332,7 @@ def show_score():
     # #     json_data = {major: score.major}
     # #     return jsonify(json_data)
     #     return query_score(form.major.data)
-    return render_template('score.html', form=form, hot_posts=hot_posts)
+    return render_template('score.html', form=form, hot_posts=hot_posts,recent_registers=recent_registers)
 
 
 @main.route('/query_score/<major_id>', methods=['GET', 'POST'])
@@ -367,41 +486,6 @@ def post(id):
     # 参数之所以传列表：[post]  是因为我们在_posts.html中使用的是列表，我们想重用_posts.html中对渲染，以实现对文章页面对渲染
 
 
-
-
-
-@main.route('/edit/<int:id>', methods=['GET', 'POST'])
-@login_required
-def edit(id):
-    post = Post.query.get_or_404(id)
-    # 如果当前用户不是文章作者且不是网站管理员----若是管理员则应具有编辑任何文章的权限
-    if current_user != post.author and not current_user.can(Permission.ADMINISTER):
-        abort(403)
-    form = PostForm()
-    if form.validate_on_submit():
-        # post.group_id = form.category.data
-        # post.title = form.title.data
-        post.body = form.body.data
-        db.session.add(post)
-        flash('文章发布成功 (≥◇≤)～')
-        return redirect(url_for('.post', id=post.id))
-    # form.title.data = post.title
-    form.body.data = post.body
-    return render_template('edit_post.html', form=form)
-
-
-@main.route('/delete/<int:id>')
-@login_required
-@permission_required(Permission.WRITE_ARTICLES)
-def delete(id):
-    post = Post.query.get_or_404(id)
-    if current_user != post.author and not current_user.can(Permission.ADMINISTER):
-        abort(403)
-    db.session.delete(post)
-    flash("文章已经删除！")
-    return redirect(url_for(".index"))
-
-
 # 新增写作功能--- 单独页面
 @main.route('/write', methods=['GET', 'POST'])
 @login_required
@@ -419,6 +503,39 @@ def write():
         flash('Article has benn published.')
         return redirect(url_for('.post', id=post.id))
     return render_template('create_post.html', form=form)
+
+
+@main.route('/edit/<int:id>', methods=['GET', 'POST'])
+@login_required
+def edit(id):
+    post = Post.query.get_or_404(id)
+    # 如果当前用户不是文章作者且不是网站管理员----若是管理员则应具有编辑任何文章的权限
+    if current_user != post.author and not current_user.can(Permission.ADMINISTER):
+        abort(403)
+    form = PostForm()
+    if form.validate_on_submit():
+        post.group_id = form.category.data
+        post.title = form.title.data
+        post.body = form.body.data
+        db.session.add(post)
+        flash('文章发布成功 (≥◇≤)～')
+        return redirect(url_for('.post', id=post.id))
+    form.title.data = post.title
+    form.category.data=post.group_id
+    form.body.data = post.body
+    return render_template('create_post.html', form=form)
+
+
+@main.route('/delete/<int:id>')
+@login_required
+@permission_required(Permission.WRITE_ARTICLES)
+def delete(id):
+    post = Post.query.get_or_404(id)
+    if current_user != post.author and not current_user.can(Permission.ADMINISTER):
+        abort(403)
+    db.session.delete(post)
+    flash("文章已经删除！")
+    return redirect(url_for(".index"))
 
 
 @main.route('/add_like/<int:id>')
@@ -552,6 +669,7 @@ def delete_comment(post_id, comment_id):
 
 @main.route('/delete_comment_for_resource/<int:resource_id>/<int:comment_id>')
 @login_required
+@permission_required(Permission.MODERATE_COMMENTS)
 def delete_comment_for_resource(resource_id, comment_id):
     comment = Comment.query.get_or_404(comment_id)
     if not current_user.can(Permission.MODERATE_COMMENTS):
@@ -581,6 +699,9 @@ def delete_user(id):
     posts = Post.query.filter_by(author_id=id).all()
     for post in posts:
         db.session.delete(post)
+    resources=Resource.query.filter_by(author_id=id).all()
+    for resource in resources:
+        db.session.delete(resource)
     comments = Comment.query.filter_by(author_id=id).all()
     for comment in comments:
         db.session.delete(comment)
@@ -600,6 +721,19 @@ def chang_user_role(user_id, role_id):
     db.session.add(user)
     db.session.commit()
     flash('用户权限已更改！')
+    return redirect(url_for(".moderate_user", _anchor='manage_body'))
+
+
+@main.route('/moderate_user/add_user_point/<int:user_id>/<int:point>')
+@login_required
+@permission_required(Permission.ADMINISTER)
+def add_user_point(user_id, point):
+    print('point:', point)
+    user = User.query.get_or_404(user_id)
+    user.point = user.point + point
+    db.session.add(user)
+    db.session.commit()
+    flash('用户积分已增加！')
     return redirect(url_for(".moderate_user", _anchor='manage_body'))
 
 

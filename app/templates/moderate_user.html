@@ -18,9 +18,11 @@
                       <th>昵称</th>
                       <th>Email</th>
                       <th>角色</th>
+                        <th>积分</th>
                         <th>注册时间</th>
                         <th>操作</th>
                         <th></th>
+                        <th>+积分</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -39,6 +41,7 @@
                         </td>
                       <td>{{ user.email }}</td>
                       <td>{{ user.role_id }}</td>
+                        <td>{{ user.point }}</td>
                       <td>{{ moment(user.member_since).format('YYYY/MM/DD HH:mm ') }}</td>
                         <td>
                             <div class="btn-group">
@@ -57,7 +60,19 @@
                                 <button id='user_delete' class="btn btn-danger" id="submit" type="button">删除</button>
                             </a>
                         </td>
-
+                        <td>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                +积分 <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu for-user-manage">
+                                    <li><a href="{{ url_for('main.add_user_point',user_id=user.id,point=10) }}">10</a></li>
+                                    <li><a href="{{ url_for('main.add_user_point',user_id=user.id,point=20) }}">20</a></li>
+                                    <li><a href="{{ url_for('main.add_user_point',user_id=user.id,point=50) }}">50</a></li>
+                                    <li><a href="{{ url_for('main.add_user_point',user_id=user.id,point=100) }}">100</a></li>
+                                </ul>
+                            </div>
+                        </td>
                     </tr>
                     {% endfor %}
                   </tbody>

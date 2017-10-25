@@ -69,23 +69,36 @@
                             <p>您的积分不足，无法下载</p>
                             <p>您可以选择上传资料赚取积分或者充值兑换！</p>
                             {% else %}
-                            <p>下载该资源将扣除您<b>&nbsp;{{ resource.point }}&nbsp;</b>个积分</p>
-                            <p>欢迎下载！</p>
+                            <p>下载该资源将扣除您<b>&nbsp;{{ resource.point }}&nbsp;</b>个积分！</p>
+                            <p>重复下载不会扣除积分 ╰(￣▽￣)╭</p>
                             {% endif %}
                         </div>
-                        <div class="pop-footer">
+                        <div class="pop-footer" id="pop-footer">
                             <button type="button" class="btn btn-default" onclick="javascript:$(myModal).trigger('reveal:close');">返回</button>
                             {% if current_user.point < resource.point %}
-                            <a target="_blank" href="https://weidian.com/i/2185916790?wfr=c&ifr=itemdetail"
-                               onclick="javascript:$(download-link).trigger('reveal:close');">
-                                <button type="button" class="btn btn-default" >充值积分</button>
+                            <a target="_blank" href="https://weidian.com/i/2185916790?wfr=c&ifr=itemdetail" >
+                                <button type="button" class="btn btn-default" onclick="javascript:$('#confirm').attr('style','display:block;')">
+                                    充值积分
+                                </button>
                             </a>
+                            <div id='confirm' style="display:none">
+                                <p>请您在新打开的支付平台页面进行支付,支付完成前请不要关闭该窗口</p>
+                                <div>
+                                    <a href="{{ url_for('.query_current_user_purchase', user_id=current_user.id , resource_id=resource.id) }}"><button type="button" class="btn btn-default">已完成支付</button></a>
+                                    <a><button type="button" class="btn btn-default">支付遇到问题</button></a>
+                                </div>
+                            </div>
                             {% else %}
-                            <button type="button" id="download-bn" name="{{ url_for('.add_dltime_deduct_point',resource_id=resource.id,user_id=current_user.id) }}" class="btn btn-default" onclick="javascript:document.getElementById('downlaod-info').innerHTML='<p>下载链接为{{resource.link}}</p>';">下载资源</button>
+                            <button type="button" id="download-bn" name="{{ url_for('.add_dltime_deduct_point',resource_id=resource.id,user_id=current_user.id) }}" class="btn btn-default"
+                                    onclick="javascript:document.getElementById('downlaod-info').innerHTML='<p>下载链接为{{resource.link}}</p>';">
+                                下载资源
+                            </button>
                             {% endif %}
                         </div>
                         <a class="close-reveal-modal">×</a>
                     </div>
+
+
                     {% endif %}
                     {% if current_user.is_administrator() %}
                     <a href="{{ url_for('.edit_resource', id=resource.id) }}">

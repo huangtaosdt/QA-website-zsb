@@ -1,9 +1,9 @@
 <ul class="posts" style="padding:0 5px;">
-    {% for post in hot_posts %}
+    {% for resource in hot_resources %}
     <div class="hot-posts">
         <li>
             <p class="post-content hot-post-body">
-                <a target="_blank" href="{{ url_for('.post', id=post.id) }}" style="color:black;"> {{ post.body_html|safe}}</a>
+                <a target="_blank" href="{{ url_for('.resource', id=resource.id) }}" style="color:black;"> {{ resource.title }}</a>
             </p>
         </li>
     </div>

@@ -244,6 +244,9 @@ aside#first_col .inner .topic{
     overflow:hidden;
     box-shadow: 0 1px 3px rgba(0,0,0,.1)
 }
+aside#first_col .inner .topic .title{
+    border-left: 3px solid red;
+}
 
 
 /*最新文章！*/
@@ -332,51 +335,26 @@ img.wrap-img{
 
 
 /* go back site top!!*/
-div.go-top {
-
-    opacity: 0.6;
-    z-index: 999999;
-    position: fixed;
-    bottom: 250px;
-    left: 75%;
-    margin-left: 40px;
-    border: 1px solid #0482ba;
-    width: 38px;
-    height: 38px;
-    background-color: #fff;
+ul.float-side{
+    position:fixed;
+    left:75%;
+    bottom:250px;
+    z-index:10000;
+    margin-left:40px;
+    padding:0px;
+}
+ul.float-side li{
+    opacity:0.8;
+    border:none;
+    margin-bottom: 10px;
     border-radius: 3px;
-    cursor: pointer;
+    list-style: none;
+    transition: padding opacity;
 }
-
-div.go-top:hover {
+ul.float-side li:hover{
+    padding:1px;
     opacity: 1;
-    filter: alpha(opacity=100);
 }
-
-div.go-top div.arrow {
-    position: absolute;
-    left: 10px;
-    top: -1px;
-    width: 0;
-    height: 0;
-    border: 9px solid transparent;
-    border-bottom-color: #0482ba;
-}
-
-div.go-top div.stick {
-    position: absolute;
-    left: 15px;
-    top: 15px;
-    width: 8px;
-    height: 14px;
-    display: block;
-    background-color: #0482ba;
-    -webkit-border-radius: 1px;
-    -moz-border-radius: 1px;
-    border-radius: 1px;
-}
-
-
 
 /* for hot-posts */
 
@@ -391,6 +369,25 @@ div.go-top div.stick {
 ul.posts{
     margin-top:8px;
 }
+.hot-posts li {
+    margin-bottom: 6px;
+}
+#recent-register .gravatar{
+    float:left;
+    margin-right:15px;
+    margin-top: 6px;
+}
+#recent-register a {
+}
+#recent-register dl{
+    padding: 2px 15px;
+    margin-bottom:0px;
+    border-bottom: 1px dotted lightgrey;
+}
+#recent-register dl li{
+    list-style:none;
+}
+
 
 
 /* web-site footer*/
@@ -620,4 +617,28 @@ ul.navbar-right{
     padding: 5px 0 10px 30px;
     line-height: 1.2;
     font-weight: normal;
+}
+/* 资源列表页面 */
+.jumbotron{
+    padding: 7px 30px !important;
+    margin-bottom: 0px;
+    overflow: hidden;
+    border-radius: 6px 6px 0 0 !important;
+}
+.jumbotron span{
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 32px;
+}
+.jumbotron a {
+    float: right;
+    font-size:14px;
+    padding: 5px 10px;
+}
+
+
+
+/* 发表、编辑文章页面 */
+.create-post label{
+    text-align:left !important;
 }

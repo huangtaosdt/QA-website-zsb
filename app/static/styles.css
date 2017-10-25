@@ -92,7 +92,7 @@ form input#submit{
     margin-bottom:40px;
 }
 div.post-tabs {
-    margin-top: 10px;
+    /*margin-top: 10px;*/
 }
 div.post-tabs > .nav-tabs{
     background:#fff;
@@ -255,7 +255,7 @@ div.post-content div.post-title{
     font-weight:800;
 }
 div.post-content div.post-title a{
-font-size: 18px;
+    font-size: 17px;
     font-weight: 500;
     line-height: 1.5;
         color:#333;
@@ -270,7 +270,7 @@ div.post-body{
     padding:20px;
 }
 div.post-body.post-abstract{
-    padding:10px 0;
+    padding:10px;
     font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
 }
 

@@ -14,10 +14,10 @@ class NameForm(FlaskForm):
 
 class EditProfileForm(FlaskForm):
     avatar = FileField('上传头像')
-    name = StringField('用户名', validators=[Length(0, 64)])
-    school = StringField('学校', validators=[Length(0, 64)])
-    major = StringField('专业',validators=[Length(0,64)])
-    about_me = TextAreaField('个人简介')
+    name = StringField('用户名', validators=[DataRequired(),Length(0, 64)])
+    school = StringField('学校', validators=[DataRequired(),Length(0, 64)])
+    major = StringField('专业',validators=[DataRequired(),Length(0,64)])
+    about_me = TextAreaField('个人简介',validators=[DataRequired()])
     submit = SubmitField('提交')
 
 
@@ -52,32 +52,13 @@ class EditProfileAdminForm(FlaskForm):
 
 
 class PostForm(FlaskForm):
-    # 修改为markdown格式的编辑框
-    # category = SelectField(u'Category', choices=[('diary','生活笔记'),
-    #                                  ('reading-notes','阅读笔记'),
-    #                                  ('python','Python'),
-    #                                  ('java','Java'),
-    #                                  ('linux', 'Linux'),
-    #                                  ('machine-learing','机器学习'),
-    #                                  ('front-end','Web 前端'),
-    #                                  ('other','其他')])
-    # category = SelectField(u'Category', coerce=int,choices=[(1, '生活笔记'),
-    #                                              (2, '阅读笔记'),
-    #                                              (3, 'Python'),
-    #                                              (4, 'Java'),
-    #                                              (5, 'Linux'),
-    #                                              (6, '机器学习'),
-    #                                              (7, 'Web 前端'),
-    #                                              (8, '其他')])
-    # title=StringField('Title',validators=[Required()])
-
-    # body = PageDownField("有什么新鲜事想告诉大家?", validators=[Required()])
+    title = StringField('文章标题', validators=[DataRequired()])
+    category = SelectField(u'文章类型', coerce=int,choices=[(1, '默认'),
+                                                 (2, '复习经验'),
+                                                 (3, '考试大纲')])
     body = TextAreaField(u'发布文章', validators=[DataRequired(u'内容不能为空！')])
-    # type= SelectField('发文类别',choices=[(1,'默认'),
-    #                                   (2, '复习经验'),
-    #                                   (3, '资料专区'),
-    #                                   (4, '政策专区'),])
     submit = SubmitField('发布')
+
 
 class UploadForm(FlaskForm):
     title=StringField('资源名称：',validators=[DataRequired()])
