@@ -500,7 +500,7 @@ def write():
         db.session.add(post)
         db.session.commit()
         # print('group_id in write:', post.group_id)
-        flash('Article has benn published.')
+        flash('文章发表成功！')
         return redirect(url_for('.post', id=post.id))
     return render_template('create_post.html', form=form)
 
