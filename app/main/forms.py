@@ -66,7 +66,8 @@ class UploadForm(FlaskForm):
                                                         (2, '公共课-英语'),
                                                         (3, '公共课-语文'),
                                                         (4, '专业课')])
-    point = SelectField('资源分：', coerce=int, choices=[(2, '2'),
+    point = SelectField('资源分：', coerce=int, choices=[(0,'0'),
+                                                     (2, '2'),
                                                      (3, '3'),
                                                      (5, '5'),
                                                      (8, '8'),
