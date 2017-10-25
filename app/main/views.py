@@ -235,7 +235,7 @@ def get_orders(order_type="unship", page_num=1, page_size=50, version="1.2"):
     """
     try:
         headers = {"User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0"}
-        res = request.urlopen(request.Request(
+        res = r.urlopen(r.Request(
             url='https://oauth.open.weidian.com/token?grant_type=client_credential&appkey=688400&secret=851a5fc9f0980edb701c13424ffcfeec',
             headers=headers)).read()
         res_json = json.loads(res)
