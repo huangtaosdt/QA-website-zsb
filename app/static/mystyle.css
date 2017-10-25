@@ -338,7 +338,7 @@ img.wrap-img{
 ul.float-side{
     position:fixed;
     left:75%;
-    bottom:250px;
+    bottom:100px;
     z-index:10000;
     margin-left:40px;
     padding:0px;
