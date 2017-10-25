@@ -84,7 +84,6 @@ def other(type):
 
 
 @main.route('/resource_list', methods=['GET', 'POST'])
-@login_required
 def resource_list():
     page = request.args.get('page', 1, type=int)
     pagination = Resource.query.order_by(Resource.timestamp.desc()).paginate(
@@ -99,7 +98,6 @@ def resource_list():
 
 
 @main.route('/resource/<int:id>', methods=['GET', 'POST'])
-@login_required
 def resource(id):
     resource = Resource.query.get_or_404(id)
     form = CommentForm()
