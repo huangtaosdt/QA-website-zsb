@@ -22,10 +22,6 @@
             {% if follow.user != user%}
             <tr>
                 <td>
-                    <!--<a href="{{ url_for('.user', username = follow.user.username) }}">-->
-                    <!--<img class="img-rounded" src="{{ follow.user.gravatar(size=32) }}">-->
-                    <!--{{ follow.user.username }}-->
-                    <!--</a>-->
                     <a href="{{ url_for('.user', username = follow.user.username) }}">
                         {% if follow.user.avatar %}
                         <img class="img-rounded profile-thumbnail" width="32" height="32"
@@ -33,7 +29,6 @@
                         {% else %}
                         <img class="img-rounded profile-thumbnail" src="{{ follow.user.gravatar(size=32) }}">
                         {% endif %}
-                        {{ follow.user.username }}
                         {% if follow.user.name%}
                         {{follow.user.name }}
                         {% else %}
