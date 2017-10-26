@@ -420,7 +420,7 @@ def edit_profile():
         db.session.add(current_user)
         flash('您的资料已经更新')
         return redirect(url_for('.index'))
-
+    form.avatar.data=current_user.avatar
     form.name.data = current_user.name
     form.school.data = current_user.school
     form.major.data = current_user.major
@@ -556,7 +556,7 @@ def follow(username):
         flash('用户无效或不存在！')
         return redirect(url_for('.index'))
     if current_user.is_following(user):
-        flash('You are already following this user.')
+        flash('您已关注该用户！')
         return redirect(url_for('.user', username=username))
     current_user.follow(user)
     flash('您已关注 %s.' % username)
