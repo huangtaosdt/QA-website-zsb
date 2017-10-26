@@ -121,10 +121,12 @@ def resource(id):
     comments = pagination.items
     record = DownloadRecord.query.filter_by(user_id=current_user.id, resource_id=resource.id).first()
     has_download = False
-    if record is None:
-        print('该用户未下载过，无权评论！')
-    else:
-        print('可以评论')
+    # if record is None:
+    #     print('该用户未下载过，无权评论！')
+    # else:
+    #     print('可以评论')
+    #     has_download = True
+    if record is not None:
         has_download = True
     hot_resources = Resource.query.order_by(Resource.download_times.desc()).limit(10).all()
     return render_template('resource/resource.html', resources=[resource], form=form, has_download=has_download,
@@ -194,13 +196,15 @@ def delete_resource(id):
 def add_dltime_deduct_point(resource_id, user_id):
     resource = Resource.query.get_or_404(resource_id)
     user = User.query.get_or_404(user_id)
-
+    resource_user=User.query.get_or_404(resource.author_id)
     record = DownloadRecord.query.filter_by(user_id=user_id, resource_id=resource_id).first()
     if record is None:
-        print('未下载过')
+        print('该用户未下载过')
         user.point = user.point - resource.point
+        resource_user.point=resource_user.point+resource.point
         record = DownloadRecord(user_id=user_id, resource_id=resource_id)
         db.session.add(record)
+        db.session.add(resource_user)
     else:
         print('已下载过')
     resource.download_times = resource.download_times + 1
