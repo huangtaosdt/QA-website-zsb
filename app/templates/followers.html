@@ -4,30 +4,50 @@
 {% block title %}山东专升本论坛_升本人的精神家园! - {{ title }} {{ user.username }}{% endblock %}
 
 {% block page_content %}
-<div class="page-header">
-    <h3>粉丝：{{ fan_counts }}</h3>
+<div class="jumbotron"
+     style="color: #fff;margin-top: 50px;background: #337ab7;border-color: #337ab7;border-bottom: 1px solid transparent;">
+    <span style="font-weight:400;">{{title}}：{{ fan_counts }}</span>
 </div>
-<table class="table table-hover followers">
-    <thead>
-    <tr>
-        <th>用户</th>
-        <th>关注时间</th>
-    </tr>
-    </thead>
-    {% for follow in follows %}
-    {% if follow.user != user%}
-    <tr>
-        <td>
-            <a href="{{ url_for('.user', username = follow.user.username) }}">
-                <img class="img-rounded" src="{{ follow.user.gravatar(size=32) }}">
-                {{ follow.user.username }}
-            </a>
-        </td>
-        <td>{{ moment(follow.timestamp).format('L') }}</td>
-    </tr>
-    {% endif %}
-    {% endfor %}
-</table>
+
+<div class="panel panel-default upload-resource" style="margin-top: 0px;border-radius: 0 0 4px 4px;">
+    <div class="panel-body">
+        <table class="table table-hover followers">
+            <thead>
+            <tr>
+                <th>用户</th>
+                <th>关注时间</th>
+            </tr>
+            </thead>
+            {% for follow in follows %}
+            {% if follow.user != user%}
+            <tr>
+                <td>
+                    <!--<a href="{{ url_for('.user', username = follow.user.username) }}">-->
+                    <!--<img class="img-rounded" src="{{ follow.user.gravatar(size=32) }}">-->
+                    <!--{{ follow.user.username }}-->
+                    <!--</a>-->
+                    <a href="{{ url_for('.user', username = follow.user.username) }}">
+                        {% if follow.user.avatar %}
+                        <img class="img-rounded profile-thumbnail" width="32" height="32"
+                             src="{{ follow.user.avatar }}">
+                        {% else %}
+                        <img class="img-rounded profile-thumbnail" src="{{ follow.user.gravatar(size=32) }}">
+                        {% endif %}
+                        {{ follow.user.username }}
+                        {% if follow.user.name%}
+                        {{follow.user.name }}
+                        {% else %}
+                        {{ follow.user.username }}
+                        {% endif %}
+                    </a>
+                </td>
+                <td>{{ moment(follow.timestamp).format('L') }}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </table>
+    </div>
+</div>
 <div class="pagination">
     {{ macros.pagination_widget(pagination, endpoint, username = user.username) }}
 </div>
