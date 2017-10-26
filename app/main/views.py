@@ -98,6 +98,7 @@ def resource_list():
 
 
 @main.route('/resource/<int:id>', methods=['GET', 'POST'])
+@login_required
 def resource(id):
     resource = Resource.query.get_or_404(id)
     form = CommentForm()
@@ -118,7 +119,6 @@ def resource(id):
     pagination = resource.comments.order_by(Comment.timestamp.asc()).paginate(page, per_page=current_app.config[
         'FLASKY_COMMENTS_PER_PAGE'], error_out=False)
     comments = pagination.items
-
     record = DownloadRecord.query.filter_by(user_id=current_user.id, resource_id=resource.id).first()
     has_download = False
     if record is None:
