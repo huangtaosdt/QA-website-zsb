@@ -727,6 +727,18 @@ def chang_user_role(user_id, role_id):
     return redirect(url_for(".moderate_user", _anchor='manage_body'))
 
 
+@main.route('/user_activate/<int:user_id>')
+@login_required
+@permission_required(Permission.ADMINISTER)
+def user_activate(user_id):
+    user = User.query.get_or_404(user_id)
+    if user.confirmed == False:
+        user.confirmed=True
+        db.session.add(user)
+        db.session.commit()
+    return redirect(url_for('.moderate_user', _anchor='manage_body'))
+
+
 @main.route('/moderate_user/add_user_point/<int:user_id>/<int:point>')
 @login_required
 @permission_required(Permission.ADMINISTER)
