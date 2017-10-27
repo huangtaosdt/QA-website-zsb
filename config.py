@@ -11,11 +11,11 @@ class Config:
     # MAIL_USE_SSL=True
     # MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     # MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    MAIL_USERNAME = "huangtaosdt@sina.com"
+    MAIL_USERNAME = ""
     MAIL_PASSWORD = ""
     FLASKY_MAIL_SUBJECT_PREFIX = '[FLASKY]'
-    FLASKY_MAIL_SENDER = 'Flasky Admin <huangtaosdt@sina.com>'
-    MAIL_SERVER = 'smtp.sina.com'
+    FLASKY_MAIL_SENDER = ''
+    MAIL_SERVER = ''
     # FLASKY_ADMIN=os.environ.get('FLASKY_ADMIN')
     FLASKY_ADMIN = "huangtaosdt@sina.com"
     FLASKY_POSTS_PER_PAGE = 20
